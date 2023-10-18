@@ -1,0 +1,75 @@
+<div class="mb-3" [formGroup]="form">
+
+  <label class="form-label" for="{{formControlName}}">
+    <span class="mx-1">{{ label }}</span>
+    <span *ngIf="optional_label" class="text-muted mx-1">{{ optional_label }}</span>
+    <span *ngIf="is_required" class="text-danger">*</span>
+  </label>
+
+  <input *ngIf="!is_phone_number && !is_autocomplete_address && !is_password"
+         [type]="input_type"
+         ngDefaultControl
+         [formControlName]="formControlName"
+         class="form-control"
+         [id]="formControlName"
+         placeholder="{{ placeholder }}"
+         (change)="change($event)"
+         [required]="is_required"
+         [readOnly]="is_readonly"
+         [ngClass]="{ 'is-invalid': submitted && hasAnyError() }">
+
+  <input *ngIf="is_phone_number"
+         [type]="input_type"
+         ngDefaultControl
+         mask="(000) 000-0000"
+         [formControlName]="formControlName"
+         class="form-control"
+         [id]="formControlName"
+         placeholder="{{ placeholder }}"
+         [required]="is_required"
+         [readOnly]="is_readonly"
+         [ngClass]="{ 'is-invalid': submitted && hasAnyError() }">
+
+  <input *ngIf="is_autocomplete_address"
+         [type]="input_type"
+         ngDefaultControl
+         [formControlName]="formControlName"
+         class="form-control"
+         [id]="formControlName"
+         placeholder="{{ placeholder }}"
+         ngx-google-places-autocomplete
+         [options]="options"
+         (keydown.enter)="$event.preventDefault()"
+         (onAddressChange)="handleAddressChange($event)"
+         [required]="is_required"
+         [readOnly]="is_readonly"
+         [ngClass]="{ 'is-invalid': submitted && hasAnyError() }">
+
+  <div *ngIf="is_password" class="password-toggle">
+    <input
+      [type]="showPassword ? 'text' : 'password'"
+      ngDefaultControl
+      [formControlName]="formControlName"
+      class="form-control"
+      [id]="formControlName"
+      placeholder="{{ placeholder }}"
+      [required]="is_required"
+      [readOnly]="is_readonly"
+      [ngClass]="{ 'is-invalid': submitted && hasAnyError() }">
+
+    <label class="password-toggle-btn" aria-label="Show/hide password">
+      <input class="password-toggle-check"
+             type="checkbox">
+      <span class="password-toggle-indicator"
+            [ngClass]="{'mdi-eye-off-outline': !showPassword, 'mdi-eye-outline': showPassword}"
+            (click)="toggleFieldTextType()">
+                    </span>
+    </label>
+  </div>
+
+
+  <div *ngIf="submitted && hasAnyError()" class="invalid-feedback" align="left">
+    <div *ngIf="hasError('required')">{{ label }} is required</div>
+  </div>
+
+</div>

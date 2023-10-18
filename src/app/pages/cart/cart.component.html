@@ -1,0 +1,133 @@
+<main class="page-wrapper">
+  <!-- Header-->
+  <app-header id="top"></app-header>
+
+  <!-- Page container-->
+  <div class="container mt-5 pt-5 mb-4">
+
+    <div *ngIf="isLoaded && cartModel.length != 0">
+      <div class="heading cf">
+        <h1>My Cart</h1>
+      </div>
+      <div class="tableContainer">
+        <div class="row">
+          <div class="col-lg-9 col-md-12">
+            <section class="row g-0 card card-body border-0 shadow-sm p-4 mb-4 cart-item" *ngFor="let cart of cartModel">
+              <div class="prodInfo d-flex col-12 col-lg-4 mb-5 my-3">
+                <img [src]="cart.product?.main_image?.thumbnail ? cart.product?.main_image?.thumbnail : 'assets/img/default.png'" width="150" alt=""/>
+                <div class="content-cart ms-4">
+                  <h6>{{ cart.product.title }}</h6>
+                  <p>${{ cart.price}}</p>
+                </div>
+              </div>
+              <div class="cartDates col-12 col-md-6 col-lg-5 my-lg-auto">
+                <div class="mx-3">
+                  <div aria-label="dates" class="dates-wrapper form-group">
+                    <button class="btn btn-lg btn-link dropdown-toggle ps-2 ps-sm-3 d-flex align-items-center"
+                            type="button" data-bs-toggle="dropdown"
+                            ngbDropdownToggle>
+                      <i class="fi-calendar me-2"></i>
+                      <input class="form-control date-picker rounded p-0 flatpickr-input mb-0"
+                            (change)="updateStartDate(cart, $event, end_date)"
+                            type="hidden"
+                            minDate="today"
+                            #start_date
+                            mwlFlatpickr
+                            [value]="cart.start_date"
+                            [altInput]="true"
+                            [convertModelValue]="true"
+                            name="start_date"
+                            placeholder="Start Date">
+                    </button>
+
+                    <button class="btn btn-lg btn-link dropdown-toggle ps-2 ps-sm-3 d-flex align-items-center"
+                            type="button" data-bs-toggle="dropdown"
+                            ngbDropdownToggle>
+                      <i class="fi-calendar me-2"></i>
+                      <input class="form-control date-picker rounded p-0 flatpickr-input mb-0"
+                            (change)="updateEndDate(cart ,$event, start_date)"
+                            type="hidden"
+                            minDate="today"
+                            #end_date
+                            mwlFlatpickr
+                            [value]="cart.end_date"
+                            [altInput]="true"
+                            [convertModelValue]="true"
+                            name="end_date"
+                            placeholder="End Date">
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="input-number col-9 col-md-4 col-lg-2 my-auto">
+                <div class="d-flex justify-content-center">
+                  <button class="minus" (click)="minus(cart.quantity, cart)">-</button>
+                  <input readonly type="number"
+                        value="{{cart.quantity}}" min="1" max="20"/>
+                  <button class="plus" (click)="plus(cart.quantity, cart)">+</button>
+                </div>
+              </div>
+
+              <div class="tableBtnRemove col-3 col-md-2 col-lg-1 my-auto d-flex justify-content-center">
+                <fa-icon (click)="removeItem(cart.id)" [icon]="['fas', 'circle-xmark']"></fa-icon>
+              </div>
+            </section>
+          </div>
+
+          <div class="col-lg-3 col-md-12">
+            <section class="cart-summary card card-body border-0 shadow-sm p-4 mb-4">
+              <table>
+                <tr>
+                  <td><span>Subtotal</span></td>
+                  <td>${{ cart_calculation?.total_price }}</td>
+                </tr>
+                <tr>
+                  <td><span>Shipping</span></td>
+                  <td>${{ cart_calculation?.delivery_price }}</td>
+                </tr>
+                <tr>
+                  <td><span>Taxes</span></td>
+                  <td>${{ cart_calculation?.tax_rate }}</td>
+                </tr>
+              </table>
+            </section>
+            <div class="checkoutContent d-md-flex pad-sections d-flex flex-column align-items-center">
+              
+            </div>
+            <div class="checkoutLink mt-3" [routerLink]="['/checkout']">
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" routerLink="/checkout">Checkout</button>
+
+      </div>
+    </div>
+
+    <div *ngIf="isLoaded && cartModel.length == 0" [routerLink]="['/shop']"
+         class="pad-sections emptyPage d-flex align-content-center flex-column justify-content-center align-items-center cursor-pointer">
+      <p class="cartPlus">
+        <fa-icon [icon]="['fas','cart-plus']"></fa-icon>
+      </p>
+      <p class="no-items">
+        It Seems that your cat is Empty ..<br/>
+        got to shop to add more products
+      </p>
+    </div>
+
+    <div *ngIf="!isLoaded"
+         class="pad-sections emptyPage d-flex align-content-center flex-column justify-content-center align-items-center cursor-pointer">
+      <p class="cartPlus">
+        <fa-icon [icon]="['fas','cart-plus']"></fa-icon>
+      </p>
+      <p class="no-items">
+        <img src="assets/img/loading.gif" width="150" alt="loading"/>
+      </p>
+    </div>    
+
+  </div>
+
+</main>
+<!-- Footer-->
+<app-footer></app-footer>

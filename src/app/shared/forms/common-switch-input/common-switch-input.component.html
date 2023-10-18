@@ -1,0 +1,14 @@
+<div class="mb-3" [formGroup]="form">
+
+    <div class="form-check form-switch form-switch-lg" dir="ltr">
+        <input type="checkbox"
+               ngDefaultControl
+               formControlName="{{formControlName}}"
+               class="form-check-input"
+               (change)="change($event)"
+               id="{{formControlName}}"
+               checked="">
+        <label class="form-check-label" for="{{formControlName}}">{{label}}</label>
+    </div>
+
+</div>

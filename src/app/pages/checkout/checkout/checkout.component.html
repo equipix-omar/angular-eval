@@ -1,0 +1,84 @@
+<main class="page-wrapper" xmlns="http://www.w3.org/1999/html">
+  <!-- Header-->
+  <app-header id="top"></app-header>
+
+  <!-- Page container-->
+  <div class="container mt-5 mb-md-4 py-5">
+    <div aria-label="checkout-content" *ngIf="!success_checkout">
+      <app-breadcrumbs [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+
+      <div class="row">
+        <!-- Page content-->
+        <div class="col-lg-8">
+          <!-- Breadcrumb-->
+          <!-- Title-->
+          <div class="mb-4">
+            <h1 class="h2 mb-0">Checkout</h1>
+          </div>
+
+          <div >
+            <!-- Basic info-->
+            <section class="card card-body border-0 shadow-sm p-4 mb-4" id="basic-info" *ngIf="checkIsGuest()">
+              <app-contact-info [form]="form" [submitted]="submitted"></app-contact-info>
+            </section>
+
+            <!-- Location-->
+            <section class="card card-body border-0 shadow-sm p-4 mb-4" id="location">
+              <app-pickup-delivery [form]="form" [submitted]="submitted"
+                                   (addressEmitter)="addressEvent($event)"
+                                   (pickupEmitter)="pickupEvent($event)"></app-pickup-delivery>
+            </section>
+
+            <!-- billing-info-->
+            <section class="card card-body border-0 shadow-sm p-4 mb-4" id="billing-info">
+              <app-billing-info [form]="form" [submitted]="submitted"></app-billing-info>
+            </section>
+
+            <!-- equipix account-->
+            <section class="card card-body border-0 shadow-sm p-4 mb-4" id="equipix-account" *ngIf="checkIsGuest()">
+              <app-equipix-account [form]="form" [submitted]="submitted"></app-equipix-account>
+            </section>
+
+            <!-- Action buttons -->
+            <section class="d-flex flex-column align-items-center pt-2">
+              <div class="mb-4">
+                <div class="form-check mt-3">
+                  <input class="form-check-input" type="checkbox" id="agree-conditions" [(ngModel)]="agree_conditions">
+                  <label class="form-check-label" for="agree-conditions">I agree to the terms and conditions of this
+                    rental</label>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <button class="btn btn-primary btn-lg d-block mb-2" [disabled]="!agree_conditions"
+                        (click)="submit()">
+                  Submit
+                </button>
+              </div>
+
+            </section>
+          </div>
+
+        </div>
+
+
+        <!-- Progress of completion-->
+        <aside class="col-lg-4">
+          <section class="card card-body border-0 shadow-sm p-4 mb-4">
+            <app-cart-summary [cartModel]="cartModel"></app-cart-summary>
+          </section>
+        </aside>
+
+      </div>
+    </div>
+    <div aria-label="complete-order" *ngIf="success_checkout">
+      <app-complete-order></app-complete-order>
+    </div>
+  </div>
+
+
+
+</main>
+
+<!-- Footer-->
+<app-footer></app-footer>

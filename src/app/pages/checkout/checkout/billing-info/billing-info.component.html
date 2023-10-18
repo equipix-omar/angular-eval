@@ -1,0 +1,138 @@
+<div [formGroup]="form">
+  <h2 class="h4 mb-4"><i class="fi-info-circle text-primary fs-5 mt-n1 me-2"></i>Billing information</h2>
+
+  <div class="row">
+    <div class="col-12">
+      <app-common-input
+        [form]="form"
+        [formControlName]="'billing_address_address_line1'"
+        [is_required]="true"
+        [is_autocomplete_address]="true"
+        (addressChangeEmitter)="handleAddressChange($event)"
+        [label]="'Street address'"
+        [placeholder]="'Enter a location'">
+      </app-common-input>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-12">
+      <app-common-input
+        [form]="form"
+        [formControlName]="'billing_address_address_line2'"
+        [is_required]="false"
+        [label]="'Street address 2'"
+        [placeholder]="'Enter a location'">
+      </app-common-input>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <app-common-input
+      [style.display]="'none'"
+      [form]="form"
+      [formControlName]="'billing_address_address_full'"
+      [is_required]="true"
+      [is_autocomplete_address]="true"
+      (addressChangeEmitter)="handleAddressChange($event)"
+      [label]="'Street address'">
+      </app-common-input>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <app-common-input
+        [form]="form"
+        [formControlName]="'billing_address_city'"
+        [is_required]="true"
+        [label]="'City Name'"
+        [placeholder]="'Enter City'">
+      </app-common-input>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <app-common-select [form]="form"
+                         [label]="'State'"
+                         [placeholder]="'Choose ..'"
+                         [formControlName]="'billing_address_state'">
+        <option *ngFor="let states of usStates" [value]="states.name">{{ states.name }}</option>
+      </app-common-select>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <app-common-input
+        [form]="form"
+        [formControlName]="'billing_address_zip_code'"
+        [is_required]="true"
+        [label]="'Zip code'"
+        [placeholder]="'Enter Zip code'">
+      </app-common-input>
+    </div>
+  </div>
+
+
+  <div aria-label="payment-info">
+    <h5 class="h4 mb-4"><i class="fi-credit-card fs-5 mt-n1 me-2"></i>Payment Info</h5>
+
+    <div class="row">
+      <div class="col-12">
+        <app-common-input
+          [form]="form"
+          [formControlName]="'payment_data_card_number'"
+          [is_required]="true"
+          [label]="'Credit Card number'"
+          [placeholder]="'Enter Card number'">
+        </app-common-input>
+      </div>
+      <div class="col-12">
+        <app-common-input
+          [form]="form"
+          [formControlName]="'payment_data_card_name'"
+          [is_required]="true"
+          [label]="'Name on Card'"
+          [placeholder]="'Enter Name on Card'">
+        </app-common-input>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-4 col-12">
+        <app-common-select [form]="form"
+                           [label]="'Expiration Month'"
+                           [placeholder]="'Expiration Month'"
+                           [formControlName]="'payment_data_exp_month'">
+          <option *ngFor="let month of months" [value]="month">{{ month }}</option>
+        </app-common-select>
+      </div>
+
+      <div class="col-md-4 col-12">
+        <app-common-select [form]="form"
+                           [label]="'Expiration Year'"
+                           [placeholder]="'Expiration Year'"
+                           [formControlName]="'payment_data_exp_year'">
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </app-common-select>
+      </div>
+
+      <div class="col-md-4 col-12">
+        <app-common-input
+          [form]="form"
+          [formControlName]="'payment_data_cvc'"
+          [is_required]="true"
+          [input_type]="'number'"
+          [label]="'CVC'"
+          [placeholder]="'Enter CVC'">
+        </app-common-input>
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>

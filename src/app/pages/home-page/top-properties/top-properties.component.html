@@ -1,0 +1,70 @@
+<!-- Top properties-->
+<section class="container-fluid px-xxl-4 mb-5 pb-lg-4">
+  <h2 class="h3 mb-4 pb-2 text-center">Top properties on Finder</h2>
+  <!-- Carousel-->
+  <swiper [config]="Finder">
+    <!-- Carousel item-->
+    <div *ngFor="let data of finderData">
+      <div class="row m-0 g-4">
+        <div class="col-lg-7">
+          <div class="card h-100">
+            <a class="text-decoration-none text-light card bg-size-cover bg-position-center border-0 overflow-hidden h-100"
+               routerLink="/catalog/single-v1"
+               style="background-image: url({{data.image}}); min-height: 10.75rem;">
+              <span class="img-gradient-overlay"></span>
+              <div class="card-body content-overlay pb-0"></div>
+              <div class="card-footer content-overlay border-0 pt-0 pb-4">
+                <div class="d-sm-flex justify-content-between align-items-end pt-5 mt-2 mt-sm-5">
+                  <div class="pe-2">
+                    <div class="fs-sm text-uppercase pt-2 mb-1">{{data.sale}}</div>
+                    <h3 class="h5 text-light mb-1">{{data.title}}</h3>
+                    <div class="fs-sm opacity-70"><i class="fi-map-pin me-1"></i>{{data.location}}</div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="card mb-4">
+            <a class="text-decoration-none text-light card bg-size-cover bg-position-center border-0 overflow-hidden"
+               routerLink="/catalog/single-v1" style="background-image: url({{data.image}}); min-height: 10.75rem;">
+              <span class="img-gradient-overlay"></span>
+              <div class="card-body content-overlay pb-0"></div>
+              <div class="card-footer content-overlay border-0 pt-0 pb-4">
+                <div class="d-sm-flex justify-content-between align-items-end pt-5 mt-2 mt-sm-5">
+                  <div class="pe-2">
+                    <div class="fs-sm text-uppercase pt-2 mb-1">{{data.sale}}</div>
+                    <h3 class="h5 text-light mb-1">{{data.title}}</h3>
+                    <div class="fs-sm opacity-70"><i class="fi-map-pin me-1"></i>{{data.location}}</div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="card">
+            <a class="text-decoration-none text-light card bg-size-cover bg-position-center border-0 overflow-hidden"
+               routerLink="/catalog/single-v1" style="background-image: url({{data.image}}); min-height: 10.75rem;">
+              <span class="img-gradient-overlay"></span>
+              <div class="card-body content-overlay pb-0"></div>
+              <div class="card-footer content-overlay border-0 pt-0 pb-4">
+                <div class="d-sm-flex justify-content-between align-items-end pt-5 mt-2 mt-sm-5">
+                  <div class="pe-2">
+                    <div class="fs-sm text-uppercase pt-2 mb-1">{{data.sale}}</div>
+                    <h3 class="h5 text-light mb-1">{{data.title}}</h3>
+                    <div class="fs-sm opacity-70"><i class="fi-map-pin me-1"></i>{{data.location}}</div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </swiper>
+  <!-- Carousel custom controls-->
+  <div class="tns-carousel-controls justify-content-center pt-md-2 mt-4" id="carousel-controls-tp">
+    <button class="me-3" type="button"><i class="fi-chevron-left fs-xs"></i></button>
+    <button type="button"><i class="fi-chevron-right fs-xs"></i></button>
+  </div>
+</section>

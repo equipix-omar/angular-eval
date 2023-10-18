@@ -1,0 +1,100 @@
+<div class="offcanvas offcanvas-start offcanvas-collapse"
+     id="filters-sidebar">
+  <div class="offcanvas-header d-flex d-lg-none align-items-center">
+    <h2 class="h5 mb-0">Filters</h2>
+    <button class="btn-close" type="button" data-bs-dismiss="offcanvas" (click)="SidebarHide()"></button>
+  </div>
+  <div class="offcanvas-body py-lg-4">
+
+    <div class="pb-4 mb-2">
+      <h3 class="h6">Location</h3>
+      <select class="form-select mb-2" id="location" (click)="LocationSearch($event);">
+        <option value="" disabled>Choose city</option>
+        <option [value]="location?.name" *ngFor="let location of locations">{{ location?.name }}</option>
+      </select>
+    </div>
+
+    <div class="pb-4 mb-2 simplebar-scroll-show">
+      <h3 class="h6">Categories</h3>
+      <ngx-simplebar style="height: 11rem;" class="overflow-auto">
+        <div *ngFor="let category of categories">
+          <div class="form-check">
+            <input class="form-check-input"
+                   type="checkbox"
+                   id="{{ 'category_' + category?.id }}"
+                   (change)="changeCategory($event, category.id)">
+            <label class="form-check-label fs-sm"
+                   for="{{ 'category_' + category?.id }}">
+              {{ category?.name }}
+            </label>
+          </div>
+          <div aria-label="children" class="ps-3">
+            <div *ngFor="let child of category.children">
+              <div class="form-check">
+                <input class="form-check-input"
+                       type="checkbox"
+                       id="{{ 'category_' + child?.id }}"
+                       (change)="changeCategory($event, child.id)">
+                <label class="form-check-label fs-sm"
+                       for="{{ 'category_' + child?.id }}">
+                  {{ child?.name }}
+                </label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </ngx-simplebar>
+    </div>
+
+
+    <div class="pb-4 mb-2">
+      <h3 class="h6">Price</h3>
+      <div class="range-slider" data-start-min="1100" data-start-max="3000" data-min="200" data-max="5000"
+           data-step="100">
+        <ngx-slider [(value)]="minValue"
+                    [(highValue)]="maxValue"
+                    [options]="options"
+                    (valueChange)="priceChange($event,true)"
+                    (highValueChange)="priceChange($event,false)">
+        </ngx-slider>
+        <div class="d-flex align-items-center">
+          <div class="w-50 pe-2">
+            <div class="input-group"><span class="input-group-text fs-base">$</span>
+              <input class="form-control range-slider-value-min" type="text" value="{{minValue}}">
+            </div>
+          </div>
+          <div class="text-muted">&mdash;</div>
+          <div class="w-50 ps-2">
+            <div class="input-group"><span class="input-group-text fs-base">$</span>
+              <input class="form-control range-slider-value-max" type="text" value="{{maxValue}}">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pb-4 mb-2">
+      <h3 class="h6 pt-1">Attributes / Features</h3>
+      <div class="mb-2" *ngFor="let attribute of attributes">
+        <label class="d-block fs-sm mb-1">{{ attribute.name }}</label>
+        <div class="btn-group btn-group-sm"
+             role="group"
+             aria-label="Choose attributes"
+             *ngFor="let attribute_value of attribute?.values">
+          <input class="btn-check" type="radio"
+                 id="{{ attribute_value?.name + '-' + attribute_value.value }}" name="attributes"
+                 (click)="attributesChange(attribute_value.value);">
+          <label class="btn btn-outline-secondary fw-normal" for="{{ attribute_value?.name + '-' + attribute_value.value }}">
+            {{ attribute_value.name }}
+          </label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="border-top py-4">
+      <button class="btn btn-outline-primary" type="button"><i class="fi-rotate-right me-2"></i>Reset filters</button>
+    </div>
+  </div>
+</div>

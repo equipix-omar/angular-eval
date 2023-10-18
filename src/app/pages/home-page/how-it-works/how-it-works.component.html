@@ -1,0 +1,21 @@
+<!-- How it works-->
+<section class="container mb-5 pb-2 pb-lg-4">
+  <div class="row gy-4">
+    <div class="col-md-5 col-12">
+      <img class="d-block mx-auto"
+           [src]="helperService.handleS3Image('real-estate/illustrations/find.svg')"
+           alt="Illustration"></div>
+    <div class="col-lg-6 offset-lg-1 col-md-7 col-12">
+      <h2 class="h3 mb-lg-5 mb-sm-4">How it works</h2>
+      <div class="steps steps-vertical">
+        <div class="step active" *ngFor="let data of worksData">
+          <div class="step-progress"><span class="step-number">{{data.id}}</span></div>
+          <div class="step-label ms-4">
+            <h3 class="h5 mb-2 pb-1">{{data.title}}</h3>
+            <p class="mb-0">{{data.content}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

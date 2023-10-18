@@ -1,0 +1,57 @@
+<div class="cart-summary">
+  <div *ngFor="let cart of cartModel">
+      <div class="row">
+        <div class="col-5">
+          <img [src]="cart.product?.main_image?.thumbnail ? cart.product?.main_image?.thumbnail : 'assets/img/default.png'" width="150px" height="150px" alt=""/>
+        </div>
+        <div class="col-7">
+          <h6 class="cart-summary-product-title">{{ cart.product.title }}</h6>
+          <p class="category">CATEGORY</p>
+          <p class="address">ADDRESS</p>
+          <p class="dates">{{ cart?.start_date | date : 'd MMM' }} - {{ cart?.end_date | date : 'd MMM' }}</p>
+        </div>
+      </div>
+  </div>
+
+
+  <div *ngIf="cart_calculation">
+    <h6>Price Details</h6>
+    <div class="d-flex justify-content-between mb-3">
+      <div>
+        Delivery Charge
+      </div>
+      <div>
+        ${{ cart_calculation?.delivery_price }}
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between mb-3">
+      <div>
+        Service Charge
+      </div>
+      <div>
+
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between mb-3">
+      <div>
+        Tax
+      </div>
+      <div>
+        ${{ cart_calculation?.tax_rate }}
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between mb-3">
+      <div>
+        Total
+      </div>
+      <div>
+        ${{ cart_calculation?.final_total_price }}
+      </div>
+    </div>
+
+  </div>
+
+</div>

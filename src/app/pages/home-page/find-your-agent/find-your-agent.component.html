@@ -1,0 +1,21 @@
+<!-- Find your agent-->
+<section class="container mb-5 pb-lg-5 pb-md-4">
+  <div class="card py-lg-5 py-4 border-0 bg-secondary">
+    <div class="card-body p-4 text-center">
+      <h2>Find your agent</h2>
+      <p class="mx-auto mb-md-5 mb-4 pb-lg-3" style="max-width: 53.125rem;">
+        We have the most comprehensive directory of estate agents to help you with all your property needs. Whether
+        buying, selling or renting start your search to find the right local expertise.
+      </p>
+      <!-- Agent ava's-->
+      <div class="d-flex align-items-center justify-content-center flex-wrap mb-md-5 mb-4 pb-lg-3 ps-3 pt-4">
+        <div class="border border-5 border-white rounded-circle bg-white ms-n3 mt-n4"
+             *ngFor="let data of agentData"><img class="rounded-circle" src="{{data.image}}" width="110" alt="Avatar">
+        </div>
+      </div>
+
+      <a class="btn btn-lg btn-primary w-sm-auto w-100" href="javascript:void(0);">Find agent<i
+        class="fi-chevron-right ms-2"></i></a>
+    </div>
+  </div>
+</section>

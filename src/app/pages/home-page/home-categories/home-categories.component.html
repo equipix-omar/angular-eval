@@ -1,0 +1,20 @@
+<section class="container mb-2 mb-xl-5 pb-lg-4">
+
+  <h2 class="h3 mb-4 text-center">Popular Categories </h2>
+
+  <div class="row">
+    <div *ngFor="let category of categories" class="col-lg-2 col-md-4 mb-3">
+      <div class="ellipse-container">
+        <div class="ellipse" (click)="goToProductList(category.id)">
+          <img [src]='category?.image'>
+        </div>
+        <h3>
+          {{ category?.name }}
+        </h3>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+

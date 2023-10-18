@@ -1,0 +1,22 @@
+<div class="mb-3" [formGroup]="form">
+    <label class="form-label" for="{{formControlName}}">
+        {{ label}}
+    </label>
+    <select class="form-select" *ngIf="is_multiple"
+            [multiple]="is_multiple"
+            (change)="changeSelect($event)"
+            [formControlName]="formControlName"
+            id="{{formControlName}}"
+            data-choices data-choices-search-false>
+        <option disabled>{{ placeholder }}</option>
+        <ng-content select="[is_multiple]"></ng-content>
+    </select>
+    <select class="form-select" *ngIf="!is_multiple"
+            (change)="changeSelect($event)"
+            [formControlName]="formControlName"
+            id="{{formControlName}}"
+            data-choices data-choices-search-false>
+        <option disabled>{{ placeholder }}</option>
+        <ng-content></ng-content>
+    </select>
+</div>

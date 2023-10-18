@@ -1,0 +1,129 @@
+<div [formGroup]="form">
+  <h2 class="h4 mb-4"><i class="fi-map-pin text-primary fs-5 mt-n1 me-2"></i>Pickup/Delivery</h2>
+
+  <div class="row mb-3">
+    <div class="col-12 d-flex">
+      <div class="form-check">
+        <input class="form-check-input"
+               formControlName="deliver"
+               value="0"
+               (change)="changeDelivery(false)"
+               type="radio"
+               id="ap-deliver-pickup">
+        <label class="form-check-label" for="ap-deliver-pickup">Pickup</label>
+      </div>
+      <div class="form-check mx-2">
+        <input class="form-check-input"
+               formControlName="deliver"
+               value="1"
+               (change)="changeDelivery(true)"
+               type="radio"
+               id="ap-deliver-deliver">
+        <label class="form-check-label" for="ap-deliver-deliver">Delivery</label>
+      </div>
+    </div>
+  </div>
+
+  <div aria-label="delivery-address" *ngIf="delivery">
+    <div class="row">
+      <div class="col-12">
+        <app-common-input
+          [form]="form"
+          [formControlName]="'address_street'"
+          [is_required]="true"
+          [is_autocomplete_address]="true"
+          (addressChangeEmitter)="handleAddressChange($event)"
+          [label]="'Street address'"
+          [placeholder]="'Enter a location'">
+        </app-common-input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <app-common-input
+          [style.display]="'none'"
+          [form]="form"
+          [formControlName]="'full_address'"
+          [is_required]="true"
+          [is_autocomplete_address]="true"
+          [label]="'Street address'"
+          [placeholder]="'Enter a location'">
+        </app-common-input>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <app-common-input
+          [form]="form"
+          [formControlName]="'address_street2'"
+          [is_required]="false"
+          (addressChangeEmitter)="handleAddress2Change()"
+          [label]="'Street address 2'"
+          [placeholder]="'Enter a location'">
+        </app-common-input>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <app-common-input
+        [style.display]="'none'"
+        [form]="form"
+        [formControlName]="'address_lat'"
+        [is_required]="true">
+        </app-common-input>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <app-common-input
+          [style.display]="'none'"
+          [form]="form"
+          [formControlName]="'address_long'"
+          [is_required]="true"
+          >
+        </app-common-input>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <app-common-input
+          [form]="form"
+          [formControlName]="'address_city'"
+          [is_required]="true"
+          [label]="'City Name'"
+          [placeholder]="'Enter City'">
+        </app-common-input>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <app-common-select [form]="form"
+                           [label]="'State'"
+                           [placeholder]="'Choose ..'"
+                           [formControlName]="'address_state'">
+          <option *ngFor="let states of usStates" [value]="states.name">{{ states.name }}</option>
+        </app-common-select>
+      </div>
+
+      <div class="col-md-4 mb-3">
+        <app-common-input
+          [form]="form"
+          [formControlName]="'address_zip_code'"
+          [is_required]="true"
+          [label]="'Zip code'"
+          [placeholder]="'Enter Zip code'">
+        </app-common-input>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+
+
+</div>

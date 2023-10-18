@@ -1,0 +1,40 @@
+<div [formGroup]="form">
+  <h2 class="h4 mb-4"><i class="fi-user fs-5 mt-n1 me-2"></i>Equipix Account</h2>
+
+  <div class="row">
+    <div class="col-12">
+      <app-common-input
+        [form]="form"
+        [formControlName]="'email'"
+        [is_required]="true"
+        [input_type]="'email'"
+        [label]="'Account Email'"
+        [is_readonly]="true"
+        [placeholder]="'Enter your Account Email'">
+      </app-common-input>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 mb-3">
+      <app-common-input
+        [form]="form"
+        [formControlName]="'password'"
+        [is_required]="true"
+        [input_type]="'password'"
+        [label]="'Password'"
+        [is_password]="true"
+        [placeholder]="'Enter your Password'">
+      </app-common-input>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="form-check mt-3">
+        <input class="form-check-input" type="checkbox" id="allow-cats">
+        <label class="form-check-label" for="allow-cats">I agree to the Terms of use and Privacy policy</label>
+      </div>
+    </div>
+  </div>
+
+</div>

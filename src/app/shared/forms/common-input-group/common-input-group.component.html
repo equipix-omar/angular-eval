@@ -1,0 +1,14 @@
+<div class="mb-3" [formGroup]="form">
+    <label class="form-label" [for]="formControlName">
+        {{ label}}
+    </label>
+    <div class="input-group">
+        <span class="input-group-text">{{icon}}</span>
+        <input [type]="input_type"
+               formControlName="{{formControlName}}"
+               class="form-control"
+               [id]="formControlName"
+               placeholder="Enter {{ placeholder }}">
+    </div>
+
+</div>

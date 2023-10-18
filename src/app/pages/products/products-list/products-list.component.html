@@ -1,0 +1,160 @@
+<main class="page-wrapper">
+  <!-- Header-->
+  <app-header id="top"></app-header>
+
+  <!-- Page container-->
+  <div class="container-fluid mt-5 pt-5 p-0">
+    <div class="row g-0 mt-n3">
+
+      <!-- Filters sidebar (Offcanvas on mobile)-->
+      <aside class="col-lg-4 col-xl-3 border-top-lg border-end-lg shadow-sm px-3 px-xl-4 px-xxl-5 pt-lg-2">
+        <app-list-filters
+          [minValue]="minValue"
+          [maxValue]="maxValue"
+          [options]="options"
+
+          (locationSearchEmitter)="LocationSearch($event)"
+          (changeCategoriesEmitter)="changeCategory($event)"
+          (attributesEmitter)="changeAttributes($event)"
+          (priceEmitter)="changePrice($event)">
+        </app-list-filters>
+      </aside>
+
+      <!-- Page content-->
+      <div class="col-lg-8 col-xl-9 position-relative overflow-hidden pb-5 pt-4 px-3 px-xl-4 px-xxl-5">
+        <!-- Map popup-->
+        <div class="map-popup invisible" id="map">
+          <button class="btn btn-icon btn-light btn-sm shadow-sm rounded-circle" type="button"
+                  data-bs-toggle-class="invisible" data-bs-target="#map"
+                  (click)="closeMapModel()">
+            <i class="fi-x fs-xs"></i>
+          </button>
+          <agm-map [zoom]="4" [latitude]="latitude" [longitude]="longitude"
+                   class="interactive-map rounded-3" style="height: 100%"
+                   >
+                  <ng-container *ngFor="let item of mapObject">
+                    <ng-container *ngFor="let subItem of item.address">
+                      <agm-marker [latitude]="subItem.lat" [longitude]="subItem.lng">
+                        <agm-info-window>
+                          <div class="text-center">
+                            <h1 class="fw-bold">
+                              {{item.title}}
+                            </h1>
+                            <button class="btn btn-primary btn-sm " (click)="goToProductDetails(item.id)">View</button>
+                          </div>
+                        </agm-info-window>
+                      </agm-marker>
+                    </ng-container>
+                  </ng-container>
+              
+          </agm-map>
+        </div>
+        <!-- Breadcrumb-->
+        <app-breadcrumbs [breadcrumbItems]="breadCrumbItems"></app-breadcrumbs>
+        <!-- Title-->
+        <div class="d-sm-flex align-items-center justify-content-between pb-3 pb-sm-4">
+          <h1 class="h2 mb-sm-0">Equipments for rent</h1><a class="d-inline-block fw-bold text-decoration-none py-1" href="javascript:void(0);" data-bs-toggle-class="invisible" data-bs-target="#map" (click)="openMapModal()"><i class="fi-map me-2"></i>Map view</a>
+        </div>
+        <!-- Sorting-->
+        <div class="d-flex flex-sm-row flex-column align-items-sm-center align-items-stretch my-2">
+          <div class="d-flex align-items-center flex-shrink-0">
+            <label class="fs-sm me-2 pe-1 text-nowrap" for="sortby"><i class="fi-arrows-sort text-muted mt-n1 me-2"></i>Sort by:</label>
+            <select class="form-select form-select-sm" id="sortby" (click)="SortFilter();">
+              <option>Newest</option>
+              <option value="Atitle">Popularity</option>
+              <option value="Dprice">Low - High Price</option>
+              <option value="Aprice">High - Low Price</option>
+              <option value="Dbad">High rating</option>
+              <option value="Abad">Average Rating</option>
+            </select>
+          </div>
+          <hr class="d-none d-sm-block w-100 mx-4">
+          <div class="d-none d-sm-flex align-items-center flex-shrink-0 text-muted"><i class="fi-check-circle me-2"></i><span class="fs-sm mt-n1">{{dataCount}} results</span></div>
+        </div>
+        <!-- Catalog grid-->
+        <div class="row g-4 py-4">
+          <!-- Item-->
+          <div class="col-sm-6 col-xl-4"
+               *ngFor="let product of productsData
+               | sortBy:sortBy:sortField
+               | paginate: { itemsPerPage: per_page, currentPage: current_page, totalItems: total_items }">
+            <div class="card shadow-sm card-hover border-0 h-100">
+              <div class="tns-carousel-wrapper card-img-top card-img-hover">
+                <a class="img-overlay cursor-pointer"
+                   (click)="goToProductDetails(product.id)">
+                </a>
+
+                <div class="position-absolute start-0 top-0 pt-3 ps-3">
+                  <!--                  <span class="" [ngClass]="{'d-table badge bg-success mb-1': product.verified_btn}">{{product.verified_btn}}</span>-->
+                  <!--                  <span class="d-table badge {{product.btn_color}}">{{product.btn}}</span>-->
+                  <span class="d-table badge bg-success mb-1">Instant Booking</span>
+                  <span class="d-table badge bg-primary mb-1">New</span>
+                  <span class="d-table badge bg-danger mb-1">Featured</span>
+                </div>
+
+                <div class="content-overlay end-0 top-0 pt-3 pe-3">
+                  <button class="btn btn-icon btn-light btn-xs text-primary rounded-circle"
+                          type="button" placement="left" ngbTooltip="Add to Wishlist">
+                    <i class="fi-heart"></i>
+                  </button>
+                </div>
+
+                <swiper [config]="config">
+                  <div class="swiper-slide">
+                    <img src="{{product?.main_image?.thumbnail ? product?.main_image?.thumbnail : 'assets/img/default.png'}}" alt="Image" class="h-100 w-100">
+                  </div>
+                  <div class="swiper-slide" *ngFor="let image of product.images">
+                    <img src="{{image.thumbnail ? image.thumbnail : 'assets/img/default.png'}}" alt="Image" class="h-100">
+                  </div>
+                </swiper>
+              </div>
+              <div class="card-body position-relative pb-3">
+                <h3 class="h6 mb-2 fs-base">
+                  <a class="nav-link stretched-link cursor-pointer"
+                     (click)="goToProductDetails(product.id)">
+                    {{product.title}}
+                  </a>
+                </h3>
+                <div class="mb-2 fs-sm text-muted d-flex">
+                  <p class="mb-2"
+                     [class.mx-1]="current_index > 0"
+                     *ngFor="let branch of product.branches; let current_index = index;">
+                    <span>{{ branch?.name }}</span>
+                    <span *ngIf="branch.address">- {{branch?.address?.city }}</span>
+                    <span *ngIf="product.branches.length - 1 != current_index"> , </span>
+                  </p>
+                </div>
+                <div class="fw-bold">
+                  <i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i>${{product.daily_price}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Pagination-->
+
+
+        <nav class="border-top pb-md-4 pt-4 mt-2" aria-label="Pagination">
+          <pagination-controls  (pageChange)="changeProductPage($event)"></pagination-controls>
+
+        </nav>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+<!-- Footer-->
+<app-footer></app-footer>
+
+<!-- Filters sidebar toggle button (mobile)-->
+<button class="btn btn-primary btn-sm w-100 rounded-0 fixed-bottom d-lg-none"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#filters-sidebar"
+        (click)="FilterSidebar()">
+  <i class="fi-filter me-2"></i>
+  <span>Filters</span>
+</button>
+<div class="vertical-overlay" (click)="SidebarHide()"></div>
+

@@ -1,0 +1,170 @@
+<!-- Discover locations-->
+<section class="container mb-5 pb-lg-5 pb-4">
+  <div class="d-flex align-items-start justify-content-between mb-3 mb-md-4 pb-md-2">
+    <div class="d-flex flex-md-row flex-column align-items-center">
+      <h2 class="h3 mb-4 mb-md-0">Discover locations</h2>
+      <ul ngbNav #locations="ngbNav" [activeId]="1" class="nav nav-tabs mb-0 ms-md-4 ms-n3 ps-lg-2">
+        <li [ngbNavItem]="1">
+          <a ngbNavLink>
+            <span class="d-none d-sm-block">For rent</span>
+          </a>
+          <ng-template ngbNavContent>
+            <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 g-3">
+              <div class="col">
+                <div class="card card-hover border-0 shadow-sm h-100 p-2">
+                  <div class="card-body icon-box p-4">
+                    <div class="icon-box-media mb-3"
+                         style="width: 5rem; height: 5rem; background-image: url(assets/img/real-estate/locations/usa.svg);"></div>
+                    <h4 class="h5 icon-box-title lh-1">Popular locations</h4><span class="fs-sm text-muted">Tempor id sed suspendisse nulla.</span>
+                    <hr class="my-4">
+                    <ul class="nav flex-column mb-0">
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">New
+                        York</a></li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Los
+                        Angeles</a></li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Houston</a>
+                      </li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Phoenix</a>
+                      </li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Philadelphia</a>
+                      </li>
+                      <li class="nav-item"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Chicago</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card card-hover border-0 shadow-sm h-100 p-2">
+                  <div class="card-body icon-box p-4">
+                    <div class="icon-box-media mb-3"
+                         style="width: 5rem; height: 5rem; background-image: url(assets/img/real-estate/locations/city.svg);"></div>
+                    <h4 class="h5 icon-box-title lh-1">In the city</h4><span class="fs-sm text-muted">Aenean in vitae lectus nunc. Dictum nunc enim.</span>
+                    <hr class="my-4">
+                    <ul class="nav flex-column mb-0">
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">San
+                        Antonio</a></li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">San
+                        Diego</a></li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal"
+                                                        href="javascript:void(0);">Austin</a></li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">San
+                        Jose</a></li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Columbus</a>
+                      </li>
+                      <li class="nav-item"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Dallas</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card card-hover border-0 shadow-sm h-100 p-2">
+                  <div class="card-body icon-box p-4">
+                    <div class="icon-box-media mb-3"
+                         style="width: 5rem; height: 5rem; background-image: url(assets/img/real-estate/locations/field.svg);"></div>
+                    <h4 class="h5 icon-box-title lh-1">Rural and countryside</h4><span class="fs-sm text-muted">Leo vel sit velit, nam volutpat tincidunt orci.</span>
+                    <hr class="my-4">
+                    <ul class="nav flex-column mb-0">
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Bar
+                        Harbor</a></li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Gatlinburg</a>
+                      </li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal"
+                                                        href="javascript:void(0);">Sedona</a></li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Monterey</a>
+                      </li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Telluride</a>
+                      </li>
+                      <li class="nav-item"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Sonoma</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+          <a ngbNavLink>
+            <span class="d-none d-sm-block">For sale</span>
+          </a>
+          <ng-template ngbNavContent>
+            <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 g-3">
+              <div class="col">
+                <div class="card card-hover border-0 shadow-sm h-100 p-2">
+                  <div class="card-body icon-box p-4">
+                    <div class="icon-box-media mb-3"
+                         style="width: 5rem; height: 5rem; background-image: url(assets/img/real-estate/locations/usa.svg);"></div>
+                    <h4 class="h5 icon-box-title lh-1">Popular locations</h4><span class="fs-sm text-muted">Tempor id sed suspendisse nulla.</span>
+                    <hr class="my-4">
+                    <ul class="nav flex-column mb-0">
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">New
+                        York</a></li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Los
+                        Angeles</a></li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Houston</a>
+                      </li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Phoenix</a>
+                      </li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Philadelphia</a>
+                      </li>
+                      <li class="nav-item"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Chicago</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card card-hover border-0 shadow-sm h-100 p-2">
+                  <div class="card-body icon-box p-4">
+                    <div class="icon-box-media mb-3"
+                         style="width: 5rem; height: 5rem; background-image: url(assets/img/real-estate/locations/city.svg);"></div>
+                    <h4 class="h5 icon-box-title lh-1">In the city</h4><span class="fs-sm text-muted">Aenean in vitae lectus nunc. Dictum nunc enim.</span>
+                    <hr class="my-4">
+                    <ul class="nav flex-column mb-0">
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">San
+                        Antonio</a></li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">San
+                        Diego</a></li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal"
+                                                        href="javascript:void(0);">Austin</a></li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">San
+                        Jose</a></li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Columbus</a>
+                      </li>
+                      <li class="nav-item"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Dallas</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card card-hover border-0 shadow-sm h-100 p-2">
+                  <div class="card-body icon-box p-4">
+                    <div class="icon-box-media mb-3"
+                         style="width: 5rem; height: 5rem; background-image: url(assets/img/real-estate/locations/field.svg);"></div>
+                    <h4 class="h5 icon-box-title lh-1">Rural and countryside</h4><span class="fs-sm text-muted">Leo vel sit velit, nam volutpat tincidunt orci.</span>
+                    <hr class="my-4">
+                    <ul class="nav flex-column mb-0">
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Bar
+                        Harbor</a></li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Gatlinburg</a>
+                      </li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal"
+                                                        href="javascript:void(0);">Sedona</a></li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Monterey</a>
+                      </li>
+                      <li class="nav-item mb-2 pb-1"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Telluride</a>
+                      </li>
+                      <li class="nav-item"><a class="nav-link p-0 fw-normal" href="javascript:void(0);">Sonoma</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </li>
+      </ul>
+    </div>
+    <a class="btn btn-link fw-normal ms-2 p-0" routerLink="/catalog/rent">View all<i
+      class="fi-arrow-long-right ms-2"></i></a>
+  </div>
+  <!-- Carousel-->
+  <div [ngbNavOutlet]="locations"></div>
+</section>

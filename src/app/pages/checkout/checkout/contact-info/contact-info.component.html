@@ -1,0 +1,49 @@
+<div [formGroup]="form">
+  <h2 class="h4 mb-4"><i class="fi-phone text-primary fs-5 mt-n1 me-2"></i>Contacts Info</h2>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <app-common-input
+        [form]="form"
+        [formControlName]="'first_name'"
+        [is_required]="true"
+        [label]="'First Name'"
+        [placeholder]="'Enter your first name'">
+      </app-common-input>
+    </div>
+    <div class="col-sm-6">
+      <app-common-input
+        [form]="form"
+        [formControlName]="'last_name'"
+        [is_required]="true"
+        [label]="'last Name'"
+        [placeholder]="'Enter your last name'">
+      </app-common-input>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <app-common-input
+        [form]="form"
+        [formControlName]="'email'"
+        [is_required]="true"
+        [input_type]="'email'"
+        [trigger_change_input]="true"
+        [label]="'Email'"
+        [placeholder]="'Enter your Email'">
+      </app-common-input>
+    </div>
+    <div class="col-sm-6">
+      <app-common-input
+        [form]="form"
+        [formControlName]="'phone'"
+        [is_required]="true"
+        [is_phone_number]="true"
+        [input_type]="'text'"
+        [label]="'Phone number'"
+        [placeholder]="'Enter your Phone number'">
+      </app-common-input>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,43 @@
+.reserve {
+  border-radius: 40px;
+
+  i {
+    font-size: 13px;
+  }
+}
+
+.prices {
+  strong {
+    font-family: 'Noto Sans', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    color: #1F1B2D;
+  }
+  p{
+    font-family: 'Noto Sans', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: end;
+  }
+}
+
+.dates-wrapper{
+  border: 1px solid #EFECF3;
+
+  box-shadow: 0 2px 2px -2px rgba(31, 27, 45, 0.08), 0px 4px 12px rgba(31, 27, 45, 0.08);
+  border-radius: 40px;
+}
+
+
+.price-box{
+  font-family: 'Noto Sans', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 130%;
+  color: #1F1B2D;
+}

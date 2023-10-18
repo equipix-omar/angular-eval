@@ -1,0 +1,13 @@
+<button class="btn btn-lg btn-link dropdown-toggle ps-2 ps-sm-3 d-flex align-items-center"
+        type="button" data-bs-toggle="dropdown"
+        ngbDropdownToggle>
+  <i class="fi-calendar me-2"></i>
+  <input class="form-control date-picker rounded p-0 flatpickr-input mb-0"
+         (change)="changeEndDateFilter($event)"
+         type="hidden"
+         minDate="today"
+         mwlFlatpickr
+         [altInput]="true"
+         [convertModelValue]="true"
+         placeholder="End Date">
+</button>

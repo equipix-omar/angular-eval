@@ -1,0 +1,60 @@
+<div class="row mx-0 align-items-center">
+  <div class="col-md-6 border-end-md p-2 p-sm-5">
+    <h2 class="h3 mb-4 mb-sm-5">Hey there!<br>Welcome back.</h2>
+    <img class="d-block mx-auto"
+         [src]="helperService.handleS3Image('signin-modal/signin.svg')"
+         width="344" alt="Illustartion">
+    <div class="mt-4 mt-sm-5">Don't have an account?
+      <a  data-bs-toggle="modal"
+         (click)="secondModal(toggleSecondModal)">
+        <span class="sign_url">Sign up</span>
+        <span class="px-1">here</span>
+      </a>
+    </div>
+  </div>
+  <div class="col-md-6 px-2 pt-2 pb-4 px-sm-5 pb-sm-5 pt-md-5">
+
+    <form class="needs-validation" novalidate (ngSubmit)="validSubmit()" [formGroup]="loginForm">
+      <div class="mb-4">
+        <label class="form-label mb-2" for="signin-email">Email address</label>
+        <input class="form-control"
+               type="email"
+               id="signin-email"
+               placeholder="Enter your email"
+               required
+               formControlName="email"
+               [ngClass]="{'is-invalid': submit && form['email'].errors}">
+      </div>
+
+      <div class="mb-4">
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <label class="form-label mb-0" for="signin-password">Password</label>
+          <a class="fs-sm" href="javascript:void(0);">
+            Forgot password?
+          </a>
+        </div>
+
+        <div class="password-toggle">
+          <input class="form-control"
+                 [type]="fieldTextType ? 'text' : 'password'"
+                 id="signin-password"
+                 placeholder="Enter password"
+                 required
+                 formControlName="password"
+                 [ngClass]="{'is-invalid': submit && form['password'].errors}">
+          <label class="password-toggle-btn" aria-label="Show/hide password">
+            <input class="password-toggle-check"
+                   type="checkbox">
+            <span class="password-toggle-indicator"
+                  [ngClass]="{'mdi-eye-off-outline': !fieldTextType, 'mdi-eye-outline': fieldTextType}"
+                  (click)="toggleFieldTextType()">
+                    </span>
+          </label>
+        </div>
+
+      </div>
+
+      <button class="btn btn-primary btn-lg w-100" type="submit">Sign in</button>
+    </form>
+  </div>
+</div>

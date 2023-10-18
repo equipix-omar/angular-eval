@@ -1,0 +1,35 @@
+<!-- Newly listed properties-->
+<section class="container mt-n3 mt-md-0 mb-4 pb-3 pb-lg-4">
+  <div class="d-flex align-items-end justify-content-between mb-4 pb-md-2">
+    <h2 class="h3 mb-0">Newly listed properties</h2><a class="btn btn-link fw-normal ms-2 p-0" routerLink="/catalog/sale">View all<i class="fi-arrow-long-right ms-2"></i></a>
+  </div>
+  <!-- Carousel-->
+  <swiper [config]="config">
+    <!-- Item-->
+    <div *ngFor="let data of propertiesData">
+      <div class="row m-0">
+        <div class="col-lg-8 col-md-7 mb-md-0 mb-3">
+          <div class="position-relative pe-lg-5">
+            <div class="position-absolute top-0 start-0 zindex-1 m-3 p-1"><span class="badge fs-sm me-2 {{data.btn_color}}">{{data.btn}}</span><span class="badge bg-success fs-sm me-2">{{data.verified_btn}}</span></div><img class="rounded-3 zindex-5" src="{{data.image}}" alt="Article image">
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-5"><span class="d-inline-block fs-sm text-uppercase text-primary mb-2 from-top">{{data.sale}}</span>
+          <div class="from-start delay-2">
+            <h3 class="h4 mb-2">{{data.title}}</h3>
+            <p class="mb-md-4 mb-3 fs-sm">{{data.sub_title}}</p>
+            <ul class="d-flex mb-md-4 mb-3 list-unstyled">
+              <li class="me-3 pe-3 border-end"><b class="me-1">{{data.bad}}</b><i class="fi-bed mt-n1 lead align-middle text-muted"></i></li>
+              <li class="me-3 pe-3 border-end"><b class="me-1">{{data.bath}}</b><i class="fi-bath mt-n1 lead align-middle text-muted"></i></li>
+              <li class="me-3 pe-3 border-end"><b class="me-1">{{data.car}}</b><i class="fi-car mt-n1 lead align-middle text-muted"></i></li>
+              <li><b>{{data.sqm}} </b>sq.m</li>
+            </ul>
+            <p class="mb-4 pb-md-2">{{data.content}}</p>
+          </div>
+          <div class="btn-group btn-group-lg scale-up delay-3" role="group" aria-label="Buy now or add to wishlist"><a class="btn btn-primary" routerLink="/catalog/single-v2">Sale for {{data.price}}</a>
+            <button class="btn btn-primary px-3 border-start border-light" data-bs-toggle="tooltip" placement="top" ngbTooltip="Add to Wishlist"><i class="fi-heart fs-5"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </swiper>
+</section>

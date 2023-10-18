@@ -1,0 +1,18 @@
+<button class="btn btn-lg btn-link dropdown-toggle ps-2 ps-sm-3"
+        type="button"
+        data-bs-toggle="dropdown"
+        ngbDropdownToggle>
+  <i class="fi-map-pin me-2"></i>
+  <span class="dropdown-toggle-label location">{{ location_name }}</span>
+</button>
+
+<ul class="dropdown-menu"
+    ngbDropdownMenu
+    id="location-content">
+  <li *ngFor="let location of locations"
+      (click)="changeLocationFilter(location)">
+    <a class="dropdown-item">
+      <span class="dropdown-item-label">{{ location?.name }}</span>
+    </a>
+  </li>
+</ul>
