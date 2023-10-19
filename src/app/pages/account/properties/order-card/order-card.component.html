@@ -1,0 +1,42 @@
+<div class="card card-hover card-horizontal border-0 shadow-sm mb-4" *ngFor="let orderItem of order.orderItems">
+    <a class="card-img-top" routerLink="/catalog/single-v1" style="background-image: url({{orderItem.product.main_image.medium_size}});">
+      <div class="position-absolute start-0 top-0 pt-3 ps-3"><span class="d-table badge bg-success">{{order.status.name}}</span></div></a>
+    <div class="card-body position-relative pb-3">
+      <div class="dropdown position-absolute zindex-5 top-0 end-0 mt-3 me-3" ngbDropdown>
+        <button class="btn btn-icon btn-light btn-xs rounded-circle shadow-sm arrow-none" type="button" id="contextMenu1" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle><i class="fi-dots-vertical"></i></button>
+        <ul class="dropdown-menu my-1 dropdown-menu-end" aria-labelledby="contextMenu1" ngbDropdownMenu>
+          <li>
+            <button class="dropdown-item" type="button"><i class="fi-eye-on opacity-60 me-2"></i>View Order</button>
+          </li>
+          <li>
+            <button class="dropdown-item" type="button"><i class="fi-messenger opacity-60 me-2"></i>Message Vendor</button>
+          </li>
+          <li>
+            <button class="dropdown-item" type="button"><i class="fi-download opacity-60 me-2"></i>Download Invoice</button>
+          </li>
+          <li>
+            <button class="dropdown-item" type="button"><i class="fi-minus-circle opacity-60 me-2"></i>Cancel Order</button>
+          </li>
+        </ul>
+      </div>
+      <h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary">ORDER #{{orderItem.id}}</h4>
+      <h3 class="h6 mb-2 fs-base"><a class="nav-link stretched-link" routerLink="/catalog/single-v1">{{orderItem.product.title}}</a></h3>
+                     <p class="mb-2 fs-sm text-muted">
+                       <span>{{order.vendor.name}}</span> |
+                       {{order.address.city}} ,{{order.address.state}}</p>
+      <div class="fw-bold d-flex justify-content-between align-items-center">
+        <div>
+          <i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i>{{order.total_price}}
+        </div>
+        <div>
+          <i class="fi-calendar mt-n1 me-2 lead align-middle opacity-70"></i>
+          {{ orderItem.start_date | date }} - {{ orderItem.end_date | date }}
+        </div>
+      </div>
+                    <div class="d-flex align-items-center justify-content-center justify-content-sm-start border-top pt-3 pb-2 mt-3 text-nowrap">
+     <!--   <span class="d-inline-block me-4 fs-sm">{{data.bad}}<i class="fi-bed ms-1 mt-n1 fs-lg text-muted"></i>
+      </span><span class="d-inline-block me-4 fs-sm">{{data.bath}}<i class="fi-bath ms-1 mt-n1 fs-lg text-muted">
+      </i></span><span class="d-inline-block fs-sm">{{data.car}}<i class="fi-car ms-1 mt-n1 fs-lg text-muted"></i></span>-->
+      </div>
+    </div>
+  </div>

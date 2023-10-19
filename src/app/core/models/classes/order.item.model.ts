@@ -1,3 +1,5 @@
+import { ORDER_STATUS } from "../../enums/orderStatus.enum";
+
 export class Product {
   id: number;
   title: string;
@@ -60,8 +62,8 @@ export class Image {
 export class OrderItem {
   id: number;
   status: Status;
-  address:Address;
-  vendor:Vendor;
+  address: Address;
+  vendor: Vendor;
   payment_method: PaymentMethod;
   orderItems: OrderItemDetail[];
   orderStatusesHistory: OrderStatusHistory[];
@@ -94,14 +96,14 @@ export class OrderItem {
     this.card_name = data.card_name;
     this.card_number = data.card_number;
     this.is_paid = data.is_paid;
-    this.address=data.address;
-    this.vendor=data.vendor;
+    this.address = data.address;
+    this.vendor = data.vendor;
   }
 }
 
 export class Status {
   id: number;
-  key: string;
+  key: ORDER_STATUS;
   name: string;
 
   constructor(data: any) {
@@ -141,8 +143,8 @@ export class OrderItemDetail {
   product: Product;
   quantity: number;
   price: number;
-  start_date:string;
-  end_date:string;
+  start_date: string;
+  end_date: string;
 
   constructor(data: any) {
     this.id = data.id;
@@ -167,7 +169,7 @@ export class BillingAddress {
   city: string;
   state: string;
   address_line1: string;
-  full_address !: string ;
+  full_address !: string;
   address_line2: string | null;
 
   constructor(data: any) {
@@ -183,22 +185,29 @@ export class Address {
   zip: string;
   city: string;
   state: string;
-  lat!:string;
-  long !:string;
+  lat!: string;
+  long !: string;
   line1: string;
-  full_address !: string ;
+  full_address !: string;
   line2: string | null;
 
   constructor(data: any) {
-    this.zip = data.zip;
-    this.city = data.city;
-    this.state = data.state;
-    this.line1 = data.address_line1;
-    this.long=data.long;
-    this.lat=data.lat;
-    this.full_address = data.full_address;
-    this.line2 = data.address_line2 || null;
+    this.zip = data?.zip;
+    this.city = data?.city;
+    this.state = data?.state;
+    this.line1 = data?.address_line1;
+    this.long = data?.long;
+    this.lat = data?.lat;
+    this.full_address = data?.full_address;
+    this.line2 = data?.address_line2 || null;
   }
+}
+
+export interface IOrderTab {
+  tabName: string,
+  tabIcon: string,
+  tabId: number,
+  tabStatus: ORDER_STATUS[]
 }
 
 export class OrderItemModel {
