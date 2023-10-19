@@ -22,6 +22,9 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { SortByAccountPipe } from '../account/sort-by.pipe';
 import { PhoneInputDirective } from 'src/app/core/services/Helpers/phone-input.directive';
 import { PhoneFormatPipe } from 'src/app/core/services/Helpers/PhoneFormatPipe';
+import { OrderCardComponent } from './properties/order-card/order-card.component';
+import { OrderTypePipe } from './properties/order-type.pipe';
+import { OrderServiceService } from './properties/order-service.service';
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   url: 'https://httpbin.org/post',
@@ -39,7 +42,9 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     NotificationsComponent,
     SortByAccountPipe,
     PhoneInputDirective,
-    PhoneFormatPipe
+    PhoneFormatPipe,
+    OrderCardComponent,
+    OrderTypePipe
   ],
   imports: [
     CommonModule,
@@ -59,7 +64,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     {
       provide: DROPZONE_CONFIG,
       useValue: DEFAULT_DROPZONE_CONFIG
-    }
+    },
+    OrderServiceService
   ]
 })
 export class AccountModule { }

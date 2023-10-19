@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
 import { properties } from './properties.model';
-import { propertiesData } from './data';
-import {HelperService} from "../../../core/services/helper.service";
-import {OrderApiService} from "../../../core/services/Api-Services/order.api.service";
-import { OrderItem, OrderItemModel} from "../../../core/models/classes/order.item.model";
+import { HelperService } from "../../../core/services/helper.service";
+import { OrderApiService } from "../../../core/services/Api-Services/order.api.service";
+import { OrderItem, OrderItemModel } from "../../../core/models/classes/order.item.model";
+import { OrderServiceService } from './order-service.service';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-properties',
@@ -15,56 +15,48 @@ import { OrderItem, OrderItemModel} from "../../../core/models/classes/order.ite
 /**
  * Properties Component
  */
-export class PropertiesComponent implements OnInit {
+export class PropertiesComponent extends OrderServiceService implements OnInit {
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   propertiesData!: properties[];
-  order !: OrderItemModel ;
-  orders !:OrderItem[];
+  order !: OrderItemModel;
+  orders !: OrderItem[];
   constructor(protected helperService: HelperService,
-              private  orderApiService:OrderApiService) { }
+    private orderApiService: OrderApiService) {
+    super();
+  }
 
   ngOnInit(): void {
     /**
      * BreadCrumb
      */
-     this.breadCrumbItems = [
-      { label: 'Home', link:'' },
-      { label: 'Account', link:'/account/info' },
+    this.breadCrumbItems = [
+      { label: 'Home', link: '' },
+      { label: 'Account', link: '/account/info' },
       { label: 'My Properties', active: true }
     ];
 
-    // Chat Data Get Function
-    this._fetchData();
     this._fetchAllOrdersData();
   }
 
 
-
-   // Chat Data Fetch
-   private _fetchData() {
-    this.propertiesData = propertiesData;
-  }
-
-  _fetchAllOrdersData(){
-      this.orderApiService._getAllOrdersData().subscribe({
-        next:(resp)=>{
-          console.log("order apiiiiiiiiiii ",resp);
-          this.order=resp;
-          this.orders =this.order.body;
-          console.log("order api ",this.orders);
-
-        },error:(error) =>{
-          let error_message = error?.error?.message;
-            console.log("error of order api",error)
+  _fetchAllOrdersData() {
+    this.isLoading = true;
+    this.orderApiService._getAllOrdersData()
+      .pipe(finalize(() => this.isLoading = false))
+      .subscribe({
+        next: (res) => {
+          this.orders = res.body;
+        }, error: (error) => {
+          console.log("error of order api", error)
         }
       });
   };
   /**
    * On mobile toggle button clicked
    */
-   SideBarMenu() {
+  SideBarMenu() {
     document.getElementById('account-nav')?.classList.toggle('show');
   }
 
