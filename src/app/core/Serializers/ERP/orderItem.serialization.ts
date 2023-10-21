@@ -1,5 +1,5 @@
 import {
-  Address,
+  //Address,
   BillingAddress,
   Image,
   OrderItem, OrderItemDetail,
@@ -95,7 +95,7 @@ export class OrderItemSerializer {
       total_price: json.total_price,
       final_total_price: json.final_total_price,
       billing_address: new BillingAddress(json.billing_address),
-      address: new Address(json.address),
+      //address: new Address(json.address),
       vendor: new Vendor(json.vendor),
       payment_order_id: json.payment_order_id,
       deliver: json.deliver,
@@ -118,7 +118,7 @@ export class OrderItemSerializer {
       total_price: orderItem.total_price,
       final_total_price: orderItem.final_total_price,
       billing_address: orderItem.billing_address,
-      address: orderItem.address,
+      //address: orderItem.address,
       vendor: orderItem.vendor,
       payment_order_id: orderItem.payment_order_id,
       deliver: orderItem.deliver,
@@ -228,31 +228,31 @@ export class BillingAddressSerializer {
     };
   }
 }
-export class AddressSerializer {
-  static fromJson(json: any): Address {
-    return new Address({
-      zip: json.zip,
-      city: json.city,
-      state: json.state,
-      lat:json.lat,
-      long:json.long,
-      line1: json.line1,
-      full_address: json.full_address,
-      line2: json.line2 || null,
-    });
-  }
+// export class AddressSerializer {
+//   static fromJson(json: any): Address {
+//     return new Address({
+//       zip: json.zip,
+//       city: json.city,
+//       state: json.state,
+//       lat:json.lat,
+//       long:json.long,
+//       line1: json.line1,
+//       full_address: json.full_address,
+//       line2: json.line2 || null,
+//     });
+//   }
 
-  static toJson(address: Address): any {
-    return {
-      zip: address.zip,
-      city: address.city,
-      state: address.state,
-      line1: address.line1,
-      full_address: address.full_address,
-      address_line2: address.line2,
-    };
-  }
-}
+//   static toJson(address: Address): any {
+//     return {
+//       zip: address.zip,
+//       city: address.city,
+//       state: address.state,
+//       line1: address.line1,
+//       full_address: address.full_address,
+//       address_line2: address.line2,
+//     };
+//   }
+// }
 export class VendorSerializer {
   static fromJson(json: any): Vendor {
     return new Vendor({

@@ -60,7 +60,7 @@ export class Image {
 export class OrderItem {
   id: number;
   status: Status;
-  address:Address;
+  // address:Address;
   vendor:Vendor;
   payment_method: PaymentMethod;
   orderItems: OrderItemDetail[];
@@ -94,7 +94,7 @@ export class OrderItem {
     this.card_name = data.card_name;
     this.card_number = data.card_number;
     this.is_paid = data.is_paid;
-    this.address=data.address;
+    // this.address=data.address;
     this.vendor=data.vendor;
   }
 }
@@ -179,27 +179,27 @@ export class BillingAddress {
     this.address_line2 = data.address_line2 || null;
   }
 }
-export class Address {
-  zip: string;
-  city: string;
-  state: string;
-  lat!:string;
-  long !:string;
-  line1: string;
-  full_address !: string ;
-  line2: string | null;
+// export class Address {
+//   zip: string;
+//   city: string;
+//   state: string;
+//   lat!:string;
+//   long !:string;
+//   line1: string;
+//   full_address !: string ;
+//   line2: string | null;
 
-  constructor(data: any) {
-    this.zip = data.zip;
-    this.city = data.city;
-    this.state = data.state;
-    this.line1 = data.address_line1;
-    this.long=data.long;
-    this.lat=data.lat;
-    this.full_address = data.full_address;
-    this.line2 = data.address_line2 || null;
-  }
-}
+//   constructor(data: any) {
+//     this.zip = data.zip;
+//     this.city = data.city;
+//     this.state = data.state;
+//     this.line1 = data.address_line1;
+//     this.long=data.long;
+//     this.lat=data.lat;
+//     this.full_address = data.full_address;
+//     this.line2 = data.address_line2 || null;
+//   }
+// }
 
 export class OrderItemModel {
   message: any[]; // Define the actual type for message
