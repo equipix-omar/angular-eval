@@ -60,8 +60,8 @@ export class Image {
 export class OrderItem {
   id: number;
   status: Status;
-  address:Address;
-  vendor:Vendor;
+  address: Address;
+  vendor: Vendor;
   payment_method: PaymentMethod;
   orderItems: OrderItemDetail[];
   orderStatusesHistory: OrderStatusHistory[];
@@ -81,8 +81,12 @@ export class OrderItem {
     this.id = data.id;
     this.status = new Status(data.status);
     this.payment_method = new PaymentMethod(data.payment_method);
-    this.orderItems = data.orderItems.map((itemData: any) => new OrderItemDetail(itemData));
-    this.orderStatusesHistory = data.orderStatusesHistory.map((statusData: any) => new OrderStatusHistory(statusData));
+    this.orderItems = data.orderItems.map(
+      (itemData: any) => new OrderItemDetail(itemData)
+    );
+    this.orderStatusesHistory = data.orderStatusesHistory.map(
+      (statusData: any) => new OrderStatusHistory(statusData)
+    );
     this.delivery_price = data.delivery_price;
     this.tax_value = data.tax_value;
     this.tax_rate = data.tax_rate;
@@ -94,8 +98,8 @@ export class OrderItem {
     this.card_name = data.card_name;
     this.card_number = data.card_number;
     this.is_paid = data.is_paid;
-    this.address=data.address;
-    this.vendor=data.vendor;
+    this.address = data.address;
+    this.vendor = data.vendor;
   }
 }
 
@@ -114,7 +118,6 @@ export class Status {
 export class Vendor {
   id: number;
   name: string;
-
 
   constructor(data: any) {
     this.id = data.id;
@@ -141,8 +144,8 @@ export class OrderItemDetail {
   product: Product;
   quantity: number;
   price: number;
-  start_date:string;
-  end_date:string;
+  start_date: string;
+  end_date: string;
 
   constructor(data: any) {
     this.id = data.id;
@@ -167,37 +170,37 @@ export class BillingAddress {
   city: string;
   state: string;
   address_line1: string;
-  full_address !: string ;
+  full_address!: string;
   address_line2: string | null;
 
   constructor(data: any) {
-    this.zip = data.zip;
-    this.city = data.city;
-    this.state = data.state;
-    this.address_line1 = data.address_line1;
-    this.full_address = data.full_address;
-    this.address_line2 = data.address_line2 || null;
+    this.zip = data?.zip;
+    this.city = data?.city;
+    this.state = data?.state;
+    this.address_line1 = data?.address_line1;
+    this.full_address = data?.full_address;
+    this.address_line2 = data?.address_line2 || null;
   }
 }
 export class Address {
   zip: string;
   city: string;
   state: string;
-  lat!:string;
-  long !:string;
+  lat!: string;
+  long!: string;
   line1: string;
-  full_address !: string ;
+  full_address!: string;
   line2: string | null;
 
   constructor(data: any) {
-    this.zip = data.zip;
-    this.city = data.city;
-    this.state = data.state;
-    this.line1 = data.address_line1;
-    this.long=data.long;
-    this.lat=data.lat;
-    this.full_address = data.full_address;
-    this.line2 = data.address_line2 || null;
+    this.zip = data?.zip;
+    this.city = data?.city;
+    this.state = data?.state;
+    this.line1 = data?.address_line1;
+    this.long = data?.long;
+    this.lat = data?.lat;
+    this.full_address = data?.full_address;
+    this.line2 = data?.address_line2 || null;
   }
 }
 
