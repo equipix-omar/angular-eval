@@ -1,0 +1,74 @@
+{
+  "Project":{
+    "Name":"title",
+    "New Project":"New Project",
+    "description":"description",
+    "Projectstatus":"Project status",
+    "Start date":"Start date",
+    "deadline":"deadline",
+    "project_created":"project created",
+    "date_finished":"date finished",
+    "Project":"Project",
+    "status":"status",
+    "Clients":"Clients",
+    "Client":"Client",
+    "Show":"Show",
+    "Files":"Files",
+    "Notes":"Notes",
+    "discussions":"discussions",
+    "":"",
+    "":""
+  },
+
+  "Task":{
+    "Name":"Name",
+    "description":"description",
+    "Task":"Task",
+    "Taskstatus":"Task status",
+    "TaskPriority":"Task Priority",
+    "New Task":"New Task",
+    "Start date":"Start date",
+    "Priority":"Priority",
+    "status":"status",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":""
+
+  },
+
+
+
+  "General":{
+    "title":"title",
+    "Login":"Login",
+    "register":"register",
+    "aboutUs":"aboutUs",
+    "description":"description",
+    "HCPAINTERNAL":"HCPA INTERNAL",
+    "System Data":"System Data",
+    "User":"Users",
+    "Users":"Users",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":""
+  }
+
+
+}

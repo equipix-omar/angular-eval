@@ -1,0 +1,194 @@
+  <c-sidebar
+  direction="ltr" #sidebar="cSidebar" class="d-print-none sidebar sidebar-fixed" id="sidebar" visible>
+    <ng-scrollbar pointerEventsMethod="scrollbar" style="background-color: #1e293b; color: white;">
+            <mat-nav-list class="hc">
+                <mat-list-item >
+                  <a routerLink="./dashboard" cDropdownItem>
+                    <svg cIcon class="me-2" name="cilHome"></svg>
+                    {{"General.HCPAINTERNAL" | translate }}
+                  </a>
+                </mat-list-item>
+                <mat-expansion-panel *ngIf="pers.includes('view project')" [class.mat-elevation-z0]="true">
+                    <mat-expansion-panel-header  cDropdownItem >
+                        <svg  cIcon class="me-2" name="cilSpreadsheet"
+                        ></svg>
+                        {{"Project.Clients" | translate }}
+                      </mat-expansion-panel-header>
+                    <mat-nav-list class="dd" >
+                        <a style="margin-left: 25px; text-decoration: none;"  routerLink="./Project">
+                          {{"Project.Client" | translate }}
+                        </a>
+                    </mat-nav-list>
+                </mat-expansion-panel>
+                <!-- <mat-expansion-panel [class.mat-elevation-z0]="true">
+                    <mat-expansion-panel-header>
+                      <svg cIcon class="me-2" name="cilTask"
+                      ></svg>
+                      {{"Task.Task" | translate }}
+                    </mat-expansion-panel-header>
+                    <mat-nav-list class="dd">
+                      <a style="margin-left: 25px; text-decoration: none;" routerLink="./Task" >
+                        {{"Task.Task" | translate }}
+                      </a>
+                    </mat-nav-list>
+                </mat-expansion-panel> -->
+                <mat-expansion-panel *ngIf="pers.includes('view systemData')" [class.mat-elevation-z0]="true">
+                  <mat-expansion-panel-header  cDropdownItem style="color: white;">
+                      <svg  cIcon class="me-2" name="cilSettings"
+                      ></svg>
+                      {{"General.System Data" | translate }}
+                    </mat-expansion-panel-header>
+                  <mat-nav-list  class="dd" >
+                      <a  style="display: block;margin-left: 25px; text-decoration: none;" routerLink="/Project/Status">
+                        {{"Project.Projectstatus" | translate }}
+                      </a><br>
+                       <a  style="display: block;margin-left: 25px; text-decoration: none;" routerLink="/Task/Status">
+                        {{"Task.Taskstatus" | translate }}
+                      </a><br>
+                      <a style="margin-left: 25px; text-decoration: none;display: block;"  routerLink="/Task/Priority">
+                        {{"Task.TaskPriority" | translate }}
+                      </a><br>
+                        <a  style="display: block;margin-left: 25px; text-decoration: none;" routerLink="/Management">
+                          {{"Management" | translate }}
+                        </a><br>
+                         <a  style="display: block;margin-left: 25px; text-decoration: none;" routerLink="/Management/sector">
+                          {{"sector" | translate }}
+                        </a><br>
+                        <a style="margin-left: 25px; text-decoration: none;display: block;"  routerLink="Risk/Impact">
+                          {{"Impact" | translate }}
+                        </a><br>
+                        <a style="margin-left: 25px; text-decoration: none;display: block;"  routerLink="Risk/RiskType">
+                          {{"Risk Type" | translate }}
+                        </a><br>
+                        <a style="margin-left: 25px; text-decoration: none;display: block;"  routerLink="Risk/occurrence">
+                          {{"likelihood" | translate }}
+                        </a><br>
+                        <a style="margin-left: 25px; text-decoration: none;display: block;"  routerLink="Risk/Inherent">
+                          {{"assessment" | translate }}
+                        </a><br>
+                        <a style="margin-left: 25px; text-decoration: none;display: block;"  routerLink="Risk/ResidualImpact">
+                          {{"Residual Impact" | translate }}
+                        </a><br>
+                        <a style="margin-left: 25px; text-decoration: none;display: block;"  routerLink="Risk/Residualoccurrence">
+                          {{"Residual likelihood" | translate }}
+                        </a><br>
+                        <a style="margin-left: 25px; text-decoration: none;display: block;"  routerLink="Risk/ResidualInherent">
+                          {{"Residual assessments" | translate }}
+                        </a><br>
+                  </mat-nav-list>
+                </mat-expansion-panel>
+                <mat-expansion-panel *ngIf="pers.includes('view user')" [class.mat-elevation-z0]="true">
+                <mat-expansion-panel-header  cDropdownItem >
+                    <svg  cIcon class="me-2" name="cilUser"
+                    ></svg>
+                    {{"General.Users" | translate }}
+                  </mat-expansion-panel-header>
+                <mat-nav-list class="dd" >
+                    <a style="margin-left: 25px; text-decoration: none;" routerLink="/User">
+                      {{"General.User" | translate }}
+                    </a>
+                </mat-nav-list>
+                </mat-expansion-panel>
+                <mat-expansion-panel *ngIf="pers.includes('view role')" [class.mat-elevation-z0]="true">
+              <mat-expansion-panel-header  cDropdownItem style="color: white;">
+                  <svg  cIcon class="me-2" name="cilSettings"
+                  ></svg>
+                  {{"Roles" | translate }}
+                </mat-expansion-panel-header>
+              <mat-nav-list  class="dd" >
+                  <a  style="display: block;margin-left: 25px; text-decoration: none;" routerLink="/Roles">
+                    {{"Roles" | translate }}
+                  </a><br>
+                   <a  style="display: block;margin-left: 25px; text-decoration: none;" routerLink="/Roles/Permissions">
+                    {{"Permission" | translate }}
+                  </a><br>
+                  <!-- <a style="margin-left: 25px; text-decoration: none;"  routerLink="/Roles/controls">
+                    {{"General.controls" | translate }}
+                  </a> -->
+              </mat-nav-list>
+                </mat-expansion-panel>
+                <!-- <mat-expansion-panel *ngIf="pers.includes('view risk')" [class.mat-elevation-z0]="true">
+                  <mat-expansion-panel-header  cDropdownItem >
+                      <svg  cIcon class="me-2" name="cilSettings"
+                      ></svg>
+                      {{"Risks" | translate }}
+                  </mat-expansion-panel-header>
+                  <mat-nav-list class="dd" >
+                      <a style="margin-left: 25px; text-decoration: none;"  routerLink="./Risk">
+                        {{"Risk" | translate }}
+                      </a>
+                  </mat-nav-list>
+                  <mat-nav-list class="dd" >
+                    <a style="margin-left: 25px; text-decoration: none;"  routerLink="Risk/Rcm">
+                      {{"Rcm" | translate }}
+                    </a>
+                  </mat-nav-list>
+                  <mat-nav-list class="dd" >
+                    <a style="margin-left: 25px; text-decoration: none;"  routerLink="Risk/Note">
+                      {{"Notes" | translate }}
+                    </a>
+                  </mat-nav-list>
+                  <mat-nav-list class="dd" >
+                    <a style="margin-left: 25px; text-decoration: none;"  routerLink="Risk/Impact">
+                      {{"Impact" | translate }}
+                    </a>
+                  </mat-nav-list>
+                  <mat-nav-list class="dd" >
+                    <a style="margin-left: 25px; text-decoration: none;"  routerLink="Risk/RiskType">
+                      {{"Risk Type" | translate }}
+                    </a>
+                  </mat-nav-list>
+                  <mat-nav-list class="dd" >
+                    <a style="margin-left: 25px; text-decoration: none;"  routerLink="Risk/occurrence">
+                      {{"likelihood" | translate }}
+                    </a>
+                  </mat-nav-list>
+                  <mat-nav-list class="dd" >
+                  <a style="margin-left: 25px; text-decoration: none;"  routerLink="Risk/Inherent">
+                    {{"assessment" | translate }}
+                  </a>
+                  </mat-nav-list>
+                  <mat-nav-list class="dd" >
+                    <a style="margin-left: 25px; text-decoration: none;"  routerLink="Risk/ResidualImpact">
+                      {{"Residual Impact" | translate }}
+                    </a>
+                  </mat-nav-list>
+                  <mat-nav-list class="dd" >
+                  <a style="margin-left: 25px; text-decoration: none;"  routerLink="Risk/Residualoccurrence">
+                    {{"Residual likelihood" | translate }}
+                  </a>
+                  </mat-nav-list>
+                  <mat-nav-list class="dd" >
+                <a style="margin-left: 25px; text-decoration: none;"  routerLink="Risk/ResidualInherent">
+                  {{"Residual assessments" | translate }}
+                </a>
+                  </mat-nav-list>
+                </mat-expansion-panel> -->
+                <!-- <mat-expansion-panel *ngIf="pers.includes('view management')" [class.mat-elevation-z0]="true">
+                  <mat-expansion-panel-header  cDropdownItem style="color: white;">
+                      <svg  cIcon class="me-2" name="cilSettings"
+                      ></svg>
+                      {{"Management" | translate }}
+                    </mat-expansion-panel-header>
+                  <mat-nav-list  class="dd" >
+                      <a  style="display: block;margin-left: 25px; text-decoration: none;" routerLink="/Management">
+                        {{"Management" | translate }}
+                      </a><br>
+                       <a  style="display: block;margin-left: 25px; text-decoration: none;" routerLink="/Management/sector">
+                        {{"sector" | translate }}
+                      </a><br>
+                  </mat-nav-list>
+                </mat-expansion-panel> -->
+
+            </mat-nav-list>
+    </ng-scrollbar>
+  </c-sidebar>
+<div class="wrapper d-flex flex-column min-vh-100 ">
+  <app-default-header class="mb-4 d-print-none header header-sticky" position="sticky" sidebarId="sidebar" />
+  <div class="body flex-grow-1 px-3">
+    <c-container breakpoint="lg" class="h-auto">
+      <router-outlet/>
+    </c-container>
+  </div>
+</div>
+<!-- bg-light dark:bg-transparent -->

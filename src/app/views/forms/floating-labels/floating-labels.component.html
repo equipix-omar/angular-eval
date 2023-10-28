@@ -1,0 +1,72 @@
+<div class="d-flex flex-row align-items-center">
+  <c-container><br><br>
+
+    <c-row class="justify-content-center">
+      <c-col lg="7" md="9" xl="6">
+        <c-card class="mx-4">
+          <c-card-body class="p-4" class="bg-light">
+            <h2 style="text-align: center;">Edit USER</h2><br>
+
+            <form cForm [formGroup]="signUp" (ngSubmit)="signUp.valid&&FormData()" *ngFor="let item of data">
+              <!-- <h1>Register</h1> -->
+              <!-- <p class="text-medium-emphasis">Add New User</p> -->
+              <c-input-group class="mb-3">
+                <!-- <span cInputGroupText>
+                  <svg cIcon name="cilUser"></svg>
+                </span> -->
+                <input autoComplete="name" cFormControl placeholder="Username" [(ngModel)]="item.name"
+                [class.is-valid]="signUp.controls.name.status=='VALID'" formControlName="name" />
+
+              </c-input-group>
+              <div *ngIf="signUp.controls.name.errors &&signUp.controls.name.touched  " class="alert alert-danger" role="alert">
+                Name is required
+           </div>
+              <c-input-group class="mb-3">
+                <!-- <span cInputGroupText>@</span> -->
+                <input autoComplete="email" cFormControl placeholder="Email" [(ngModel)]="item.email"
+                [class.is-valid]="signUp.controls.email.status=='VALID'" formControlName="email" />
+
+              </c-input-group>
+              <div *ngIf="signUp.controls.email.errors &&signUp.controls.email.touched  " class="alert alert-danger" role="alert">
+                Email is required
+            </div>
+              <c-input-group class="mb-3">
+                <!-- <span cInputGroupText>@</span> -->
+                <select class="form-select" [(ngModel)]="item.role_id" formControlName="role_id">
+                  <option *ngFor="let status of roles" [value]="status.id">{{ status.name }}</option>
+                </select>
+              </c-input-group>
+
+              <c-input-group class="mb-3">
+                <!-- <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span> -->
+                <input autoComplete="new-password" cFormControl placeholder="Password" type="password" [(ngModel)]="item.password"
+                [class.is-valid]="signUp.controls.password.status=='VALID'" formControlName="password" />
+
+              <br>
+
+              <!-- <small class="" style="color: rgb(15, 8, 8);">must include lower and uper case character and symbol</small> -->
+              </c-input-group>
+              <div *ngIf="signUp.controls.password.errors &&signUp.controls.password.touched  " class="alert alert-danger" role="alert">
+                Password is required
+            </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-info w-100 " [disabled]="signUp.invalid" [ngStyle]="signUp.invalid? isStyleValid:isStyleInvalid"
+                 color="primary" cButton color="success">
+                  <span *ngIf="!isClicked">Edit User</span> <span *ngIf="isClicked">Wating....</span>
+                </button>
+              </div>
+              <div *ngIf="isSuccess" class="alert alert-success text-center" role="alert">
+                {{ResponseMessage}}
+            </div>
+            <div *ngIf="isUniuqeEmail" class="alert alert-danger text-center" role="alert">
+                {{isUniuqeEmailMessage}}
+            </div>
+            </form>
+          </c-card-body>
+        </c-card>
+      </c-col>
+    </c-row>
+  </c-container>
+</div>

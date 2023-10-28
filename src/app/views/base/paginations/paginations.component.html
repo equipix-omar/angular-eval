@@ -1,0 +1,38 @@
+<router-outlet></router-outlet>
+<c-nav variant="pills">
+  <c-nav-item style=" margin-right: 2%;">
+    <button cButton style="background-color: #1e293b;" >
+      <a [routerLink]='["./NewFile",id]' cDropdownItem>
+
+        <svg cIcon class="me-2" name="cilPlus"></svg>
+        {{"New File" | translate }}
+      </a>
+    </button>
+  </c-nav-item>
+</c-nav>
+<br>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" dir="ltr" class="table table-bordered table-striped" id="myTable">
+  <thead style="background-color: #1e293b; color: #f0e9e9;">
+      <tr>
+          <th>#</th>
+          <th>{{"Project.project" | translate }}</th>
+          <th>{{"Project.description" | translate }}</th>
+          <th>{{"Project.user" | translate }}</th>
+          <th>{{"Project.file" | translate }}</th>
+          <th>{{"Project.dateadded" | translate }}</th>
+          <th>{{"Project.file name" | translate }}</th>
+      </tr>
+  </thead>
+  <tbody >
+      <tr *ngFor="let item of Projects">
+        <td>{{item.id}}</td>
+        <td>{{item.project['name']}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.user['name']}}</td>
+        <td><a href="{{item.external_link}}" target="_blank" style="text-decoration: none;" download>Download</a>
+        </td>
+        <td>{{item.dateadded}}</td>
+        <td>{{item.file_name}}</td>
+      </tr>
+  </tbody>
+</table>

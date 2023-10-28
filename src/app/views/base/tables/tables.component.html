@@ -1,0 +1,111 @@
+<div class="container mt-5" style="background-color: white; border: 1px solid #ccc; border-radius: 5px;">
+  <form style="padding: 5px;" [formGroup]='AddNote' (ngSubmit)="editNote()" *ngFor="let item of data">
+    <h1 *ngFor="let item of data" styly="text-align:center">EDit Project {{item.id}} </h1>    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Project Name</mat-label>
+          <input matInput [(ngModel)]="item.name" formControlName="name" placeholder="Project Name">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Description</mat-label>
+          <input matInput [(ngModel)]="item.description" formControlName="description" placeholder="Description">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>select your status</mat-label>
+          <mat-select [(ngModel)]="item.status_id" formControlName="status_id">
+            <mat-option *ngFor="let status of Allstatus" [value]="status.id">{{ status.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Progress</mat-label>
+          <input matInput [(ngModel)]="item.progress" formControlName="progress" type="number" min="0" max="100" step="1">
+          <div class="progress mt-2">
+            <div class="progress-bar bg-success" role="progressbar" [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress" [attr.aria-valuemin]="0" [attr.aria-valuemax]="100"></div>
+          </div>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Deadline</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="item.deadline" formControlName="deadline">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Project Created</mat-label>
+          <input matInput [matDatepicker]="picker1" [(ngModel)]="item.project_created" formControlName="project_created">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Date Finished</mat-label>
+          <input matInput [matDatepicker]="picker2" [(ngModel)]="item.date_finished" formControlName="date_finished">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Start Date</mat-label>
+          <input matInput [matDatepicker]="picker3" [(ngModel)]="item.start_date" formControlName="start_date">
+          <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+          <mat-datepicker #picker3></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Project Cost</mat-label>
+          <input matInput [(ngModel)]="item.project_cost" type="number" formControlName="project_cost" placeholder="Project Cost">
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>project rate per hour </mat-label>
+          <input matInput [(ngModel)]="item.project_rate_per_hour" type="number" formControlName="project_rate_per_hour" placeholder="project rate per hour ">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+    <div class="form-group col-md-4">
+      <mat-form-field class="w-100">
+        <mat-label>estimated hours </mat-label>
+        <input matInput [(ngModel)]="item.estimated_hours" type="number" formControlName="estimated_hours" placeholder="estimated hours ">
+      </mat-form-field>
+    </div>
+    <div class="form-group col-md-4">
+      <mat-form-field class="w-100">
+        <mat-label>active </mat-label>
+        <input matInput [(ngModel)]="item.active" type="number" formControlName="active" placeholder="active ">
+      </mat-form-field>
+    </div>
+    <div class="col-md-4">
+      <mat-form-field class="w-100">
+        <mat-label>progress from tasks</mat-label>
+        <input matInput [(ngModel)]="item.progress_from_tasks" formControlName="progress_from_tasks" type="number" min="0" max="100" step="1">
+        <div class="progress mt-2">
+          <div class="progress-bar bg-success" role="progressbar" [style.width.%]="item.progress_from_tasks" [attr.aria-valuenow]="item.progress_from_tasks" [attr.aria-valuemin]="0" [attr.aria-valuemax]="100"></div>
+        </div>
+      </mat-form-field>
+    </div>
+      </div>
+    <button type="submit" class="btn btn-primary">SAVE </button>
+  </form>
+</div>

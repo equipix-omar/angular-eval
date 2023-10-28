@@ -1,0 +1,57 @@
+<!-- <br>
+<br>
+<h1 style="text-align:center">View Project {{data?.id}} Details</h1><br>
+<div class="project-details">
+  <div class="project-info">
+    <br><br>
+    <p><strong>name:</strong>        <span style="margin-left: 25%;">{{data?.name}}</span></p><br>
+    <p><strong>Description:</strong> <span style="margin-left: 22%;">{{data?.description}}</span></p><br>
+    <p><strong>Start Date:</strong>  <span style="margin-left: 23%;">{{data?.dateadded}}</span></p><br>
+    <p><strong>expected price:</strong>    <span style="margin-left: 21%;">{{data?.expected_price}}</span></p><br>
+    <p><strong>expected hours:</strong>     <span style="margin-left: 21%;">{{data?.expected_hours}}</span></p><br>
+  </div>
+</div> -->
+   <!-- <e-column headerText='Not Started'       keyField='NotStarted'></e-column>
+       <e-column headerText='In Progress'       keyField='InProgress'></e-column>
+       <e-column headerText='Testing'           keyField='Testing'></e-column>
+       <e-column headerText='Awaiting Feedback' keyField='Awaiting'></e-column>
+       <e-column headerText='Completed'         keyField='Completed'></e-column> -->
+<!-- {{localData|json}}
+{{data|json}} -->
+
+<ejs-kanban keyField='Status' [dataSource]='remoteData' [cardSettings]='cardSettings'
+height="100%" width="100%" [swimlaneSettings]='swimlaneSettings'
+enableTooltip='true'>
+  <e-columns>
+      <e-column headerText='To do' keyField='Open'></e-column>
+      <e-column headerText='In Progress' keyField='InProgress'></e-column>
+      <e-column headerText='Review' keyField='Review' minCount="1"></e-column>
+      <e-column headerText='Testing' keyField='Testing' maxCount="5"></e-column>
+      <e-column headerText='Done' keyField='Close'></e-column>
+  </e-columns>
+  <ng-template #tooltipTemplate let-data>
+    <div>
+      <table dir="ltr">
+        <tbody>
+          <tr>
+            <td><b>Assignee : </b></td>
+            <td>{{data.Assignee}}</td>
+          </tr>
+          <tr>
+            <td><b>Type : </b></td>
+            <td>{{data.Type}}</td>
+          </tr>
+          <tr>
+            <td><b>Estimate : </b></td>
+            <td>{{data.Estimate}}</td>
+          </tr>
+          <tr>
+            <td><b>Summary : </b></td>
+            <td>{{data.Summary}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+</ng-template>
+</ejs-kanban>

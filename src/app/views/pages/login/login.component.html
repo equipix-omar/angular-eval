@@ -1,0 +1,78 @@
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+  <c-container>
+    <!-- <h1 style="text-align: center;">HCPA CRM</h1><br> -->
+    <c-row class="justify-content-center">
+      <c-col lg="7" md="9" xl="6">
+        <c-card-group>
+          <c-card class="mx-4">
+            <c-card-body class="p-4">
+              <section id="signin">
+                <div class="container">
+
+   <form  [formGroup]="signIn" (ngSubmit)="signIn.valid&&FormData()">
+    <h1>Login</h1>
+    <p class="text-medium-emphasis">Sign In to your account</p>
+    <c-input-group class="mb-3">
+      <span cInputGroupText>
+        <svg cIcon name="cilUser"></svg>
+      </span>
+      <input autoComplete="username" cFormControl
+      [class.is-valid]="signIn.controls.email.status=='VALID'" formControlName="email"
+   type="email" placeholder="Enter Email" />
+
+    </c-input-group>
+    <div *ngIf="signIn.controls.email.errors &&signIn.controls.email.touched  " class="alert alert-danger" >
+      Email is required
+  </div>
+    <c-input-group class="mb-4">
+      <span cInputGroupText>
+        <svg cIcon name="cilLockLocked"></svg>
+      </span>
+      <input
+        autoComplete="current-password"
+        cFormControl
+        [class.is-valid]="signIn.controls.password.status=='VALID'"
+        formControlName="password"  type="password"
+        placeholder="Password"
+        type="password"
+      />
+
+
+    </c-input-group>
+    <div *ngIf="signIn.controls.password.errors &&signIn.controls.password.touched  " class="alert alert-danger" role="alert">
+      password is required
+  </div>
+    <c-row>
+      <c-col xs="12">
+        <button [disabled]="signIn.invalid" class="btn btn-info w-100 "  color="primary">
+          Login
+        </button>
+      </c-col><br>
+      <c-col class="text-right" >
+        <!-- <button  cButton class="px-0" color="link">
+          Forgot password?
+        </button> -->
+        <br>
+        <!-- <p class="text-medium-emphasis w-100" >Sign Up if you didn't have an account</p>
+        <button [active]="true" cButton  color="primary" routerLink="/register">
+          Register Now!
+        </button> -->
+      </c-col>
+    </c-row>
+    <!-- <div *ngIf="ress" class="alert alert-danger" >
+      credentials are not correct
+      </div> -->
+  </form>
+
+               </div>
+            </section>
+
+
+            </c-card-body>
+          </c-card>
+
+        </c-card-group>
+      </c-col>
+    </c-row>
+  </c-container>
+</div>

@@ -1,0 +1,106 @@
+
+
+
+  <br>
+  <div class="container mt-1" style="background-color: white; border: 1px solid #ccc; border-radius: 5px;">
+    <form style="padding: 5px;" [formGroup]='AddNote' (ngSubmit)="editNote()" *ngFor="let item of data">
+      <h1 *ngFor="let item of data" styly="text-align:center">EDit Task {{item.id}} </h1>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>Task Name</mat-label>
+            <input matInput [(ngModel)]="item.name" formControlName="name" placeholder="Task Name">
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>Description</mat-label>
+            <input matInput [(ngModel)]="item.description" formControlName="description" placeholder="Description">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>select your status</mat-label>
+            <mat-select [(ngModel)]="item.status_id" formControlName="status_id" >
+              <mat-option *ngFor="let status of Allstatus" [value]="status.id">{{ status.name }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>select your priority</mat-label>
+            <mat-select [(ngModel)]="item.priority_id" formControlName="priority_id" >
+              <mat-option *ngFor="let priority of AllPriority" [value]="priority.id">{{ priority.name }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- <div class="row mt-4">
+        <div class="col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>select your User</mat-label>
+            <mat-select [(ngModel)]="item.addedfrom" formControlName="addedfrom" >
+              <mat-option *ngFor="let user of AllUser" [value]="user.id">{{ user.name }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>Project Created</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="item.dateadded"  formControlName="dateadded">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div> -->
+
+      <div class="row">
+        <div class="form-group col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>expected price</mat-label>
+            <input matInput [(ngModel)]="item.expected_price" type="number" formControlName="expected_price" placeholder="expected price">
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>expected hours</mat-label>
+            <input matInput [(ngModel)]="item.expected_hours" type="number" formControlName="expected_hours" placeholder="expected hours">
+          </mat-form-field>
+        </div>
+      </div><br>
+  <!-- <div class="row">
+      <div class="form-check col-md-3 offset-1">
+        <label  class="form-check-label" for="flexCheckIndeterminate">
+          is public
+        </label>
+        <input class="form-check-input" checked formControlName="is_public" [(ngModel)]="item.is_public" type="checkbox" id="flexCheckIndeterminate">
+      </div><br>
+      <div class="form-check col-md-4">
+        <input class="form-check-input" checked formControlName="is_added_from_member" [(ngModel)]="item.is_added_from_member" type="checkbox" id="flexCheckIndeterminate1">
+        <label class="form-check-label" for="flexCheckIndeterminate1">
+          is added from member
+        </label>
+      </div><br>
+      <div class="form-check col-md-2 offset-1">
+        <input class="form-check-input" checked formControlName="kanban_order" [(ngModel)]="item.kanban_order"
+         type="checkbox" id="flexCheckIndeterminate2">
+        <label class="form-check-label" for="flexCheckIndeterminate2">
+          kanban order
+        </label>
+      </div>
+      <br>
+
+      <div class="form-check col-md-4">
+        <input class="form-check-input" checked formControlName="visible_to_client" [(ngModel)]="item.visible_to_client" type="checkbox"       id="flexCheckIndeterminate3">
+        <label class="form-check-label" for="flexCheckIndeterminate3">
+          visible to client
+        </label>
+      </div><br>
+
+    </div><br> -->
+
+      <button type="submit" (click)="submit()" class="btn btn-primary">SAVE </button>
+    </form>
+  </div>

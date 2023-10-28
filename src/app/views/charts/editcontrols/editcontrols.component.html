@@ -1,0 +1,40 @@
+<label>Add Permission</label>
+<div class="row">
+  <div class="col-md-6">
+    <mat-form-field class="w-100">
+      <mat-select [(ngModel)]="item.permision_id" multiple  name="permision_id">
+        <mat-option *ngFor="let status of AllPermission" [value]="status.id">{{ status.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+</div>
+<div class="col-md-6">
+  <button cButton style="background-color: #1e293b;" (click)="save(item.permision_id)">SAVE</button>
+</div>
+</div>
+<br>
+<div class="row">
+  </div>
+  <table  datatable dir="ltr" class="table table-bordered table-striped" id="myTable">
+  <thead style="background-color: #1e293b; color: #f0e9e9; text-align: center !important">
+    <tr style="text-align: center !important">
+      <th style="text-align: center;">ID</th>
+      <th style="text-align: center;">Name</th>
+      <th style="text-align: center;">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align: center;" *ngFor="let post of roles">
+      <td>{{ post.id }}</td>
+      <td>{{ post.name }}</td>
+      <td style="text-align: center;">
+        <button name="" (click)="destroy(post.id)" id="" class="btn btn-danger" >
+          <svg cIcon class="" name="cilTrash"></svg>
+        </button>
+    </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+

@@ -1,0 +1,38 @@
+<div class="form-check" *ngFor="let management of mangs" (click)="getid(management.id)">
+  <input class="form-check-input" type="radio" name="management" [value]="management.id">
+  <label class="form-check-label" >
+    {{ management.name }}
+  </label>
+</div>
+
+<c-nav *ngIf="newid" variant="pills" style="background-color: #1e293b; padding: 10px; text-align: center;">
+     <button style="margin-right: 12px;">
+       <button  style="background-color:#1e293b; color: orangered; height: 50px;  border-radius: 5px; font-size: 16px; font-weight: bold; padding: 10px 20px; margin: 0;" [routerLink]="['../../Risk',this.newid]">
+         <a cDropdownItem routerLinkActive="active">
+           <svg cIcon class="me-2" name="cilNotes"></svg>
+           {{ "Risk" | translate }}
+         </a>
+       </button>
+     </button>
+     <button style="margin-right: 12px;">
+       <button  style="background-color:#1e293b; color: orangered; height: 50px;  border-radius: 5px; font-size: 16px; font-weight: bold; padding: 10px 20px; margin: 0;" [routerLink]="['../../Risk/Rcm',this.newid]">
+         <a cDropdownItem routerLinkActive="active">
+           <svg cIcon class="me-2" name="cilNotes"></svg>
+           {{ "Rcm" | translate }}
+         </a>
+       </button>
+     </button>
+
+     <button style="margin-right: 12px;">
+       <button  style="background-color:#1e293b; color: orangered; height: 50px;  border-radius: 5px; font-size: 16px; font-weight: bold; padding: 10px 20px; margin: 0;" [routerLink]="['../../Risk/Note',this.newid]">
+         <a cDropdownItem routerLinkActive="active"  >
+           <svg cIcon class="me-2" name="cilNotes"></svg>
+           {{ "Note" | translate }}
+         </a>
+       </button>
+     </button>
+</c-nav>
+
+
+
+

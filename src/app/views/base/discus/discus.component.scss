@@ -1,0 +1,31 @@
+.message {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+// .message-content {
+//   display: flex;
+//   flex-direction: column;
+// }
+
+.username {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.message-text {
+  color: #666;
+  margin-top: 1%;
+}
+.date
+{
+margin-left: 5%;
+}

@@ -1,0 +1,52 @@
+
+
+<c-nav variant="pills" >
+  <c-nav-item style=" margin-right: 2%;">
+    <button cButton style="background-color: #1e293b;" >
+      <a routerLink="./NewProject" cDropdownItem>
+        <svg cIcon class="me-2" name="cilPlus"></svg>
+        {{"Project.New Project" | translate }}
+      </a>
+    </button>
+  </c-nav-item>
+</c-nav>
+<br>
+<table  datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-striped" id="myTable">
+  <thead style="background-color: #1e293b; color: #f0e9e9;">
+      <tr>
+
+          <th>#</th>
+          <th>{{"Project.Name" | translate }}</th>
+          <th>{{"Project.description" | translate }}</th>
+          <th>{{"Project.status" | translate }}</th>
+          <th>{{"Project.Start date" | translate }}</th>
+          <th>{{"Project.deadline" | translate }}</th>
+          <th>{{"Project.project_created" | translate }}</th>
+          <th style="text-align: center;">{{"Project.Action" | translate }}</th>
+      </tr>
+  </thead>
+  <tbody >
+
+      <tr *ngFor="let item of Projects">
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.status.name}}</td>
+          <td>{{item.start_date}}</td>
+          <td>{{item.deadline}}</td>
+          <td>{{item.project_created}}</td>
+          <td style="text-align: center;">
+            <a [routerLink]='["./View",item.id]' style="margin-right: 3px;" name="" id="" class="btn " role="button">
+              <!-- <svg cIcon class="" name="cilInfo"></svg> -->View
+            </a>
+            <a [routerLink]='["./EditProject",item.id]' style="margin-right: 3px;" name="" id="" class="btn " role="button">
+              <!-- <svg cIcon class="" name="cilPen"></svg> -->Edit
+            </a>
+            <button name="" id="" class="btn " (click)="destroy(item.id)" role="button">
+              <!-- <svg cIcon class="" name="cilTrash"></svg> -->Delete
+            </button>
+        </td>
+
+      </tr>
+  </tbody>
+</table>

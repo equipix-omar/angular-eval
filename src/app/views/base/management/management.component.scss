@@ -1,0 +1,26 @@
+.project-details {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+  color: white;
+  background-color: #1e293b;
+  height: 50vh;
+}
+button  {
+  background-color: #1e293b;
+  color: white;
+}
+button .active {
+  background-color: #1e293b;
+  color: white;
+}
+button span  {
+  background-color: #1e293b;
+  color: white;
+}
+span .active {
+  background-color: #1e293b;
+  color: white;
+}

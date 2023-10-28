@@ -1,0 +1,54 @@
+{
+
+  "Project":{
+    "Name":"العنوان",
+    "New Project":"أضافه مشروع",
+    "description":"الوصف",
+    "Projectstatus":"الحاله",
+    "Start date":"تاريخ البدء",
+    "deadline":"الموعد",
+    "project_created":"تاريخ الانشاء",
+    "date_finished":"تاريخ الانتهاء",
+    "Project":"مشروع",
+    "status":"الحاله",
+    "Clients":"العملاء",
+    "Client":"العميل",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":""
+  },
+
+  "Task":{
+    "Name":"الاسم",
+    "description":"الوصف",
+    "Task":"مهمه",
+    "status":"الحاله",
+    "TaskPriority":"اولويه",
+    "New Task":"اضافه تاسك",
+    "Start date":"تاريخ البدء",
+    "Taskstatus":"مهمه",
+    "Priority":"اولويه"
+
+  },
+
+
+
+  "General":{
+    "title":"العنوان",
+    "Login":"تسجيل الدخول",
+    "register":"انشاء حساب",
+    "aboutUs":"لماذا نحن",
+    "description":"الوصف",
+    "HCPAINTERNAL":"المراجعه الداخليه",
+    "System Data":"بيانات السيستم",
+    "User":"المستخدمين",
+    "Users":"المستخدمين"
+  }
+
+
+
+}

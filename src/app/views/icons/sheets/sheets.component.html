@@ -1,0 +1,139 @@
+<table   class="table" dir="ltr">
+  <thead>
+    <tr >
+      <th style="text-align: center;">Index</th>
+      <th style="text-align: center;">procedure</th>
+      <th style="text-align: center;">Risk code</th>
+      <th style="text-align: center;">Risk description </th>
+      <th style="text-align: center;">Root causes</th>
+      <th style="text-align: center;">impact</th>
+      <th style="text-align: center;">existing control</th>
+      <th style="text-align: center;">likelihood</th>
+      <th style="text-align: center;">impact</th>
+      <th style="text-align: center;">Risk type</th>
+      <th style="text-align: center;">Inherent risk assessment</th>
+      <th style="text-align: center;">Risk rate</th>
+      <th style="text-align: center;">likelihood</th>
+      <th style="text-align: center;">impact</th>
+      <th style="text-align: center;">Residual risk assessment</th>
+      <th style="text-align: center;">Risk rate</th>
+      <th style="text-align: center;">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align: center;" *ngFor="let post of Events ;index as i">
+      <td style="text-align: center;"><input class="form-control inputwd" type="text" disabled [(ngModel)]="post.id"></td>
+      <td style="text-align: center;"><input class="form-control" type="text" [(ngModel)]="post.procedure"></td>
+      <td style="text-align: center;"><input class="form-control" type="text" [(ngModel)]="post.risk_code"></td>
+      <td style="text-align: center;"><input class="form-control inputtx" type="text" [(ngModel)]="post.risk_description" ></td>
+      <td style="text-align: center;"><input class="form-control" type="text" [(ngModel)]="post.risk_causes"></td>
+      <td style="text-align: center;"><input class="form-control" type="text" [(ngModel)]="post.risk_effect"></td>
+      <td style="text-align: center;"><input class="form-control inputex" type="text" [(ngModel)]="post.residual_risk_current_controls"></td>
+      <td style="text-align: center;" >
+        <select [(ngModel)]="post.risk_occurrence"  (change)="updateRiskImpact(post.id,post.risk_occurrence)"   name="risk_occurrence" class="form-control">
+          <option  *ngFor="let item of occurrence" value="{{item.id}}">{{item.name}}</option>
+        </select>
+      </td>
+      <td style="text-align: center;">
+        <select [(ngModel)]="post.risk_impact" name="risk_impact" class="form-control">
+          <option *ngFor="let item of Impact" value="{{item.id}}" >{{item.name}}</option>
+        </select>
+      </td>
+      <td style="text-align: center;">
+        <select [(ngModel)]="post.risk_type" name="risk_type" class="form-control">
+          <option *ngFor="let item of risk_types" value="{{item.id}}">{{item.name}}</option>
+        </select>
+      </td>
+      <td style="text-align: center;">
+        <select [(ngModel)]="post.inherent_risk_assessment" name="inherent_risk_assessment" class="form-control inputex">
+          <option *ngFor="let item of Inherent_risks" value="{{item.id}}">{{item.name}}</option>
+        </select>
+      </td>
+      <td style="text-align: center;"><input  class="form-control" type="text" [(ngModel)]="post.risk_rate"></td>
+      <td style="text-align: center;">
+        <select [(ngModel)]="post.residual_risk_occurrence" name="residual_risk_occurrence" class="form-control">
+          <option *ngFor="let item of Resoccurrence" value="{{item.id}}">{{item.name}}</option>
+        </select>
+      </td>
+      <td style="text-align: center;">
+        <select [(ngModel)]="post.residual_risk_impact" name="residual_risk_impact" class="form-control">
+          <option *ngFor="let item of ResImpact" value="{{item.id}}">{{item.name}}</option>
+        </select>
+      </td>
+      <td style="text-align: center;">
+        <select [(ngModel)]="post.residual_risk_assessment" name="residual_risk_assessment" class="form-control inputex">
+          <option *ngFor="let item of ResInherent_risks" value="{{item.id}}">{{item.name}}</option>
+        </select>
+      </td>
+      <td style="text-align: center;"><input class="form-control" type="text" [(ngModel)]="post.residual_risk_rate"></td>
+      <td style="text-align: center;">
+          <button style="background-color: grey; color: whitesmoke; border: 1px solid black; padding: 6px;
+          border-radius: 5px;"
+          (click)="deleteone(post.id,post)"
+          >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+          </svg>
+          </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<div >
+  <h1 class="text-primary text-center">Read excel & show in table</h1>
+  <div class="row">
+    <div class="col-lg-6">
+      <input type="file" class="form-control w-100"  (change)="readExcelFile($event)" >
+    </div>
+     <div class="col-lg-6" >
+      <button class="btn btn-success" style="margin-left: 5px;" (click)="add()">Save All</button>
+      <button class="btn btn-success" style="margin-left: 5px;"(click)="editall(post)">Edit All</button>
+      <button class="btn btn-danger"  style="margin-left: 5px;"(click)="deleteall(post)">Delete All</button>
+      <a class="btn btn-dark"    style="margin-left: 5px;"routerLink="rate" >Add New</a>
+    </div>
+  </div>
+  <table class="table" dir="ltr">
+      <thead>
+          <tr>
+            <th style="text-align: center;">Index</th>
+            <th style="text-align: center;">procedure</th>
+            <th style="text-align: center;">description</th>
+            <th style="text-align: center;">code</th>
+            <th style="text-align: center;">causes</th>
+            <th style="text-align: center;">effect</th>
+            <th style="text-align: center;">current controls</th>
+            <th style="text-align: center;">risk rates</th>
+            <th style="text-align: center;">likelihood</th>
+            <th style="text-align: center;">impact</th>
+            <th style="text-align: center;">inherent</th>
+            <th style="text-align: center;">risk type</th>
+            <th style="text-align: center;">Residual likelihood</th>
+            <th style="text-align: center;">Residual impact</th>
+            <th style="text-align: center;">Residual assessment</th>
+            <th style="text-align: center;">Residual rate</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let u of users">
+              <td>{{u.id}}</td>
+              <td>{{u.procedure}}</td>
+              <td>{{u.risk_description}}</td>
+              <td>{{u.risk_code}}</td>
+              <td>{{u.risk_causes}}</td>
+              <td>{{u.risk_effect}}</td>
+              <td>{{u.residual_risk_current_controls}}</td>
+              <td>{{u.risk_rate}}</td>
+              <td>{{u.risk_occurrence }}</td>
+              <td>{{u.risk_impact }}</td>
+              <td>{{u.inherent_risk_assessment }}</td>
+              <td>{{u.risk_type }}</td>
+              <td>{{u.residual_risk_occurrence }}</td>
+              <td>{{u.residual_risk_impact }}</td>
+              <td>{{u.residual_risk_assessment }}</td>
+              <td>{{u.residual_risk_rate}}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+

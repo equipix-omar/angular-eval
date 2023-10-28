@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-lg-3">
+    <button cButton style="background-color: #1e293b;" >
+      <a routerLink="./NewTask" cDropdownItem>
+        <svg cIcon class="me-2" name="cilPlus"></svg>
+        {{"Task.New Task" | translate }}
+      </a>
+    </button>
+  </div>
+  <br>
+  <br>
+  <br>
+  </div>
+
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" dir="ltr" class="table table-bordered table-striped" id="myTable">
+  <thead style="background-color: #1e293b; color: #f0e9e9;">
+      <tr>
+
+          <th>#</th>
+          <th>{{"Task.Name" | translate }}</th>
+          <th>{{"Task.description" | translate }}</th>
+          <th>{{"Task.status" | translate }}</th>
+          <th>{{"Task.Start date" | translate }}</th>
+          <th>{{"Task.Priority" | translate }}</th>
+          <th style="text-align: center;">{{"Task.Action" | translate }}</th>
+
+      </tr>
+  </thead>
+  <tbody >
+
+      <tr  *ngFor="let item of Tasks">
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.status.name}}</td>
+          <td>{{item.dateadded}}</td>
+          <td>{{item.priority.name}}</td>
+          <td style="text-align: center;">
+              <a [routerLink]='["./ViewTask",item.id]' style="margin-right: 3px;" class="btn btn-success" role="button">
+                <svg cIcon class="" name="cilInfo"></svg></a>
+              <a [routerLink]='["./EditTask",item.id]' style="margin-right: 3px;" class="btn btn-info" role="button">
+                <svg cIcon class="" name="cilPen"></svg></a>
+              <a  class="btn btn-danger" (click)="dstroy(item.id)" role="button">
+                <svg cIcon class="" name="cilTrash"></svg>
+              </a>
+          </td>
+      </tr>
+  </tbody>
+</table>
+

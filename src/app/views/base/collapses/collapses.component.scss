@@ -1,0 +1,59 @@
+.project-details {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+  color: white;
+  background-color: #1e293b;
+  height: 50vh;
+}
+button  {
+  background-color: #1e293b;
+  color: white;
+}
+button .active {
+  background-color: #1e293b;
+  color: white;
+}
+.project-info {
+  flex: 1;
+  margin-right: 20px;
+}
+.project-stats {
+  flex: 1;
+}
+.progress {
+  height: 22px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: auto;
+  text-align: center;
+  margin-left: 33%;
+}
+.progress-bar {
+  height: 100%;
+  background-color: #4CAF50;
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+}
+.stats-info {
+  margin-top: 10px;
+}
+.project-status {
+  margin-top: 10px;
+}
+.project-details p {
+  margin: 0;
+}
+.project-details strong {
+  font-weight: bold;
+}
+.project-details p:first-child {
+  margin-top: 10px;
+}
+.project-details p:last-child {
+  margin-bottom: 10px;
+}
+

@@ -1,0 +1,263 @@
+<div class="container mt-1" style="background-color: white; border: 1px solid #ccc; border-radius: 5px;">
+  <form style="padding: 5px;">
+    <swiper #swiper [virtual]="true" [preventClicksPropagation]="false" [simulateTouch]="false">
+      <h3 class="mb-4">Add New Project</h3>
+     <ng-template swiperSlide *ngIf="sw">
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Project Name</mat-label>
+          <input matInput [(ngModel)]="item.name" name="name" placeholder="Project Name">
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Description</mat-label>
+          <input matInput [(ngModel)]="item.description" name="description" placeholder="Description">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>select your status</mat-label>
+          <mat-select [(ngModel)]="item.status_id" name="status_id" style="height: 50px;">
+            <mat-option *ngFor="let status of Allstatus" [value]="status.id">{{ status.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Progress</mat-label>
+          <input matInput [(ngModel)]="item.progress" name="progress" type="number" min="0" max="100" step="1">
+          <div class="progress mt-2">
+            <div class="progress-bar bg-success" role="progressbar" [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress" [attr.aria-valuemin]="0" [attr.aria-valuemax]="100"></div>
+          </div>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Deadline</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="item.deadline" name="deadline">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Project Created</mat-label>
+          <input matInput [matDatepicker]="picker1" [(ngModel)]="item.project_created" name="project_created">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Date Finished</mat-label>
+          <input matInput [matDatepicker]="picker2" [(ngModel)]="item.date_finished" name="date_finished">
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Start Date</mat-label>
+          <input matInput [matDatepicker]="picker3" [(ngModel)]="item.start_date" name="start_date">
+          <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+          <mat-datepicker #picker3></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>Project Cost</mat-label>
+          <input matInput [(ngModel)]="item.project_cost" type="number" name="project_cost" placeholder="Project Cost">
+        </mat-form-field>
+      </div>
+      <div class="form-group col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>project rate per hour </mat-label>
+          <input matInput [(ngModel)]="item.project_rate_per_hour" type="number" name="project_rate_per_hour" placeholder="project rate per hour ">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>progress from tasks</mat-label>
+          <input matInput [(ngModel)]="item.progress_from_tasks" name="progress_from_tasks" type="number" min="0" max="100" step="1">
+          <div class="progress mt-2">
+            <div class="progress-bar bg-success" role="progressbar" [style.width.%]="item.progress_from_tasks" [attr.aria-valuenow]="item.progress_from_tasks" [attr.aria-valuemin]="0" [attr.aria-valuemax]="100"></div>
+          </div>
+        </mat-form-field>
+      </div>
+    <div class="form-group col-md-6">
+      <mat-form-field class="w-100" style="height: 102px;">
+        <mat-label>estimated hours </mat-label>
+        <input matInput [(ngModel)]="item.estimated_hours" type="number" name="estimated_hours" placeholder="estimated hours ">
+      </mat-form-field>
+    </div>
+    </div>
+    <div class="row">
+
+    <div class="form-group col-md-6" >
+      <mat-form-field class="w-100" style="height: 102px;">
+        <mat-label>active </mat-label>
+        <input matInput [(ngModel)]="item.active" type="number" name="active" placeholder="active ">
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="w-100">
+        <mat-label>select your sector</mat-label>
+        <mat-select [(ngModel)]="item.sector_id" name="sector_id" style="height: 50px;">
+          <mat-option *ngFor="let status of Allsector" [value]="status.id">{{ status.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    </div>
+    <div class="row">
+        <!-- <div class="col-md-6 "><button class="btn btn-primary" style="float: left;"
+            (click)="slidePrev()">Prev</button>
+          </div> -->
+        <div class="col-md-6 "><button class="btn btn-success"
+            style="float: right;" (click)="slideNext()">next</button>
+          </div>
+    </div>
+    </ng-template>
+    <ng-template swiperSlide *ngIf="sw2">
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>select  member</mat-label>
+            <mat-select [(ngModel)]="member_id" multiple  name="member_id" style="height: 50px;">
+              <div cButton style="background-color: #1e293b;" data-toggle="modal" data-target="#exampleModal2" class="form-control">
+                <svg cIcon class="me-2" name="cilPlus"></svg>
+                New Member
+              </div>
+              <mat-option *ngFor="let status of Allmember" [value]="status.id">{{ status.name }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>select your employee</mat-label>
+            <mat-select [(ngModel)]="employee_id" multiple  name="employee_id" style="height: 50px;">
+              <div cButton style="background-color: #1e293b;" data-toggle="modal" data-target="#exampleModal" class="form-control">
+                <svg cIcon class="me-2" name="cilPlus"></svg>
+                New Employee
+              </div>
+              <mat-option *ngFor="let status of Allemployee" [value]="status.id">{{ status.name }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-12">
+        <mat-form-field class="w-100">
+          <mat-label>select your managemnt</mat-label>
+          <mat-select [(ngModel)]="item3.management_id" multiple  name="management_id[]" style="height: 50px;">
+            <mat-option *ngFor="let status of Allmanagement" value="{{status.id}}">{{ status.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+     </div>
+
+      <div class="row">
+        <div class="col-md-6 "><button class="btn btn-primary" style="float: left;"
+          (click)="slidePrev()">Prev</button>
+        </div>
+        <div class="col-md-6 ">
+          <button class=" btn btn-success " (click)="submit()" style="float: right;"  type="submit">SAVE</button>
+        </div>
+     </div>
+    </ng-template>
+  </swiper>
+  </form>
+</div>
+<!-- data-toggle="modal" data-target="#exampleModal" -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Employee</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Name:</label>
+            <input type="text" [(ngModel)]="item5.name" name="name" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Email:</label>
+            <input type="email" [(ngModel)]="item5.email" name="email" class="form-control" id="message-text">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">password:</label>
+            <input type="password" [(ngModel)]="item5.password" name="password" class="form-control" id="message-text">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="FormData2()">Save Employee</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Member</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Name:</label>
+            <input type="text" [(ngModel)]="item4.name" name="name" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text"  class="col-form-label">Email:</label>
+            <input type="email" [(ngModel)]="item4.email" name="email" class="form-control" id="message-text">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">password:</label>
+            <input type="password" [(ngModel)]="item4.password" name="password" class="form-control" id="message-text">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="FormData()">Save Member</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <script>
+  $('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+})
+</script> -->

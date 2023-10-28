@@ -1,0 +1,45 @@
+<router-outlet></router-outlet>
+<c-nav variant="pills">
+  <c-nav-item style=" margin-right: 2%;">
+    <button cButton style="background-color: #1e293b;" >
+      <a [routerLink]='["./Newnote",id]' cDropdownItem>
+        <svg cIcon class="me-2" name="cilPlus"></svg>
+        {{"New Note" | translate }}
+      </a>
+    </button>
+  </c-nav-item>
+</c-nav>
+<br>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" dir="ltr" class="table table-bordered table-striped" id="myTable">
+  <thead style="background-color: #1e293b; color: #f0e9e9;">
+      <tr>
+
+          <th>#</th>
+          <th>{{"Project.project" | translate }}</th>
+          <th>{{"Project.content" | translate }}</th>
+          <th>{{"Project.user" | translate }}</th>
+          <!-- <th style="text-align: center;">{{"Project.Action" | translate }}</th> -->
+      </tr>
+  </thead>
+  <tbody >
+
+      <tr *ngFor="let item of Projects">
+        <td>{{item.id}}</td>
+        <td>{{item.project['name']}}</td>
+        <td>{{item.content}}</td>
+        <td>{{item.user['name']}}</td>
+          <!-- <td style="text-align: center;">
+            <a [routerLink]='["./View",item.id]' style="margin-right: 3px;" name="" id="" class="btn " role="button">
+              View
+            </a>
+            <a [routerLink]='["./EditProject",item.id]' style="margin-right: 3px;" name="" id="" class="btn " role="button">
+              Edit
+            </a>
+            <button name="" id="" class="btn " (click)="destroy(item.id)" role="button">
+              Delete
+            </button>
+        </td> -->
+
+      </tr>
+  </tbody>
+</table>

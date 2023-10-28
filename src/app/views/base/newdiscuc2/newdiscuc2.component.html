@@ -1,0 +1,21 @@
+<div class="container mt-1" style="background-color: white; border: 1px solid #ccc; border-radius: 5px;">
+  <form style="padding: 5px;">
+    <h3 class="mb-4">Add New discussion</h3>
+    <div class="row">
+      <div class="col-md-4">
+        <mat-form-field class="w-100">
+          <mat-label>subject</mat-label>
+          <input matInput [(ngModel)]="item.subject" name="subject" placeholder="subject">
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field class="w-100">
+          <mat-label>Description</mat-label>
+          <input matInput [(ngModel)]="item.description" name="description" placeholder="Description">
+        </mat-form-field>
+      </div>
+    </div>
+    <button type="submit" (click)="submit()"  style="width: 120px;" class="btn btn-dark">SAVE </button>
+  </form>
+</div>
+<br>

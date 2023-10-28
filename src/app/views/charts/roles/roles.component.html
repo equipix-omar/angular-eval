@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-lg-3">
+    <button cButton style="background-color: #1e293b;" >
+      <a routerLink="./NewRole" cDropdownItem>
+        <svg cIcon class="me-2" name="cilPlus"></svg>
+
+        {{"Project.New Role" | translate }}
+      </a>
+    </button>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  </div>
+  <table  datatable [dtOptions]="dtOptions" dir="ltr" [dtTrigger]="dtTrigger" class="table table-bordered table-striped" id="myTable">
+  <thead style="background-color: #1e293b; color: #f0e9e9; text-align: center !important">
+    <tr style="text-align: center !important">
+      <th style="text-align: center;">ID</th>
+      <th style="text-align: center;">Name</th>
+      <th style="text-align: center;">Action</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align: center;" *ngFor="let post of Allstatus">
+      <td>{{ post.id }}</td>
+      <td>{{ post.name }}</td>
+      <td style="text-align: center;">
+        <a [routerLink]='["./view",post.id]' style="margin-right: 3px;"  class="btn btn-success" >
+              <svg cIcon class="" name="cilInfo"></svg>
+              <!-- View -->
+            </a>
+        <a [routerLink]='["./Edit",post.id]' style="margin-right: 3px;"  class="btn btn-info" >
+          <svg cIcon class="" name="cilPen"></svg>
+        </a>
+        <button name="" (click)="destroy(post.id)" id="" class="btn btn-danger" >
+          <svg cIcon class="" name="cilTrash"></svg>
+        </button>
+    </td>
+
+    </tr>
+  </tbody>
+</table>

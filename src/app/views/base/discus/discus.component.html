@@ -1,0 +1,22 @@
+<router-outlet></router-outlet>
+
+<c-nav variant="pills">
+  <c-nav-item style=" margin-right: 2%;">
+    <button cButton style="background-color: #1e293b;" >
+      <a [routerLink]='["./Newdiscuss",id]' cDropdownItem>
+        <svg cIcon class="me-2" name="cilPlus"></svg>
+        {{"New Discus" | translate }}
+      </a>
+    </button>
+  </c-nav-item>
+</c-nav>
+<div class="message" *ngFor="let item of Projects">
+  <img src="assets/img/avatars/9.jpg" alt="Avatar" class="avatar">
+  <div class="message-content">
+    <br>
+    <span class="username">{{item.user['name']}}</span>
+    <div style="width: 200px !important; display: inline;" class="date">{{item.datecreated}}</div>
+    <!-- <br> -->
+    <p class="message-text">{{item.description}}</p>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div>
+  <table   class="table" dir="ltr">
+    <thead >
+    </thead>
+    <tbody>
+      <tr style="text-align: center;" *ngFor="let post of Events2 ;" >
+        <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <td style="text-align: center;"><input class="form-control" type="text" disabled [(ngModel)]="post.id"></td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;"><input class="form-control" type="text" placeholder="observation" [(ngModel)]="post.observation"></td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;"><input class="form-control" placeholder="observation"  type="text" [(ngModel)]="post.detaild_observation"></td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;"><textarea class="form-control" placeholder="cause"  rows="1" [(ngModel)]="post.root_cause" ></textarea></td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;"><input class="form-control" placeholder="recommendation" type="text" [(ngModel)]="post.recommendation"></td>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <td style="text-align: center;"><input class="form-control" placeholder="response" type="text" [(ngModel)]="post.management_response"></td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;"><input class="form-control" placeholder="responsibility" type="text" [(ngModel)]="post.executive_responsibility"></td>
+          </div>
+          <div class="col-md-4">
+              <mat-form-field class="inputwdz">
+                <input matInput [matDatepicker]="picker" [(ngModel)]="post.implantation_date" name="deadline">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;"><input placeholder="Requirements" class="form-control" type="text" [(ngModel)]="post.Requirements_status"></td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;">
+              <select [(ngModel)]="post.risk" name="risk" class="form-control">
+                <option  selected disabled value="">---Select From Risks---</option>
+                <option *ngFor="let item of Events3" value="{{item.id}}">{{item.name}}</option>
+              </select>
+            </td>
+          </div>
+        </div>
+        </div>
+        <td style="text-align: center;"><button (click)="delete(post.id)"
+        style="background-color: grey; color: whitesmoke; border: 1px solid black; padding: 6px; border-radius: 5px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+          </svg>
+        </button></td>
+      </tr>
+    </tbody>
+  </table>
+  <button style="margin-left: 5px;" class="btn btn-success"(click)="add()">Add New One</button>
+  <button style="margin-left: 5px;" class="btn btn-success"(click)="save(post)">Save</button>
+  </div>

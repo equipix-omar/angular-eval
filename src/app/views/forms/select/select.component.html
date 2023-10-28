@@ -1,0 +1,55 @@
+<div class="bg-light d-flex flex-row align-items-center">
+  <c-container><br><br>
+    <h1 style="text-align: center;">Edit Profile Image</h1><br>
+    <c-row class="justify-content-center">
+      <c-col lg="7" md="9" xl="6">
+        <c-card class="mx-4">
+          <c-card-body class="p-4">
+            <form cForm *ngFor="let item of data" [formGroup]="signUp" (ngSubmit)="signUp.valid&&FormData()">
+              <p class="text-medium-emphasis">Edit Profile</p>
+              <!-- <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilUser"></svg>
+                </span>
+                <input autoComplete="name" cFormControl placeholder="Username" [(ngModel)]="item.name"
+                formControlName="name" />
+
+              </c-input-group>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>@</span>
+                <input autoComplete="email" cFormControl placeholder="Email" [(ngModel)]="item.email"
+                formControlName="email" />
+
+              </c-input-group>
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <input autoComplete="new-password" cFormControl placeholder="Password" type="password"
+                [(ngModel)]="item.password"
+                formControlName="password" />
+
+              <br>
+              </c-input-group> -->
+              <c-input-group class="mb-3">
+                <div class="w-100" >
+                  <input (change)="onChange($event)" type="file" formControlName="image" [(ngModel)]="item.image"
+                  class="form-control" ID="TxtID" placeholder="29006141400948">
+                 </div>
+              </c-input-group>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-info w-100 "
+                 color="primary" cButton color="success">
+                 Update Image
+                </button>
+              </div>
+
+            </form>
+          </c-card-body>
+        </c-card>
+      </c-col>
+    </c-row>
+  </c-container>
+</div>
+
+

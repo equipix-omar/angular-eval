@@ -1,0 +1,119 @@
+<div>
+  <table   class="table" dir="ltr">
+    <thead >
+    </thead>
+    <tbody>
+      <tr style="text-align: center;" *ngFor="let post of Events2 ;" >
+        <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <td style="text-align: center;"><input class="form-control" type="text" disabled [(ngModel)]="post.id"></td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;"><input class="form-control" type="text" placeholder="enter procedure" [(ngModel)]="post.procedure"></td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;"><input class="form-control" placeholder="enter risk code"  type="text" [(ngModel)]="post.risk_code"></td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;"><textarea class="form-control" placeholder="enter risk description"  rows="1" [(ngModel)]="post.risk_description" ></textarea></td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;"><input class="form-control" placeholder="enter risk causes" type="text" [(ngModel)]="post.risk_causes"></td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;"><input class="form-control" placeholder="enter risk effect" type="text" [(ngModel)]="post.risk_effect"></td>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <td style="text-align: center;"><input class="form-control" placeholder=" risk current controls" type="text" [(ngModel)]="post.residual_risk_current_controls"></td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;" >
+              <select [(ngModel)]="post.risk_occurrence" (change)="updateRiskImpact(post.id,post.risk_occurrence)" name="risk_occurrence" class="form-control">
+                <option value="" selected disabled >---Select From likelihood---</option>
+                <option  *ngFor="let item of occurrence" value="{{item.id}}">{{item.name}}</option>
+              </select>
+            </td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;">
+              <select [(ngModel)]="post.risk_impact" name="risk_impact" class="form-control" >
+                <option  selected disabled value="">---Select From Impact---</option>
+                <option *ngFor="let item of Impact" value="{{item.id}}" >{{item.name}}</option>
+              </select>
+            </td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;">
+              <select [(ngModel)]="post.risk_type" name="risk_type" class="form-control">
+                <option  selected disabled value="">---Select From risk types---</option>
+                <option *ngFor="let item of risk_types" value="{{item.id}}">{{item.name}}</option>
+              </select>
+            </td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;">
+              <select [(ngModel)]="post.inherent_risk_assessment" name="inherent_risk_assessment" class="form-control">
+                <option  selected disabled value="">---Select From Inherent risks---</option>
+                <option *ngFor="let item of Inherent_risks" value="{{item.id}}">{{item.name}}</option>
+              </select>
+            </td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;"><input placeholder="enter risk rate" class="form-control" type="text" [(ngModel)]="post.risk_rate"></td>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <td style="text-align: center;">
+              <select [(ngModel)]="post.residual_risk_occurrence" name="residual_risk_occurrence" class="form-control">
+                <option  selected disabled value="">---Select From residual likelihood---</option>
+                <option *ngFor="let item of Resoccurrence" value="{{item.id}}">{{item.name}}</option>
+              </select>
+            </td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;">
+              <select [(ngModel)]="post.residual_risk_impact" name="residual_risk_impact" class="form-control">
+                <option  selected disabled value="">---Select From residual impact---</option>
+                <option *ngFor="let item of ResImpact" value="{{item.id}}">{{item.name}}</option>
+              </select>
+            </td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;">
+              <select [(ngModel)]="post.residual_risk_assessment" name="residual_risk_assessment" class="form-control">
+                <option  selected disabled value="">---Select From residual assessment---</option>
+                <option *ngFor="let item of ResInherent_risks" value="{{item.id}}">{{item.name}}</option>
+              </select>
+            </td>
+          </div>
+          <div class="col-md-2">
+            <td style="text-align: center;"><input class="form-control" type="text" placeholder="enter residual risk rate" [(ngModel)]="post.residual_risk_rate"></td>
+          </div>
+          <div class="col-md-2">
+
+          </div>
+          <div class="col-md-2">
+
+          </div>
+        </div>
+
+        </div>
+        <td style="text-align: center;"><button (click)="delete(post.id)"
+        style="background-color: grey; color: whitesmoke; border: 1px solid black; padding: 6px; border-radius: 5px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+          </svg>
+        </button></td>
+      </tr>
+    </tbody>
+  </table>
+  <button style="margin-left: 5px;" class="btn btn-success"(click)="add()">Add New One</button>
+  <button style="margin-left: 5px;" class="btn btn-success"(click)="save(post)">Save</button>
+  <!-- <br><br>
+  <textarea style="margin-left: 5px;" [(ngModel)]="list" cols="208" rows="10"></textarea><br>
+  <button   style="margin-left: 5px;" class="btn btn-success"(click)="saveList(list)">save list</button> -->
+  </div>
