@@ -18,3 +18,7 @@ width: 100px;
 {
   width: 300px;
 }
+input {border:0;outline:0;}
+input:focus {outline:none!important;}
+select {border:0;outline:0;}
+select:focus {outline:none!important;}

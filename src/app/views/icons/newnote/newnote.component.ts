@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from 'src/app/Services/event.service';
+import * as xls from 'xlsx'
+
 @Component({
   selector: 'app-newnote',
   templateUrl: './newnote.component.html',
@@ -26,6 +28,7 @@ export class NewnoteComponentr {
   Resoccurrence:    any;
   ResImpact:        any;
   newid:any;
+  users:any
 
   constructor(public _EventService: EventService, private _Router:Router, private Active:ActivatedRoute)
   {
@@ -56,5 +59,26 @@ export class NewnoteComponentr {
       }
     });
   }
-
+  readExcelFile(e:any){
+    const file =e.target.files[0];
+    let fr =new FileReader();
+    fr.readAsArrayBuffer(file);
+    fr.onload =()=>{
+     let data=  fr.result;
+      let workbook= xls.read(data,{type:'array'});
+            const sheetname= workbook.SheetNames[0];
+            const sheet1 = workbook.Sheets[sheetname]
+            this.users=xls.utils.sheet_to_json(sheet1,{raw:true});
+            console.log(this.users)
+    }
+  }
+  addex()
+  {
+    for (let index = 0; index < this.users.length; index++) {
+      this.users[index].audited_management_id = this.newid;
+    }
+    this._EventService.AddNote2(this.users).subscribe((res) => {
+      window.location.reload();
+    });
+  }
 }

@@ -39,7 +39,7 @@
           </div>
           <div class="col-md-2">
             <td style="text-align: center;">
-              <select [(ngModel)]="post.risk_impact" name="risk_impact" class="form-control" >
+              <select [(ngModel)]="post.risk_impact" (change)="updateRiskImpact(post.id,post.risk_impact)" name="risk_impact" class="form-control" >
                 <option  selected disabled value="">---Select From Impact---</option>
                 <option *ngFor="let item of Impact" value="{{item.id}}" >{{item.name}}</option>
               </select>
@@ -47,7 +47,7 @@
           </div>
           <div class="col-md-2">
             <td style="text-align: center;">
-              <select [(ngModel)]="post.risk_type" name="risk_type" class="form-control">
+              <select [(ngModel)]="post.risk_type" (change)="updateRiskImpact(post.id,post.risk_type)" name="risk_type" class="form-control">
                 <option  selected disabled value="">---Select From risk types---</option>
                 <option *ngFor="let item of risk_types" value="{{item.id}}">{{item.name}}</option>
               </select>
@@ -68,7 +68,7 @@
         <div class="row">
           <div class="col-md-2">
             <td style="text-align: center;">
-              <select [(ngModel)]="post.residual_risk_occurrence" name="residual_risk_occurrence" class="form-control">
+              <select [(ngModel)]="post.residual_risk_occurrence" (change)="updateRiskImpact2(post.id,post.residual_risk_occurrence)" name="residual_risk_occurrence" class="form-control">
                 <option  selected disabled value="">---Select From residual likelihood---</option>
                 <option *ngFor="let item of Resoccurrence" value="{{item.id}}">{{item.name}}</option>
               </select>
@@ -76,7 +76,7 @@
           </div>
           <div class="col-md-2">
             <td style="text-align: center;">
-              <select [(ngModel)]="post.residual_risk_impact" name="residual_risk_impact" class="form-control">
+              <select [(ngModel)]="post.residual_risk_impact" (change)="updateRiskImpact2(post.id,post.residual_risk_impact)" name="residual_risk_impact" class="form-control">
                 <option  selected disabled value="">---Select From residual impact---</option>
                 <option *ngFor="let item of ResImpact" value="{{item.id}}">{{item.name}}</option>
               </select>
@@ -84,7 +84,7 @@
           </div>
           <div class="col-md-2">
             <td style="text-align: center;">
-              <select [(ngModel)]="post.residual_risk_assessment" name="residual_risk_assessment" class="form-control">
+              <select [(ngModel)]="post.residual_risk_assessment" (change)="updateRiskImpact2(post.id,post.residual_risk_assessment)" name="residual_risk_assessment" class="form-control">
                 <option  selected disabled value="">---Select From residual assessment---</option>
                 <option *ngFor="let item of ResInherent_risks" value="{{item.id}}">{{item.name}}</option>
               </select>
@@ -116,4 +116,58 @@
   <!-- <br><br>
   <textarea style="margin-left: 5px;" [(ngModel)]="list" cols="208" rows="10"></textarea><br>
   <button   style="margin-left: 5px;" class="btn btn-success"(click)="saveList(list)">save list</button> -->
-  </div>
+  <h1 class="text-primary text-center">Read excel & show in table</h1>
+  <div class="row">
+    <div class="col-lg-6">
+      <input type="file" class="form-control w-100"  (change)="readExcelFile($event)" >
+    </div>
+     <div class="col-lg-6" >
+      <button class="btn btn-success" style="margin-left: 5px;" (click)="addex()">Save All</button>
+    </div>
+  </div><br>
+  <table class="table" dir="ltr">
+      <thead>
+          <tr>
+            <th style="text-align: center;">Index</th>
+            <th style="text-align: center;">procedure</th>
+            <th style="text-align: center;">description</th>
+            <th style="text-align: center;">code</th>
+            <th style="text-align: center;">causes</th>
+            <th style="text-align: center;">effect</th>
+            <th style="text-align: center;">current controls</th>
+            <th style="text-align: center;">risk rates</th>
+            <th style="text-align: center;">likelihood</th>
+            <th style="text-align: center;">impact</th>
+            <th style="text-align: center;">inherent</th>
+            <th style="text-align: center;">risk type</th>
+            <th style="text-align: center;">Residual likelihood</th>
+            <th style="text-align: center;">Residual impact</th>
+            <th style="text-align: center;">Residual assessment</th>
+            <th style="text-align: center;">Residual rate</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let u of users">
+              <td>{{u.id}}</td>
+              <td>{{u.procedure}}</td>
+              <td>{{u.risk_description}}</td>
+              <td>{{u.risk_code}}</td>
+              <td>{{u.risk_causes}}</td>
+              <td>{{u.risk_effect}}</td>
+              <td>{{u.residual_risk_current_controls}}</td>
+              <td>{{u.risk_rate}}</td>
+              <td>{{u.risk_occurrence }}</td>
+              <td>{{u.risk_impact }}</td>
+              <td>{{u.inherent_risk_assessment }}</td>
+              <td>{{u.risk_type }}</td>
+              <td>{{u.residual_risk_occurrence }}</td>
+              <td>{{u.residual_risk_impact }}</td>
+              <td>{{u.residual_risk_assessment }}</td>
+              <td>{{u.residual_risk_rate}}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+
+

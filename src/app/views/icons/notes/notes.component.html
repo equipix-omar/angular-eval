@@ -1,4 +1,10 @@
-<table   class="table" dir="ltr" >
+
+<div class="col-lg-6" >
+  <button class="btn " style="margin-left: 5px;"(click)="editall(post)">Edit All</button>
+  <button class="btn "  style="margin-left: 5px;"(click)="deleteall(post)">Delete All</button>
+  <button class="btn "    style="margin-left: 5px;"routerLink="New" >Add New</button>
+</div><br>
+<table   class="table table-bordered" dir="ltr" >
   <thead>
     <tr >
       <th style="text-align: center;">Index</th>
@@ -50,54 +56,4 @@
   </tbody>
 </table>
 <br>
-<div >
-  <h1 class="text-primary text-center">Read excel & show in table</h1>
-  <div class="row">
-    <div class="col-lg-6">
-      <input type="file" class="form-control w-100"  (change)="readExcelFile($event)" >
-    </div>
-     <div class="col-lg-6" >
-      <button class="btn btn-success" style="margin-left: 5px;" (click)="add()">Save All</button>
-      <button class="btn btn-success" style="margin-left: 5px;"(click)="editall(post)">Edit All</button>
-      <button class="btn btn-danger"  style="margin-left: 5px;"(click)="deleteall(post)">Delete All</button>
-      <button class="btn btn-dark"    style="margin-left: 5px;"routerLink="New" >Add New</button>
-    </div>
-  </div>
-  <table class="table" dir="ltr">
-      <thead>
-          <tr>
-            <th style="text-align: center;">Index</th>
-            <th style="text-align: center;">number</th>
-            <th style="text-align: center;">operation</th>
-            <th style="text-align: center;">sub_operation</th>
-            <th style="text-align: center;">Review_objectives</th>
-            <th style="text-align: center;">Risk</th>
-            <th style="text-align: center;">Testing_procedures</th>
-            <th style="text-align: center;">Requirements</th>
-            <th style="text-align: center;">Evaluating_effectiveness</th>
-            <th style="text-align: center;">Report_Note</th>
-            <th style="text-align: center;">Requirements_status</th>
-            <th style="text-align: center;">Reference_worksheet</th>
-            <th style="text-align: center;">Initial_remarks</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let u of users">
-              <td>{{u.id}}</td>
-              <td>{{u.number}}</td>
-              <td>{{u.operation}}</td>
-              <td>{{u.sub_operation}}</td>
-              <td>{{u.Review_objectives}}</td>
-              <td>{{u.Risk}}</td>
-              <td>{{u.Testing_procedures}}</td>
-              <td>{{u.Requirements}}</td>
-              <td>{{u.Evaluating_effectiveness}}</td>
-              <td>{{u.Report_Note }}</td>
-              <td>{{u.Requirements_status }}</td>
-              <td>{{u.Reference_worksheet }}</td>
-              <td>{{u.Initial_remarks }}</td>
-          </tr>
-      </tbody>
-  </table>
-</div>
 

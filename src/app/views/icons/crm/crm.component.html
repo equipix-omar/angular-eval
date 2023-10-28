@@ -1,4 +1,9 @@
-<table   class="table" dir="ltr">
+<div class="col-lg-6" >
+  <button class="btn " style="margin-left: 5px;"(click)="editall(post)">Edit All</button>
+  <button class="btn "  style="margin-left: 5px;"(click)="deleteall(post)">Delete All</button>
+  <button class="btn "    style="margin-left: 5px;"routerLink="New" >Add New</button>
+</div><br>
+<table   class="table table-bordered" dir="ltr">
   <thead>
     <tr >
       <th style="text-align: center;">Index</th>
@@ -49,47 +54,4 @@
   </tbody>
 </table>
 <br>
-<div >
-  <h1 class="text-primary text-center">Read excel & show in table</h1>
-  <div class="row">
-    <div class="col-lg-6">
-      <input type="file" class="form-control w-100"  (change)="readExcelFile($event)" >
-    </div>
-     <div class="col-lg-6" >
-      <button class="btn btn-success" style="margin-left: 5px;" (click)="add()">Save All</button>
-      <button class="btn btn-success" style="margin-left: 5px;"(click)="editall(post)">Edit All</button>
-      <button class="btn btn-danger"  style="margin-left: 5px;"(click)="deleteall(post)">Delete All</button>
-      <button class="btn btn-dark"    style="margin-left: 5px;"routerLink="New" >Add New</button>
-    </div>
-  </div>
-  <table class="table" dir="ltr">
-      <thead>
-          <tr>
-            <th style="text-align: center;">Index</th>
-            <th style="text-align: center;">observation</th>
-            <th style="text-align: center;">detaild_observation</th>
-            <th style="text-align: center;">root_cause</th>
-            <th style="text-align: center;">risk</th>
-            <th style="text-align: center;">recommendation</th>
-            <th style="text-align: center;">management_response</th>
-            <th style="text-align: center;">executive_responsibility</th>
-            <th style="text-align: center;">implantation_date</th>
-
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let u of users">
-              <td>{{u.id}}</td>
-              <td>{{u.observation}}</td>
-              <td>{{u.detaild_observation}}</td>
-              <td>{{u.root_cause}}</td>
-              <td>{{u.risk}}</td>
-              <td>{{u.recommendation}}</td>
-              <td>{{u.management_response}}</td>
-              <td>{{u.executive_responsibility}}</td>
-              <td>{{u.implantation_date }}</td>
-          </tr>
-      </tbody>
-  </table>
-</div>
 

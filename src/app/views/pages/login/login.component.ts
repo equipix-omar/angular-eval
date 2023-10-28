@@ -21,8 +21,7 @@ export class LoginComponent {
   constructor(private _AuthService:AuthService,private _Router:Router ,   private toastr: ToastrService)
   {
     if (localStorage.getItem("TOKEN") ) {
-      this._Router.navigate(['/dashboard'])
-
+      this._Router.navigate(['/Project'])
     }
    }
     signIn=new FormGroup({
@@ -47,7 +46,7 @@ export class LoginComponent {
         location.reload();
         }, 1000);
         if ( localStorage.getItem("TOKEN")) {
-          this._Router.navigate(['/dashboard'])
+          this._Router.navigate(['/Project'])
         }
         localStorage.setItem("UserId",res.UserInfo.id);
         localStorage.setItem("RoleName",res.UserInfo.role['name']);

@@ -117,36 +117,49 @@ export class SheetsComponent {
       location.reload();
       }, 1000);    });
   }
+
   updateRiskImpact(id:any,ids:any) {
     for (let index = 0; index < this.Events.length; index++) {
       if (this.Events[index].id == id) {
-        if (this.Events[index].risk_occurrence == 1) {
-          this.Events[index].risk_impact              = 3;
-          this.Events[index].risk_type                = 1;
-          this.Events[index].inherent_risk_assessment = 4;
-          this.Events[index].risk_rate                = 50;
-          // this.isStyleInvalid={'background-color':'red','color':'white'}
-
-        }
-        else if (this.Events[index].risk_occurrence == 2) {
-          this.Events[index].risk_impact              = 4;
-          this.Events[index].risk_type                = 2;
-          this.Events[index].inherent_risk_assessment = 3;
-          this.Events[index].risk_rate                = 150;
-          // this.isStyleInvalid={'background-color':'yellow','color':'white'}
-
-        }
-        else if (this.Events[index].risk_occurrence == 3) {
-          this.Events[index].risk_impact              = 1;
-          this.Events[index].risk_type                = 1;
-          this.Events[index].inherent_risk_assessment = 4;
-          this.Events[index].risk_rate                = 100;
-        }
-        else {
-          this.Events[index].risk_impact              = 2;
-          this.Events[index].risk_type                = 2;
+        if (this.Events[index].risk_occurrence == 1 && this.Events[index].risk_impact ==1 && this.Events[index].risk_type==1) {
           this.Events[index].inherent_risk_assessment = 1;
-          this.Events[index].risk_rate                = 200;
+          this.Events[index].risk_rate                = 60;
+        }
+        else if (this.Events[index].risk_occurrence == 2 && this.Events[index].risk_impact ==2 && this.Events[index].risk_type==2) {
+          this.Events[index].inherent_risk_assessment = 2;
+          this.Events[index].risk_rate                = 40;
+        }
+        else if (this.Events[index].risk_occurrence == 3 && this.Events[index].risk_impact ==3 && this.Events[index].risk_type==3) {
+          this.Events[index].inherent_risk_assessment = 3;
+          this.Events[index].risk_rate                = 20;
+        }
+        else if (this.Events[index].risk_occurrence == 4 && this.Events[index].risk_impact ==4 && this.Events[index].risk_type==4) {
+          this.Events[index].inherent_risk_assessment = 4;
+          this.Events[index].risk_rate                = 90;
+        }
+      }
+    }
+    this._EventService.editEvent(this.Events).subscribe((res) => {
+    });
+  }
+  updateRiskImpact2(id:any,ids:any) {
+    for (let index = 0; index < this.Events.length; index++) {
+      if (this.Events[index].id == id) {
+        if (this.Events[index].residual_risk_occurrence == 1 && this.Events[index].residual_risk_impact ==1 ) {
+          this.Events[index].residual_risk_assessment = 1;
+          this.Events[index].residual_risk_rate                = 60;
+        }
+        else if (this.Events[index].residual_risk_occurrence == 2 && this.Events[index].residual_risk_impact ==2 ) {
+          this.Events[index].residual_risk_assessment = 2;
+          this.Events[index].residual_risk_rate                = 40;
+        }
+        else if (this.Events[index].residual_risk_occurrence == 3 && this.Events[index].residual_risk_impact ==3 ) {
+          this.Events[index].residual_risk_assessment = 3;
+          this.Events[index].residual_risk_rate                = 20;
+        }
+        else if (this.Events[index].residual_risk_occurrence == 4 && this.Events[index].residual_risk_impact ==4 ) {
+          this.Events[index].residual_risk_assessment = 4;
+          this.Events[index].residual_risk_rate                = 90;
         }
       }
     }

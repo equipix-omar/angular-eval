@@ -62,3 +62,44 @@
   <button style="margin-left: 5px;" class="btn btn-success"(click)="add()">Add New One</button>
   <button style="margin-left: 5px;" class="btn btn-success"(click)="save(post)">Save</button>
   </div>
+  <div >
+    <h1 class="text-primary text-center">Read excel & show in table</h1>
+    <div class="row">
+      <div class="col-lg-6">
+        <input type="file" class="form-control w-100"  (change)="readExcelFile($event)" >
+      </div>
+       <div class="col-lg-6" >
+        <button class="btn btn-success" style="margin-left: 5px;" (click)="addex()">Save All</button>
+      </div>
+    </div>
+    <table class="table" dir="ltr">
+        <thead>
+            <tr>
+              <th style="text-align: center;">Index</th>
+              <th style="text-align: center;">observation</th>
+              <th style="text-align: center;">detaild_observation</th>
+              <th style="text-align: center;">root_cause</th>
+              <th style="text-align: center;">risk</th>
+              <th style="text-align: center;">recommendation</th>
+              <th style="text-align: center;">management_response</th>
+              <th style="text-align: center;">executive_responsibility</th>
+              <th style="text-align: center;">implantation_date</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let u of users">
+                <td>{{u.id}}</td>
+                <td>{{u.observation}}</td>
+                <td>{{u.detaild_observation}}</td>
+                <td>{{u.root_cause}}</td>
+                <td>{{u.risk}}</td>
+                <td>{{u.recommendation}}</td>
+                <td>{{u.management_response}}</td>
+                <td>{{u.executive_responsibility}}</td>
+                <td>{{u.implantation_date }}</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+
