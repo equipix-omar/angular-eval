@@ -73,10 +73,10 @@ export class CrmComponent {
     }, 1000);
   }
   ngOnInit() {
-    this._EventService.getAllNote2().subscribe((res) => {
+    this._EventService.getAllNote2(this.newid).subscribe((res) => {
       this.Events = res.data;
     });
-    this._EventService.getAllEvent().subscribe((res) => {
+    this._EventService.getAllEvents().subscribe((res) => {
       for (let index = 0; index < res.data.length; index++) {
         this.Events2.push({id:res.data[index].id,name:res.data[index].risk_code}) ;
       }

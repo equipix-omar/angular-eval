@@ -68,7 +68,7 @@ export class SheetsComponent {
     }, 1000);
   }
   ngOnInit() {
-    this._EventService.getAllEvent().subscribe((res) => {
+    this._EventService.getAllEvent(this.newid).subscribe((res) => {
       this.Events = res.data;
     });
     this._EventService.AllRisk().subscribe((res) => {

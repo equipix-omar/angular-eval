@@ -14,9 +14,13 @@ export class EventService {
   {
     this.token = localStorage.getItem('TOKEN');
   }
-    getAllEvent():Observable<any>
+    getAllEvents():Observable<any>
     {
-      return this._HttpClient.get(this.baseURL+'AllEvent')
+      return this._HttpClient.get(this.baseURL+`AllEvents`)
+    }
+    getAllEvent(id:any):Observable<any>
+    {
+      return this._HttpClient.get(this.baseURL+`AllEvent/${id}`)
     }
     editEvent(data:any):Observable<any> {
       return this._HttpClient.post(this.baseURL + `EditEvent`,data);
@@ -31,9 +35,9 @@ export class EventService {
       return this._HttpClient.post(this.baseURL + `deleteoneEvent/${id}`,formData);
     }
 //|-----------------------------------------------------------------------|
-    getAllNote():Observable<any>
+    getAllNote(id:any):Observable<any>
     {
-      return this._HttpClient.get(this.baseURL+'AllNote')
+      return this._HttpClient.get(this.baseURL+`AllNote/${id}`)
     }
     editNote(data:any):Observable<any> {
       return this._HttpClient.post(this.baseURL + `EditNote`,data);
@@ -49,9 +53,9 @@ export class EventService {
     }
     //|-----------------------------------------------------------------------|
     //|-----------------------------------------------------------------------|
-    getAllNote2():Observable<any>
+    getAllNote2(id:any):Observable<any>
     {
-      return this._HttpClient.get(this.baseURL+'AllNote2')
+      return this._HttpClient.get(this.baseURL+`AllNote2/${id}`)
     }
     editNote2(data:any):Observable<any> {
       return this._HttpClient.post(this.baseURL + `EditNote2`,data);

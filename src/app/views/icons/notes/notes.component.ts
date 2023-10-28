@@ -1,6 +1,6 @@
 import { EventService } from './../../../Services/event.service';
 import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import * as xls from 'xlsx'
 @Component({
   selector: 'app-notes',
@@ -41,8 +41,12 @@ export class NotesComponentr {
   ResInherent_risks:any;
   Resoccurrence:    any;
   ResImpact:        any;
+  newid:any;
 
-  constructor(public _EventService: EventService) {}
+  constructor(public _EventService: EventService,private Active:ActivatedRoute)
+  {
+    this.newid = Active.snapshot.paramMap.get("id")
+  }
 
   editall(post:any)
   {
@@ -68,10 +72,10 @@ export class NotesComponentr {
     }, 1000);
   }
   ngOnInit() {
-    this._EventService.getAllNote().subscribe((res) => {
+    this._EventService.getAllNote(this.newid).subscribe((res) => {
       this.Events = res.data;
     });
-    this._EventService.getAllEvent().subscribe((res) => {
+    this._EventService.getAllEvents().subscribe((res) => {
       for (let index = 0; index < res.data.length; index++) {
         this.Events2.push({id:res.data[index].id,name:res.data[index].risk_code}) ;
       }
@@ -94,7 +98,7 @@ export class NotesComponentr {
   add()
   {
     for (let index = 0; index < this.users.length; index++) {
-      this.users[index].audited_management_id = 1;
+      this.users[index].audited_management_id = this.newid;
     }
     this._EventService.AddNote(this.users).subscribe((res) => {
       window.location.reload();

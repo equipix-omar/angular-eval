@@ -66,12 +66,12 @@ export class GridComponent implements OnInit {
   ResImpact:          any[] = [];
   constructor(private _EventService: EventService, private router:Router){}
   ngOnInit(): void {
-    this._EventService.getAllEvent().subscribe((res) => {
-      for (let i = 0; i < res.data.length; i ++) {
-        this.Events = res.data;
-         this.results.push(Object.values(this.Events[i])) ;
-      }
-    });
+    // this._EventService.getAllEvent().subscribe((res) => {
+    //   for (let i = 0; i < res.data.length; i ++) {
+    //     this.Events = res.data;
+    //      this.results.push(Object.values(this.Events[i])) ;
+    //   }
+    // });
     this._EventService.AllRisk().subscribe((res) => {
       for (let i = 0; i < res.data.length; i ++) {
          this.risk_type.push(res.data[i].name);
