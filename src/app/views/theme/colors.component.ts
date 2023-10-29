@@ -21,16 +21,16 @@ export class ColorsComponent implements OnInit, AfterViewInit {
         const background = getStyle('background-color', htmlElement) ?? '#fff';
         const table = this.renderer.createElement('table');
         table.innerHTML = `
-          <table class="table w-100">
-            <tr>
-              <td class="text-muted">HEX:</td>
-              <td class="font-weight-bold">${rgbToHex(background)}</td>
-            </tr>
-            <tr>
-              <td class="text-muted">RGB:</td>
-              <td class="font-weight-bold">${background}</td>
-            </tr>
-          </table>
+          // <table class="table w-100">
+          //   <tr>
+          //     <td class="text-muted">HEX:</td>
+          //     <td class="font-weight-bold">${rgbToHex(background)}</td>
+          //   </tr>
+          //   <tr>
+          //     <td class="text-muted">RGB:</td>
+          //     <td class="font-weight-bold">${background}</td>
+          //   </tr>
+          // </table>
         `;
         this.renderer.appendChild(htmlElement.parentNode, table);
         // @ts-ignore

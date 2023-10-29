@@ -1,6 +1,6 @@
-<h4 class="text-center">Select Your Management</h4>
-<ul  *ngFor="let management of mangs" [routerLink]='["../../managements",management.id]' >
-    <li>{{ management.name }}</li>
+<h4 class="text-center">Select Your Department</h4>
+<ul  *ngFor="let management of Projects"  >
+   <a [routerLink]='["../../managements",management.id]'><li>{{ management['management'].name }}</li></a>
 </ul>
 
 

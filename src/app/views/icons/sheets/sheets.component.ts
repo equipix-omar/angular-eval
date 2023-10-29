@@ -12,6 +12,8 @@ export class SheetsComponent {
   name:any;
   Events: any = [];
   Event: any[] = [];
+  Events2: any[] = [];
+
   users:any
   id:                             any;
   procedure:                      any;
@@ -167,5 +169,71 @@ export class SheetsComponent {
     });
   }
 
+  updateRiskImpactnew(id:any,ids:any) {
+    for (let index = 0; index < this.Events2.length; index++) {
+      if (this.Events2[index].id == id) {
+        if (this.Events2[index].risk_occurrence == 1 && this.Events2[index].risk_impact ==1 && this.Events2[index].risk_type==1) {
+          this.Events2[index].inherent_risk_assessment = 1;
+          this.Events2[index].risk_rate                = 60;
+        }
+        else if (this.Events2[index].risk_occurrence == 2 && this.Events2[index].risk_impact ==2 && this.Events2[index].risk_type==2) {
+          this.Events2[index].inherent_risk_assessment = 2;
+          this.Events2[index].risk_rate                = 40;
+        }
+        else if (this.Events2[index].risk_occurrence == 3 && this.Events2[index].risk_impact ==3 && this.Events2[index].risk_type==3) {
+          this.Events2[index].inherent_risk_assessment = 3;
+          this.Events2[index].risk_rate                = 20;
+        }
+        else if (this.Events2[index].risk_occurrence == 4 && this.Events2[index].risk_impact ==4 && this.Events2[index].risk_type==4) {
+          this.Events2[index].inherent_risk_assessment = 4;
+          this.Events2[index].risk_rate                = 90;
+        }
+      }
+    }
+    this._EventService.editEvent(this.Events2).subscribe((res) => {
+    });
+  }
+  updateRiskImpact2new(id:any,ids:any) {
+    for (let index = 0; index < this.Events2.length; index++) {
+      if (this.Events2[index].id == id) {
+        if (this.Events2[index].residual_risk_occurrence == 1 && this.Events2[index].residual_risk_impact ==1 ) {
+          this.Events2[index].residual_risk_assessment = 1;
+          this.Events2[index].residual_risk_rate                = 60;
+        }
+        else if (this.Events2[index].residual_risk_occurrence == 2 && this.Events2[index].residual_risk_impact ==2 ) {
+          this.Events2[index].residual_risk_assessment = 2;
+          this.Events2[index].residual_risk_rate                = 40;
+        }
+        else if (this.Events2[index].residual_risk_occurrence == 3 && this.Events2[index].residual_risk_impact ==3 ) {
+          this.Events2[index].residual_risk_assessment = 3;
+          this.Events2[index].residual_risk_rate                = 20;
+        }
+        else if (this.Events2[index].residual_risk_occurrence == 4 && this.Events2[index].residual_risk_impact ==4 ) {
+          this.Events2[index].residual_risk_assessment = 4;
+          this.Events2[index].residual_risk_rate                = 90;
+        }
+      }
+    }
+    this._EventService.editEvent(this.Events2).subscribe((res) => {
+    });
+  }
+  add2() {
+    let item = {"id":this.Events2.length +1};
+    this.Events2.push(item);
+  }
+  delete(id:any)
+  {
+    this.Events2.pop();
+  }
+  save(post:any)
+  {
+    for (let index = 0; index < this.Events2.length; index++) {
+      this.Events2[index].audited_management_id = this.newid;
+    }
+    this._EventService.AddEvent(this.Events2).subscribe((res) => {
+     // this._router.navigate(["Project/Risk",this.newid]);
+     window.location.reload();
+    });
+  }
  }
 

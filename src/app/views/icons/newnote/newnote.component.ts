@@ -77,8 +77,8 @@ export class NewnoteComponentr {
     for (let index = 0; index < this.users.length; index++) {
       this.users[index].audited_management_id = this.newid;
     }
-    this._EventService.AddNote2(this.users).subscribe((res) => {
-      window.location.reload();
+    this._EventService.AddNote(this.users).subscribe((res) => {
+      this._Router.navigate(["Project/Risk/Rcm",this.newid]);
     });
   }
 }

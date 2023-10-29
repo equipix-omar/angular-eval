@@ -1,3 +1,4 @@
+import { log } from 'handsontable/helpers';
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,6 +14,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class DefaultHeaderComponent extends HeaderComponent {
 id:any
 data:any;
+lan:any
   @Input() sidebarId: string = "sidebar";
   public newMessages = new Array(4)
   public newTasks = new Array(5)
@@ -26,51 +28,46 @@ data:any;
     this.translate.use(language);
   }
   changeCurrentLang(lang: string) {
-    const html  = document.getElementsByTagName('html');
-    const body  = document.getElementsByTagName('body');
-    const table = document.getElementsByTagName('table');
-    const cnav = document.getElementsByTagName('c-nav');
+    const html   = document.getElementsByTagName('html');
+    const body   = document.getElementsByTagName('body');
+    const table  = document.getElementsByTagName('table');
     if (lang == "ar") {
+      this.translate.use(lang)
+      localStorage.setItem('currentLang', 'ar')
       html[0].setAttribute('dir', 'rtl');
       body[0].setAttribute('dir', 'rtl');
       table[0].setAttribute('dir', 'rtl');
-      cnav[0].setAttribute('dir', 'rtl');
-      //this.translate.use(lang)
-      //localStorage.setItem('currentLang', 'ar')
-      //window.location.reload();
-    } else {
-      //this.translate.use(lang)
+    } else if (lang == "en") {
+      this.translate.use(lang)
+      localStorage.setItem('currentLang', 'en')
       html[0].setAttribute('dir', 'ltr');
       body[0].setAttribute('dir', 'ltr');
       table[0].setAttribute('dir', 'ltr');
-      cnav[0].setAttribute('dir', 'ltr');
-      //this.translate.use(lang)
-      //localStorage.setItem('currentLang', 'en')
-      //window.location.reload();
     }
   }
   ngOnInit(): void {
     this.id = localStorage.getItem("UserId");
-    // let lang = localStorage.getItem('currentLang');
-    // const html  = document.getElementsByTagName('html');
-    // const body  = document.getElementsByTagName('body');
-    // const table = document.getElementsByTagName('table');
-    // const cnav  = document.getElementsByTagName('c-nav');
-    // if (lang == "ar") {
-    //   html[0].setAttribute('dir', 'rtl');
-    //   body[0].setAttribute('dir', 'rtl');
-    //   table[0].setAttribute('dir', 'rtl');
-    //   cnav[0].setAttribute('dir', 'rtl');
-    // } else {
-    //   html[0].setAttribute('dir', 'ltr');
-    //   body[0].setAttribute('dir', 'rtl');
-    //   table[0].setAttribute('dir', 'rtl');
-    //   cnav[0].setAttribute('dir', 'rtl');
-    // }
     this._AuthService.getOneUser(this.id).subscribe((res:any) => {
       this.data = res.data
     })
+    this.lan = localStorage.getItem('currentLang');
+    const html   = document.getElementsByTagName('html');
+    const body   = document.getElementsByTagName('body');
+    const table  = document.getElementsByTagName('table');
+    if (this.lan == "ar") {
+      this.translate.use(this.lan)
+      localStorage.setItem('currentLang', 'ar')
+      html[0].setAttribute('dir', 'rtl');
+      body[0].setAttribute('dir', 'rtl');
+      table[0].setAttribute('dir', 'rtl');
+    } else if (this.lan == "en") {
+      this.translate.use(this.lan)
+      localStorage.setItem('currentLang', 'en')
+      html[0].setAttribute('dir', 'ltr');
+      body[0].setAttribute('dir', 'ltr');
+      table[0].setAttribute('dir', 'ltr');
   }
+}
   logout()
   {
    localStorage.clear()

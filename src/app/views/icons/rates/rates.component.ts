@@ -40,29 +40,6 @@ export class RatesComponent {
   {
     this.Events2.pop();
   }
-  saveList(post:any)
-  {
-    const numbers = post.split(",");
-    for (let i = 0; i <= post.length; i++) {
-    }
-    for (let i = 0; i < numbers.length -1; i += 3) {
-      this.listopj.push(numbers.slice(i, i + 3));
-    }
-    for (let j = 0; j < this.listopj.length ; j++) {
-       this.item2 = [
-        {
-          "id":      this.Events2.length +1,
-          "name":    this.listopj[j][0],
-          "number":  this.listopj[j][1],
-          "rate_id": this.listopj[j][2]
-        }
-       ]
-       this.arrayOfObjects.push(this.item2[0])
-      }
-    this._EventService.AddEvent(this.arrayOfObjects).subscribe((res) => {
-      this._Router.navigate(["/event"]);
-    });
-  }
   save(post:any)
   {
     for (let index = 0; index < this.Events2.length; index++) {
@@ -95,7 +72,6 @@ export class RatesComponent {
      this.ResImpact= res.data;
  });
   }
-
   updateRiskImpact(id:any,ids:any) {
     for (let index = 0; index < this.Events2.length; index++) {
       if (this.Events2[index].id == id) {
@@ -145,7 +121,29 @@ export class RatesComponent {
     });
   }
 
-
+ // saveList(post:any)
+  // {
+  //   const numbers = post.split(",");
+  //   for (let i = 0; i <= post.length; i++) {
+  //   }
+  //   for (let i = 0; i < numbers.length -1; i += 3) {
+  //     this.listopj.push(numbers.slice(i, i + 3));
+  //   }
+  //   for (let j = 0; j < this.listopj.length ; j++) {
+  //      this.item2 = [
+  //       {
+  //         "id":      this.Events2.length +1,
+  //         "name":    this.listopj[j][0],
+  //         "number":  this.listopj[j][1],
+  //         "rate_id": this.listopj[j][2]
+  //       }
+  //      ]
+  //      this.arrayOfObjects.push(this.item2[0])
+  //     }
+  //   this._EventService.AddEvent(this.arrayOfObjects).subscribe((res) => {
+  //     this._Router.navigate(["/event"]);
+  //   });
+  // }
   readExcelFile(e:any){
     const file =e.target.files[0];
     let fr =new FileReader();

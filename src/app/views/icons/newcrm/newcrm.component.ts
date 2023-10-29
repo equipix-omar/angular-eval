@@ -80,7 +80,7 @@ export class NewcrmComponent {
       this.users[index].audited_management_id = this.newid;
     }
     this._EventService.AddNote2(this.users).subscribe((res) => {
-      window.location.reload();
+      this._Router.navigate(["Project/Risk/Note",this.newid]);
     });
   }
 }
