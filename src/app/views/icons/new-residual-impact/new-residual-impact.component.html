@@ -8,6 +8,12 @@
           <input matInput [(ngModel)]="item.name" name="name" placeholder="Status Name">
         </mat-form-field>
       </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label>impact weight</mat-label>
+          <input type="number" matInput [(ngModel)]="item.weight" name="weight" placeholder="impact weight">
+        </mat-form-field>
+      </div>
    </div>
     <button type="submit" (click)="submit()" class="btn btn-primary">SAVE </button>
   </form>

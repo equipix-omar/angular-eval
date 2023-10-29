@@ -4,7 +4,7 @@
       <a routerLink="./New" cDropdownItem>
         <svg cIcon class="me-2" name="cilPlus"></svg>
 
-        {{"Project.New status" | translate }}
+        {{"New Impact" | translate }}
       </a>
     </button>
   </div>
@@ -18,6 +18,7 @@
     <tr style="text-align: center !important">
       <th style="text-align: center;">ID</th>
       <th style="text-align: center;">Name</th>
+      <th style="text-align: center;">weight</th>
       <th style="text-align: center;">Action</th>
 
 
@@ -27,6 +28,7 @@
     <tr style="text-align: center;" *ngFor="let post of Allstatus">
       <td>{{ post.id }}</td>
       <td>{{ post.name }}</td>
+      <td>{{ post.weight }}</td>
       <td style="text-align: center;">
         <!-- <a [routerLink]='["./View",post.id]' style="margin-right: 3px;" name="" id="" class="btn btn-success" href="#" role="button">
           <svg cIcon class="" name="cilInfo"></svg></a> -->

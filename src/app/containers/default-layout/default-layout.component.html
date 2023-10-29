@@ -42,12 +42,12 @@
                       <a  style="display: block;margin-left: 25px; text-decoration: none;" routerLink="/Project/Status">
                         {{"Project.Projectstatus" | translate }}
                       </a><br>
-                       <a  style="display: block;margin-left: 25px; text-decoration: none;" routerLink="/Task/Status">
+                       <!-- <a  style="display: block;margin-left: 25px; text-decoration: none;" routerLink="/Task/Status">
                         {{"Task.Taskstatus" | translate }}
                       </a><br>
                       <a style="margin-left: 25px; text-decoration: none;display: block;"  routerLink="/Task/Priority">
                         {{"Task.TaskPriority" | translate }}
-                      </a><br>
+                      </a><br> -->
                         <a  style="display: block;margin-left: 25px; text-decoration: none;" routerLink="/Management">
                           {{"Management" | translate }}
                         </a><br>
@@ -74,7 +74,7 @@
                         </a><br>
                         <a style="margin-left: 25px; text-decoration: none;display: block;"  routerLink="Risk/ResidualInherent">
                           {{"Residual assessments" | translate }}
-                        </a><br>
+                        </a>
                   </mat-nav-list>
                 </mat-expansion-panel>
                 <mat-expansion-panel *ngIf="pers.includes('view user')" [class.mat-elevation-z0]="true">

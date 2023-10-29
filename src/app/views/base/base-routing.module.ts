@@ -36,6 +36,7 @@ import { SheetsComponent } from '../icons/sheets/sheets.component';
 import { NotesComponentr } from '../icons/notes/notes.component';
 import { NewnoteComponentr } from '../icons/newnote/newnote.component';
 import { ManagementComponent } from './management/management.component';
+import { NewmangsComponent } from './newmangs/newmangs.component';
 
 
 const routes: Routes = [
@@ -166,14 +167,21 @@ const routes: Routes = [
                 component: NewnoteComponent
                 ,canActivate:[authGuard]
               },
-              {
-                path: 'Newnote/:id',
-                component: Newnote2Component
-                ,canActivate:[authGuard]
-              },
+              // {
+              //   path: 'managements/:id',
+              //   component: NewmangsComponent
+              //   ,canActivate:[authGuard]
+              // },
             ]
           },
+
       ]
+
+      },
+      {
+        path: 'managements/:id',
+        component: NewmangsComponent
+        ,canActivate:[authGuard]
       },
       {
         path: 'Status',

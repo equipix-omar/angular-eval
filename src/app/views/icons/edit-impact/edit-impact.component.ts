@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { log } from 'handsontable/helpers';
 import { ToastrService } from 'ngx-toastr';
 import { EventService } from 'src/app/Services/event.service';
 import { Helper } from 'src/app/helper';
@@ -13,6 +14,7 @@ export class EditImpactComponent {
   helper: any = Helper;
   item: any = {};
   name:any;
+  weight:any;
   id:any;
   data:any[] = [];
   remember_token:any;
@@ -28,11 +30,13 @@ export class EditImpactComponent {
   }
   AddNote = new FormGroup({
     name: new FormControl("", Validators.required),
+    weight: new FormControl("", Validators.required),
   });
   editNote()
   {
     let data={
       name:this.AddNote.value.name,
+      weight:this.AddNote.value.weight,
       remember_token:this.remember_token,
     }
     this.item.remember_token  = this.remember_token;

@@ -77,6 +77,7 @@ import { NewdiscucComponent } from './newdiscuc/newdiscuc.component';
 import { Newdiscuc2Component } from './newdiscuc2/newdiscuc2.component';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { ManagementComponent } from './management/management.component';
+import { NewmangsComponent } from './newmangs/newmangs.component';
 
 @NgModule({
   imports: [
@@ -157,7 +158,8 @@ import { ManagementComponent } from './management/management.component';
     Newnote2Component,
     NewdiscucComponent,
     Newdiscuc2Component,
-    ManagementComponent
+    ManagementComponent,
+    NewmangsComponent
   ],
 })
 export class BaseModule {}

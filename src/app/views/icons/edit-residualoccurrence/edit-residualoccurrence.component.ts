@@ -30,11 +30,15 @@ export class EditResidualoccurrenceComponent {
   }
   AddNote = new FormGroup({
     name: new FormControl("", Validators.required),
+    weight: new FormControl("", Validators.required),
+
   });
   editNote()
   {
     let data={
       name:this.AddNote.value.name,
+      weight:this.AddNote.value.weight,
+
       remember_token:this.remember_token,
     }
     this.item.remember_token  = this.remember_token;
