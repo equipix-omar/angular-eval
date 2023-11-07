@@ -1,4 +1,4 @@
-<div>
+
   <table   class="table" dir="ltr">
     <thead >
     </thead>
@@ -66,10 +66,7 @@
       </tr>
     </tbody>
   </table>
-  <button style="margin-left: 5px;" class="btn btn-success"(click)="add()">Add New One</button>
-  <button style="margin-left: 5px;" class="btn btn-success"(click)="save(post)">Save</button>
-  </div>
-  <br>
+
   <div >
     <h1 class="text-primary text-center">Read excel & show in table</h1>
     <div class="row">
@@ -77,9 +74,12 @@
         <input type="file" class="form-control w-100"  (change)="readExcelFile($event)" >
       </div>
        <div class="col-lg-6" >
-        <button class="btn btn-success" style="margin-left: 5px;" (click)="addex()">Save All</button>
+        <button class="btn " style="margin-left: 5px;" (click)="addex()">Save All</button>
+        <a href="assets/excel/Rcm.xlsx" target="_blank" style="text-decoration: none;" download>Excel Example
+          <svg cIcon class="me-2" name="cilCloudDownload"></svg>
+        </a>
       </div>
-    </div>
+    </div><br>
     <table class="table" dir="ltr">
         <thead>
             <tr>

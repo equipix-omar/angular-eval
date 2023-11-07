@@ -1,9 +1,61 @@
-
-<div class="col-lg-6" >
-  <button class="btn " style="margin-left: 5px;"(click)="editall(post)">Edit All</button>
-  <button class="btn "  style="margin-left: 5px;"(click)="deleteall(post)">Delete All</button>
-  <button class="btn "    style="margin-left: 5px;"routerLink="New" >Add New</button>
+<div >
+  <div class="row">
+     <div class="col-lg-6" >
+      <button class="btn"  style="margin-left: 5px;"(click)="editall(post)">Save All</button>
+      <button class="btn"  style="margin-left: 5px;"(click)="deleteall(post)">Delete All</button>
+      <button class="btn"  style="margin-left: 5px;"(click)="add2()">Add New One</button>
+      <button style="margin-left: 5px;" class="btn"(click)="save(post)">Save</button>
+      <button class="btn"  style="margin-left: 5px;"routerLink="New" >Import</button>
+    </div>
+  </div>
 </div><br>
+
+<table   class="table" dir="ltr">
+  <thead >
+  </thead>
+  <tbody>
+    <tr style="text-align: center;" *ngFor="let post of Events3 ;" >
+
+          <td style="text-align: center;"><input class="form-control inputex" type="text" disabled [(ngModel)]="post.id"></td>
+
+          <td style="text-align: center;"><input class="form-control inputex" type="number" placeholder="number" [(ngModel)]="post.number"></td>
+
+          <td style="text-align: center;"><input class="form-control inputex" placeholder="operation"  type="text" [(ngModel)]="post.operation"></td>
+
+          <td style="text-align: center;"><textarea class="form-control inputex" placeholder="sub operation"  rows="1" [(ngModel)]="post.sub_operation" ></textarea></td>
+
+          <td style="text-align: center;"><input class="form-control inputex" placeholder="objectives" type="text" [(ngModel)]="post.Review_objectives"></td>
+
+          <td style="text-align: center;"><input class="form-control inputex" placeholder="procedures" type="text" [(ngModel)]="post.Testing_procedures"></td>
+
+          <td style="text-align: center;"><input class="form-control inputex" placeholder="Requirements" type="text" [(ngModel)]="post.Requirements"></td>
+
+          <td style="text-align: center;"><input class="form-control inputex" placeholder="effectiveness" type="text" [(ngModel)]="post.Evaluating_effectiveness"></td>
+
+          <td style="text-align: center;"><input class="form-control inputex" placeholder="Note" type="text" [(ngModel)]="post.Report_Note"></td>
+
+          <td style="text-align: center;"><input placeholder="Requirements inputex" class="form-control" type="text" [(ngModel)]="post.Requirements_status"></td>
+
+          <td style="text-align: center;"><input class="form-control inputex" placeholder="worksheet" type="text" [(ngModel)]="post.Reference_worksheet"></td>
+
+          <td style="text-align: center;"><input placeholder="remarks" class="form-control inputex" type="text" [(ngModel)]="post.Initial_remarks"></td>
+
+          <td style="text-align: center;">
+            <select [(ngModel)]="post.Risk" name="Risk" class="form-control inputex">
+              <option  selected disabled value="">---Select From Risks---</option>
+              <option *ngFor="let item of Events2" value="{{item.id}}">{{item.name}}</option>
+            </select>
+          </td>
+
+      <td style="text-align: center;"><button (click)="delete(post.id)"
+      style="background-color: grey; color: whitesmoke; border: 1px solid black; padding: 6px; border-radius: 5px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+          <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+        </svg>
+      </button></td>
+    </tr>
+  </tbody>
+</table>
 <table   class="table table-bordered" dir="ltr" >
   <thead>
     <tr >

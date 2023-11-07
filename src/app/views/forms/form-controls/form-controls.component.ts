@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-form-controls',
@@ -9,7 +10,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class FormControlsComponent {
 
-
+  Imageurl :any = AppComponent.ImageURL
   id:any;
   data:any;
   constructor(private _AuthService:AuthService, Active:ActivatedRoute, private router:Router)

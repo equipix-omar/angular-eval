@@ -47,19 +47,11 @@ const routes: Routes = [
         path: '',
         pathMatch: 'full',
         component: CardsComponent
-        // ,canActivate:[authGuard , roleGuardGuard],
-        // data:{
-        //     expectedRoles:['view project']
-        // },
       },
       {
         path: 'Risk/:id',
         pathMatch: 'full',
         component: SheetsComponent
-        // ,canActivate:[authGuard , roleGuardGuard],
-        // data:{
-        //     expectedRoles:['view risk']
-        // },
       },
       {
         path: 'Risk/:id/rate',

@@ -18,6 +18,8 @@ export class AppComponent implements OnInit {
  //public static baseURL :any = "https://internal.ratio-golden.com/api/"
 
 
+ public static ImageURL :any = "http://127.0.0.1:8000/"
+ //public static ImageURL :any = "https://internal.ratio-golden.com/"
   constructor(
     private router: Router,
     private titleService: Title,

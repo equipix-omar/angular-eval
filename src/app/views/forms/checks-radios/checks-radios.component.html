@@ -34,7 +34,7 @@
       <td>{{ post.name }}</td>
       <td>{{ post.email }}</td>
       <td>{{ post.role["name"] }}</td>
-      <td><img src="{{ post.image }}" width="80px" height="80px" style="border-radius: 50%;" alt="" srcset=""></td>
+      <td><img src="{{Imageurl}}{{ post.image }}" width="80px" height="80px" style="border-radius: 50%;" alt="" srcset=""></td>
       <td style="text-align: center;">
         <a [routerLink]='["./View",post.id]' style="margin-right: 3px;" name="" id="" class="btn " href="#" role="button">
           <svg cIcon class="" name="cilInfo"></svg>

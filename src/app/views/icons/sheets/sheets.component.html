@@ -4,6 +4,7 @@
       <button class="btn"  style="margin-left: 5px;"(click)="editall(post)">Save All</button>
       <button class="btn"  style="margin-left: 5px;"(click)="deleteall(post)">Delete All</button>
       <button class="btn"  style="margin-left: 5px;"(click)="add2()">Add New One</button>
+      <button style="margin-left: 5px;" class="btn"(click)="save(post)">Save</button>
       <button class="btn"  style="margin-left: 5px;"routerLink="rate" >Import</button>
     </div>
   </div>
@@ -30,63 +31,56 @@
           <td style="text-align: center;"><input class="form-control inputex" placeholder=" risk current controls" type="text" [(ngModel)]="post.residual_risk_current_controls"></td>
 
           <td style="text-align: center;" >
-            <label >likelihood</label>
             <select [(ngModel)]="post.risk_occurrence" (change)="updateRiskImpactnew(post.id,post.risk_occurrence)" name="risk_occurrence" class="form-control">
-              <!-- <option value="" selected disabled >---Select From likelihood---</option> -->
+              <option value="" selected disabled >---Select From likelihood---</option>
               <option  *ngFor="let item of occurrence" value="{{item.id}}">{{item.name}}</option>
             </select>
           </td>
 
           <td style="text-align: center;">
-            <label >impact</label>
             <select [(ngModel)]="post.risk_impact" (change)="updateRiskImpactnew(post.id,post.risk_impact)" name="risk_impact" class="form-control" >
-              <!-- <option  selected disabled value="">---Select From Impact---</option> -->
+              <option  selected disabled value="">---Select From Impact---</option>
               <option *ngFor="let item of Impact" value="{{item.id}}" >{{item.name}}</option>
             </select>
           </td>
 
           <td style="text-align: center;">
-            <label >type</label>
             <select [(ngModel)]="post.risk_type" (change)="updateRiskImpactnew(post.id,post.risk_type)" name="risk_type" class="form-control">
-              <!-- <option  selected disabled value="">---Select From risk types---</option> -->
+              <option  selected disabled value="">---Select From risk types---</option>
               <option *ngFor="let item of risk_types" value="{{item.id}}">{{item.name}}</option>
             </select>
           </td>
 
           <td style="text-align: center;">
-            <label >assessment</label>
             <select [(ngModel)]="post.inherent_risk_assessment" name="inherent_risk_assessment" class="form-control">
-              <!-- <option  selected disabled value="">---Select From Inherent risks---</option> -->
+              <option  selected disabled value="">---Select From Inherent risks---</option>
               <option *ngFor="let item of Inherent_risks" value="{{item.id}}">{{item.name}}</option>
             </select>
           </td>
 
-          <td style="text-align: center;"><input placeholder="enter risk rate" class="form-control inputex" type="text" [(ngModel)]="post.risk_rate"></td>
+          <td style="text-align: center;"><input placeholder="risk rate" class="form-control " type="text" [(ngModel)]="post.risk_rate"></td>
 
           <td style="text-align: center;">
-            <label >likelihood</label>
             <select [(ngModel)]="post.residual_risk_occurrence" (change)="updateRiskImpact2new(post.id,post.residual_risk_occurrence)" name="residual_risk_occurrence" class="form-control">
-              <!-- <option value="" disabled selected>---Select From residual likelihood---</option> -->
+              <option value="" disabled selected>---Select From residual likelihood---</option>
               <option *ngFor="let item of Resoccurrence" value="{{item.id}}">{{item.name}}</option>
             </select>
           </td>
 
           <td style="text-align: center;">
-            <label >impact</label>
             <select [(ngModel)]="post.residual_risk_impact" (change)="updateRiskImpact2new(post.id,post.residual_risk_impact)" name="residual_risk_impact" class="form-control">
-              <!-- <option  selected disabled value="">---Select From residual impact---</option> -->
+              <option  selected disabled value="">---Select From residual impact---</option>
               <option *ngFor="let item of ResImpact" value="{{item.id}}">{{item.name}}</option>
             </select>
           </td>
 
           <td style="text-align: center;">
-            <label >assessment</label>
             <select [(ngModel)]="post.residual_risk_assessment" (change)="updateRiskImpact2new(post.id,post.residual_risk_assessment)" name="residual_risk_assessment" class="form-control">
-              <!-- <option  selected disabled value="">---Select From residual assessment---</option> -->
+              <option  selected disabled value="">---Select From residual assessment---</option>
               <option *ngFor="let item of ResInherent_risks" value="{{item.id}}">{{item.name}}</option>
             </select>
           </td>
-          <td style="text-align: center;"><input class="form-control inputex" type="text" placeholder="enter residual risk rate" [(ngModel)]="post.residual_risk_rate"></td>
+          <td style="text-align: center;"><input class="form-control" type="text" placeholder="enter residual risk rate" [(ngModel)]="post.residual_risk_rate"></td>
 
       <td style="text-align: center;"><button (click)="delete(post.id)"
       style="background-color: grey; color: whitesmoke; border: 1px solid black; padding: 6px; border-radius: 5px;">
@@ -95,8 +89,9 @@
         </svg>
        </button>
       </td>
-      <td>  <button style="margin-left: 5px;" class="btn"(click)="save(post)">Save</button></td>
     </tr>
+    <!-- <td>  <button style="margin-left: 5px;" class="btn"(click)="save(post)">Save</button></td> -->
+
   </tbody>
 </table>
 <table   class="table table-bordered " dir="ltr" >
@@ -131,38 +126,38 @@
       <td style="text-align: center;"><input class="form-control" type="text" [(ngModel)]="post.risk_effect"></td>
       <td style="text-align: center;"><input class="form-control inputex" type="text" [(ngModel)]="post.residual_risk_current_controls"></td>
       <td style="text-align: center;" >
-        <select [(ngModel)]="post.risk_occurrence"  (change)="updateRiskImpact(post.id,post.risk_occurrence)"   name="risk_occurrence" class="form-control">
+        <select [(ngModel)]="post.risk_occurrence"  (change)="updateRiskImpact(post.id,post.risk_occurrence)"   name="risk_occurrence" class="form-control sl">
           <option  *ngFor="let item of occurrence" value="{{item.id}}">{{item.name}}</option>
         </select>
       </td>
       <td style="text-align: center;">
-        <select [(ngModel)]="post.risk_impact" (change)="updateRiskImpact(post.id,post.risk_impact)" name="risk_impact" class="form-control">
+        <select [(ngModel)]="post.risk_impact" (change)="updateRiskImpact(post.id,post.risk_impact)" name="risk_impact" class="form-control sl">
           <option *ngFor="let item of Impact" value="{{item.id}}" >{{item.name}}</option>
         </select>
       </td>
       <td style="text-align: center;">
-        <select [(ngModel)]="post.risk_type" (change)="updateRiskImpact(post.id,post.risk_type)" name="risk_type" class="form-control">
+        <select [(ngModel)]="post.risk_type" (change)="updateRiskImpact(post.id,post.risk_type)" name="risk_type" class="form-control sl">
           <option *ngFor="let item of risk_types" value="{{item.id}}">{{item.name}}</option>
         </select>
       </td>
       <td style="text-align: center;">
-        <select [(ngModel)]="post.inherent_risk_assessment" name="inherent_risk_assessment" class="form-control inputex">
+        <select [(ngModel)]="post.inherent_risk_assessment" name="inherent_risk_assessment" class="form-control inputex sl">
           <option *ngFor="let item of Inherent_risks" value="{{item.id}}">{{item.name}}</option>
         </select>
       </td>
       <td style="text-align: center;"><input  class="form-control" type="text" [(ngModel)]="post.risk_rate"></td>
       <td style="text-align: center;">
-        <select [(ngModel)]="post.residual_risk_occurrence" (change)="updateRiskImpact2(post.id,post.residual_risk_occurrence)" name="residual_risk_occurrence" class="form-control">
+        <select [(ngModel)]="post.residual_risk_occurrence" (change)="updateRiskImpact2(post.id,post.residual_risk_occurrence)" name="residual_risk_occurrence" class="form-control sl">
           <option *ngFor="let item of Resoccurrence" value="{{item.id}}">{{item.name}}</option>
         </select>
       </td>
       <td style="text-align: center;">
-        <select [(ngModel)]="post.residual_risk_impact" (change)="updateRiskImpact2(post.id,post.residual_risk_impact)" name="residual_risk_impact" class="form-control">
+        <select [(ngModel)]="post.residual_risk_impact" (change)="updateRiskImpact2(post.id,post.residual_risk_impact)" name="residual_risk_impact" class="form-control sl">
           <option *ngFor="let item of ResImpact" value="{{item.id}}">{{item.name}}</option>
         </select>
       </td>
       <td style="text-align: center;">
-        <select [(ngModel)]="post.residual_risk_assessment" (change)="updateRiskImpact2(post.id,post.residual_risk_assessment)" name="residual_risk_assessment" class="form-control inputex">
+        <select [(ngModel)]="post.residual_risk_assessment" (change)="updateRiskImpact2(post.id,post.residual_risk_assessment)" name="residual_risk_assessment" class="form-control inputex sl">
           <option *ngFor="let item of ResInherent_risks" value="{{item.id}}">{{item.name}}</option>
         </select>
       </td>

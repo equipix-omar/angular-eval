@@ -75,7 +75,7 @@
         cTextColor="primary"
         shape="rounded-1"
         size="md"
-        src="{{data?.image}}"
+        src="{{Imageurl}}{{data?.image}}"
         status="success"
       >
       </c-avatar>
@@ -104,11 +104,11 @@
         </a>
       </li> -->
       <li>
-        <a routerLink="./" cDropdownItem>
+        <a routerLink="./Project" cDropdownItem>
           <svg cIcon class="me-2" name="cilTask"></svg>
-          Tasks
+          Projects
           <c-badge class="ms-2 float-end" color="danger">
-            42
+            {{this.count}}
           </c-badge>
         </a>
       </li>
@@ -130,7 +130,7 @@
           <svg cIcon class="me-2" name="cilUser"></svg>
           Profile
           <c-badge class="ms-2 float-end" color="warning">
-            22
+            {{this.data.id}}
           </c-badge>
         </a>
       </li>

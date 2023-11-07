@@ -58,7 +58,7 @@ FormData()
       {
       location.reload();
       }, 1000);
-      this._Router.navigate(['/dashboard'])
+      this._Router.navigate(['/User/View',this.id])
 
     }else
     {

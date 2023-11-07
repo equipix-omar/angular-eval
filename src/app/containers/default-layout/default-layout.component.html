@@ -8,18 +8,12 @@
                     {{"General.HCPAINTERNAL" | translate }}
                   </a>
                 </mat-list-item>
-                <mat-expansion-panel *ngIf="pers.includes('view project')" [class.mat-elevation-z0]="true">
-                    <mat-expansion-panel-header  cDropdownItem >
-                        <svg  cIcon class="me-2" name="cilSpreadsheet"
-                        ></svg>
-                        {{"Project.Clients" | translate }}
-                      </mat-expansion-panel-header>
-                    <mat-nav-list class="dd" >
-                        <a style="margin-left: 25px; text-decoration: none;"  routerLink="./Project">
+                <mat-list-item class="me-2"  *ngIf="pers.includes('view project')" >
+                        <a class="me-2" style="text-decoration: none;"  routerLink="./Project">
+                          <svg  cIcon class="me-2" name="cilSpreadsheet"></svg>
                           {{"Project.Client" | translate }}
                         </a>
-                    </mat-nav-list>
-                </mat-expansion-panel>
+                </mat-list-item>
                 <!-- <mat-expansion-panel [class.mat-elevation-z0]="true">
                     <mat-expansion-panel-header>
                       <svg cIcon class="me-2" name="cilTask"

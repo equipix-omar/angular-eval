@@ -1,28 +1,16 @@
 
-<c-nav variant="pills" style="background-color: #1e293b; padding: 10px; text-align: center;">
-  <button style="margin-right: 12px;">
-    <button  style="background-color:#1e293b; color: orangered; height: 50px;  border-radius: 5px; font-size: 16px; font-weight: bold; padding: 10px 20px; margin: 0;" [routerLink]="['../../Risk',this.id]">
-      <a cDropdownItem routerLinkActive="active">
+<div  routerLinkActive="active" style="height: 80px; background-color: white; color: #007bff;border: 0.0001px solid rgb(240, 234, 234); padding: 10px; display: flex;align-items: center; justify-content: center; ">
+      <a style="border-radius: 5px; " cDropdownItem routerLinkActive="active" [routerLink]="['../../Risk',this.id]">
         <svg cIcon class="me-2" name="cilNotes"></svg>
         {{ "Risk" | translate }}
       </a>
-    </button>
-  </button>
-  <button style="margin-right: 12px;">
-    <button  style="background-color:#1e293b; color: orangered; height: 50px;  border-radius: 5px; font-size: 16px; font-weight: bold; padding: 10px 20px; margin: 0;" [routerLink]="['../../Risk/Rcm',this.id]">
-      <a cDropdownItem routerLinkActive="active">
+      <a style="border-radius: 5px; " cDropdownItem routerLinkActive="active" [routerLink]="['../../Risk/Rcm',this.id]">
         <svg cIcon class="me-2" name="cilNotes"></svg>
         {{ "Rcm" | translate }}
       </a>
-    </button>
-  </button>
 
-  <button style="margin-right: 12px;">
-    <button  style="background-color:#1e293b; color: orangered; height: 50px;  border-radius: 5px; font-size: 16px; font-weight: bold; padding: 10px 20px; margin: 0;" [routerLink]="['../../Risk/Note',this.id]">
-      <a cDropdownItem routerLinkActive="active"  >
+      <a style="border-radius: 5px; " cDropdownItem routerLinkActive="active" [routerLink]="['../../Risk/Note',this.id]" >
         <svg cIcon class="me-2" name="cilNotes"></svg>
         {{ "Note" | translate }}
       </a>
-    </button>
-  </button>
-</c-nav>
+</div>

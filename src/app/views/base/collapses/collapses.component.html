@@ -1,29 +1,22 @@
 <div  routerLinkActive="active" style="height: 80px; background-color: white; color: black;border: 0.0001px solid rgb(240, 234, 234); padding: 10px; display: flex;align-items: center; justify-content: center; ">
-            <a style="
-
-               border-radius: 5px; "  [routerLink]="['../', id]" cDropdownItem routerLinkActive="active">
+            <a style="border-radius: 5px; "  [routerLink]="['../', id]" cDropdownItem routerLinkActive="active">
               <svg cIcon class="me-2" name="cilFile"></svg>
               {{ "Project.Show" | translate }}
             </a>
-            <a style="
-
-              border-radius: 5px;  " [routerLink]="['./file', id]"
+            <a style="border-radius: 5px;  " [routerLink]="['./file', id]"
              cDropdownItem routerLinkActive="active">
               <svg cIcon  name="cilFile"></svg>
               {{ "Project.Files" | translate }}
             </a>
-            <a style="     border-radius: 5px; " [routerLink]="['./discuss', id]"
-            cDropdownItem routerLinkActive="active">
+            <a style="border-radius: 5px; " [routerLink]="['./discuss', id]" cDropdownItem routerLinkActive="active">
               <svg cIcon class="me-2" name="cilHighligt"></svg>
               {{ "Project.discussions" | translate }}
             </a>
-            <a  style="     border-radius: 5px; " [routerLink]="['./note', id]"
-            cDropdownItem routerLinkActive="active">
+            <a  style="border-radius: 5px; " [routerLink]="['./note', id]" cDropdownItem routerLinkActive="active">
               <svg cIcon class="me-2" name="cilNotes"></svg>
               {{ "Project.Notes" | translate }}
             </a>
-            <a style="      border-radius: 5px; " [routerLink]="['./management', id]"
-            cDropdownItem routerLinkActive="active">
+            <a style="border-radius: 5px; " [routerLink]="['./management', id]" cDropdownItem routerLinkActive="active">
               <svg cIcon class="me-2" name="cilNotes"></svg>
               {{ "Departments" | translate }}
             </a>

@@ -37,8 +37,9 @@ export class CrmComponent {
   Resoccurrence:    any;
   ResImpact:        any;
   newid:any;
+  Events3: any[] = [];
 
-  constructor(public _EventService: EventService, private Active:ActivatedRoute)
+  constructor(public _EventService: EventService, private Active:ActivatedRoute,private _Router:Router)
   {
     this.newid = Active.snapshot.paramMap.get("id")
   }
@@ -82,25 +83,23 @@ export class CrmComponent {
       }
     });
   }
-  readExcelFile(e:any){
-    const file =e.target.files[0];
-    let fr =new FileReader();
-    fr.readAsArrayBuffer(file);
-    fr.onload =()=>{
-     let data=  fr.result;
-      let workbook= xls.read(data,{type:'array'});
-            const sheetname= workbook.SheetNames[0];
-            const sheet1 = workbook.Sheets[sheetname]
-            this.users=xls.utils.sheet_to_json(sheet1,{raw:true});
-            console.log(this.users)
-    }
+  add2() {
+    let item = {"id":this.Events3.length +1};
+    this.Events3.push(item);
   }
-  add()
+  delete(id:any)
   {
-    for (let index = 0; index < this.users.length; index++) {
-      this.users[index].audited_management_id = this.newid;
+    this.Events3.pop();
+  }
+  save(post:any)
+  {
+
+    for (let index = 0; index < this.Events3.length; index++) {
+      this.Events3[index].audited_management_id = this.newid;
+      this.Events3[index].implantation_date = JSON.stringify(this.Events3[index].implantation_date).split('T').splice(0, 1).join('').replace('"', '');
     }
-    this._EventService.AddNote2(this.users).subscribe((res) => {
+    this._EventService.AddNote2(this.Events3).subscribe((res) => {
+      //this._Router.navigate(["Project/Risk/Note",this.newid]);
       window.location.reload();
     });
   }

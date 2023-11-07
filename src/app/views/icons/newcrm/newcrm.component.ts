@@ -34,7 +34,7 @@ export class NewcrmComponent {
   {
     this.newid = Active.snapshot.paramMap.get("id")
   }
-  add() {
+  add2() {
     let item = {"id":this.Events2.length +1};
     this.Events2.push(item);
   }
@@ -42,7 +42,6 @@ export class NewcrmComponent {
   {
     this.Events2.pop();
   }
-
   save(post:any)
   {
 

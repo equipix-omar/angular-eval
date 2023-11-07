@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { AuthService } from 'src/app/Services/auth.service';
 import { TaskService } from 'src/app/Services/task.service';
+import { AppComponent } from 'src/app/app.component';
 import { Helper } from 'src/app/helper';
 
 @Component({
@@ -18,6 +19,7 @@ export class ChecksRadiosComponent {
   remember_token:any;
   dtOptions: any = {};
   dtTrigger:Subject<any>=new Subject<any>();
+  Imageurl :any = AppComponent.ImageURL
 
   constructor(
    private authsevise:AuthService, private toastr: ToastrService

@@ -42,7 +42,6 @@ export class NewnoteComponentr {
   {
     this.Events2.pop();
   }
-
   save(post:any)
   {
     for (let index = 0; index < this.Events2.length; index++) {

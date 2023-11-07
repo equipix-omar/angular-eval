@@ -42,6 +42,7 @@ export class NotesComponentr {
   Resoccurrence:    any;
   ResImpact:        any;
   newid:any;
+  Events3: any[] = [];
 
   constructor(public _EventService: EventService,private Active:ActivatedRoute)
   {
@@ -104,7 +105,23 @@ export class NotesComponentr {
       window.location.reload();
     });
   }
-
+  add2() {
+    let item = {"id":this.Events3.length +1};
+    this.Events3.push(item);
+  }
+  delete(id:any)
+  {
+    this.Events3.pop();
+  }
+  save(post:any)
+  {
+    for (let index = 0; index < this.Events3.length; index++) {
+      this.Events3[index].audited_management_id = this.newid;
+    }
+    this._EventService.AddNote(this.Events3).subscribe((res) => {
+     window.location.reload();
+    });
+  }
 
 
  }

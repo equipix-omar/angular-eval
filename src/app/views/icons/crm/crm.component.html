@@ -1,8 +1,68 @@
-<div class="col-lg-6" >
-  <button class="btn " style="margin-left: 5px;"(click)="editall(post)">Edit All</button>
-  <button class="btn "  style="margin-left: 5px;"(click)="deleteall(post)">Delete All</button>
-  <button class="btn "    style="margin-left: 5px;"routerLink="New" >Add New</button>
-</div><br>
+<div>
+
+  <div class="col-lg-6" >
+    <button class="btn " style="margin-left: 5px;"(click)="editall(post)">Edit All</button>
+    <button class="btn "  style="margin-left: 5px;"(click)="deleteall(post)">Delete All</button>
+    <button style="margin-left: 5px;" class="btn "(click)="add2()">Add New One</button>
+    <button style="margin-left: 5px;" class="btn"(click)="save(post)">Save</button>
+    <button class="btn "    style="margin-left: 5px;"routerLink="New" >import </button>
+
+  </div><br>
+</div>
+<br>
+<div>
+  <table   class="table" dir="ltr">
+    <thead >
+    </thead>
+    <tbody>
+      <tr style="text-align: center;" *ngFor="let post of Events3 ;" >
+
+            <td style="text-align: center;"><input class="form-control inputex" type="text" disabled [(ngModel)]="post.id"></td>
+
+            <td style="text-align: center;"><input class="form-control inputex" type="text" placeholder="observation" [(ngModel)]="post.observation"></td>
+
+            <td style="text-align: center;"><input class="form-control inputex" placeholder="observation"  type="text" [(ngModel)]="post.detaild_observation"></td>
+
+            <td style="text-align: center;"><textarea class="form-control inputex" placeholder="cause"  rows="1" [(ngModel)]="post.root_cause" ></textarea></td>
+
+            <td style="text-align: center;"><input class="form-control inputex" placeholder="recommendation" type="text" [(ngModel)]="post.recommendation"></td>
+
+            <td style="text-align: center;"><input class="form-control inputex" placeholder="response" type="text" [(ngModel)]="post.management_response"></td>
+
+            <td style="text-align: center;"><input class="form-control inputex" placeholder="responsibility" type="text" [(ngModel)]="post.executive_responsibility"></td>
+
+            <td style="text-align: center;"><input placeholder="Requirements" class="form-control inputex" type="text" [(ngModel)]="post.Requirements_status"></td>
+
+            <td style="text-align: center;"><input placeholder="rate" class="form-control inputex" type="text" [(ngModel)]="post.rate"></td>
+
+            <td style="text-align: center;">
+              <select [(ngModel)]="post.risk" name="risk" class="form-control">
+                <option  selected disabled value="">---Select From Risks---</option>
+                <option *ngFor="let item of Events2" value="{{item.id}}">{{item.name}}</option>
+              </select>
+            </td>
+            <td style="text-align: center;">
+
+            <mat-form-field class="p-0" style="height: 63px;">
+              <input matInput [matDatepicker]="picker" [(ngModel)]="post.implantation_date" name="deadline">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </td>
+
+        <td style="text-align: center;">
+          <button (click)="delete(post.id)"style="background-color: grey; color: whitesmoke; border: 1px solid black; padding: 6px; border-radius: 5px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+             <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+           </svg>
+         </button>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+  </div>
 <table   class="table table-bordered" dir="ltr">
   <thead>
     <tr >
@@ -12,7 +72,8 @@
       <th style="text-align: center;">root_cause</th>
       <th style="text-align: center;">recommendation</th>
       <th style="text-align: center;">management response</th>
-      <th style="text-align: center;">executive responsibility</th>
+      <th style="text-align: center;">responsibility</th>
+      <th style="text-align: center;">rate</th>
       <th style="text-align: center;">implantation date</th>
       <th style="text-align: center;">Risk</th>
       <th style="text-align: center;">Action</th>
@@ -21,20 +82,20 @@
   <tbody>
     <tr style="text-align: center;" *ngFor="let post of Events ;index as i">
       <td style="text-align: center;"><input class="form-control inputwd" type="text" disabled [(ngModel)]="post.id"></td>
-      <td style="text-align: center;"><input class="form-control" type="text" [(ngModel)]="post.observation"></td>
-      <td style="text-align: center;"><input class="form-control" type="text" [(ngModel)]="post.detaild_observation"></td>
+      <td style="text-align: center;"><input class="form-control inputex" type="text" [(ngModel)]="post.observation"></td>
+      <td style="text-align: center;"><input class="form-control inputex" type="text" [(ngModel)]="post.detaild_observation"></td>
       <td style="text-align: center;"><input class="form-control inputex" type="text" [(ngModel)]="post.root_cause" ></td>
       <td style="text-align: center;"><input class="form-control inputex" type="text" [(ngModel)]="post.recommendation"></td>
       <td style="text-align: center;"><input class="form-control inputex" type="text" [(ngModel)]="post.management_response"></td>
       <td style="text-align: center;"><input class="form-control inputex" type="text" [(ngModel)]="post.executive_responsibility"></td>
-      <div >
-      <mat-form-field class="inputwdz">
-        <!-- <mat-label>Deadline</mat-label> -->
+      <td style="text-align: center;"><input class="form-control inputex" type="text" [(ngModel)]="post.rate"></td>
+      <mat-form-field class="p-0" style="height: 63px;">
         <input matInput [matDatepicker]="picker" [(ngModel)]="post.implantation_date" name="deadline">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      </div>
+
+
       <td style="text-align: center;" >
         <select [(ngModel)]="post.risk"  name="risk" class="form-control">
           <option  *ngFor="let item of Events2" value="{{item.id}}">{{item.name}}</option>

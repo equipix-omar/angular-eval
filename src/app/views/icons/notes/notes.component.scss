@@ -1,3 +1,4 @@
+
 .inputwd
 {
 width: 50px;
@@ -16,9 +17,11 @@ width: 100px;
 }
 .inputex
 {
-  width: 300px;
+  width: 200px;
 }
 input {border:0;outline:0;}
 input:focus {outline:none!important;}
-select {border:0;outline:0;}
-select:focus {outline:none!important;}
+.sl {border:0;outline:0;}
+.sl:focus {outline:none!important;}
+textarea {border:0;outline:0;}
+textarea:focus {outline:none!important;}
