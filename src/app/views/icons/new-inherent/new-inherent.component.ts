@@ -26,7 +26,7 @@ export class NewInherentComponent {
       {
         if (res.message == "New Inherent risk Created Successfully") {
           this.toastr.success("New Inherent risk Created Successfully.")
-          this.router.navigate(['/Risk/Impact'])
+          this.router.navigate(['/Risk/Inherent'])
         }
         else{
           this.toastr.error("Please Enter All Feild.")

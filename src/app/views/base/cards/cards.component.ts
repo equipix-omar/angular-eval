@@ -6,6 +6,7 @@ import { Helper } from 'src/app/helper';
 import { ToastrService } from 'ngx-toastr';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { AuthService } from 'src/app/Services/auth.service';
+import { PermissionService } from 'src/app/Services/permission.service';
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
@@ -14,14 +15,24 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class CardsComponent {
   helper: any = Helper;
   item: any = {};
+  item2: any = {};
+  role:any;
+  roles:any;
+  pers:any[]=[];
   remember_token:any;
 Projects:any[]=[];
 token:any;
 dtOptions: any  = {};
 dtTrigger:Subject<any>=new Subject<any>();
   ngOnInit(): void {
+    this.item.role = localStorage.getItem('RoleName');
+    this.permisionService.getpermision( Helper.toFormData(this.item)).subscribe(res=>{
+      this.roles = res.data[0].permissions
+      for (let i = 0; i < this.roles.length; i++) {
+        this.pers.push(this.roles[i].name) ;
+      }
+    })
     this.dtOptions = {
-
       buttons: [
         {
           extend: 'excel',
@@ -32,30 +43,22 @@ dtTrigger:Subject<any>=new Subject<any>();
           extend: 'print',
           text: 'print this content',
           className: 'btn btn-dark mb-3',
-
         },
-
       ],
       pagingType: 'simple_numbers',
-      pageLength: 10,
+      pageLength: 8,
       processing: true,
       lengthMenu : [10, 20, 50,100],
       dom: 'Blfrtip',
-
    };
     this.getProjects();
   }
   constructor(private gatProjectService:ProjectService , private _Router:Router
-    ,   private toastr: ToastrService,private _AuthService:AuthService
-    )
+    , private toastr: ToastrService,private _AuthService:AuthService,private permisionService: PermissionService)
    {
-
     this.remember_token = localStorage.getItem('TOKEN');
-
    }
-
   getProjects(){
-
     this.gatProjectService.getAllProject().subscribe((res:any) =>
     {
       if (res.message == "This Is All Projects") {

@@ -19,7 +19,9 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        component: ChecksRadiosComponent
+        component: ChecksRadiosComponent,
+        canActivate:[authGuard,],
+
       //   ,canActivate:[authGuard,roleGuardGuard],
       //   data:{
       //     expectedRoles:['view user']

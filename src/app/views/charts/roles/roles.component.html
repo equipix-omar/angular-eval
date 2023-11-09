@@ -4,7 +4,7 @@
       <a routerLink="./NewRole" cDropdownItem>
         <svg cIcon class="me-2" name="cilPlus"></svg>
 
-        {{"Project.New Role" | translate }}
+        {{"New Role" | translate }}
       </a>
     </button>
   </div>
@@ -28,15 +28,17 @@
       <td>{{ post.id }}</td>
       <td>{{ post.name }}</td>
       <td style="text-align: center;">
-        <a [routerLink]='["./view",post.id]' style="margin-right: 3px;"  class="btn btn-success" >
-              <svg cIcon class="" name="cilInfo"></svg>
-              <!-- View -->
+        <a [routerLink]='["./view",post.id]' style="margin-right: 3px;"  class="btn " role="button" >
+              <!-- <svg cIcon class="" name="cilInfo"></svg> -->
+              View
             </a>
-        <a [routerLink]='["./Edit",post.id]' style="margin-right: 3px;"  class="btn btn-info" >
-          <svg cIcon class="" name="cilPen"></svg>
+        <a [routerLink]='["./Edit",post.id]' style="margin-right: 3px;"  class="btn " role="button" >
+          <!-- <svg cIcon class="" name="cilPen"></svg> -->
+          Edit
         </a>
-        <button name="" (click)="destroy(post.id)" id="" class="btn btn-danger" >
-          <svg cIcon class="" name="cilTrash"></svg>
+        <button name="" (click)="destroy(post.id)" id="" class="btn " role="button" >
+          <!-- <svg cIcon class="" name="cilTrash"></svg> -->
+          Delete
         </button>
     </td>
 

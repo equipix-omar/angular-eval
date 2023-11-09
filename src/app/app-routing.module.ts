@@ -20,16 +20,16 @@ const routes: Routes = [
       title: 'Home'
     },
     children: [
-      {
-        path: 'dashboard',
-        loadChildren: () =>
-          import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
-      },
-      {
-        path: 'theme',
-        loadChildren: () =>
-          import('./views/theme/theme.module').then((m) => m.ThemeModule)
-      },
+      // {
+      //   path: 'dashboard',
+      //   loadChildren: () =>
+      //     import('./views/dashboard/dashboard.module').then((m) => m.DashboardModule)
+      // },
+      // {
+      //   path: 'theme',
+      //   loadChildren: () =>
+      //     import('./views/theme/theme.module').then((m) => m.ThemeModule)
+      // },
 /** --------------------------------------------------------------- **/
 /** --------------------------------------------------------------- **/
       {
@@ -37,11 +37,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./views/base/base.module').then((m) => m.BaseModule)
       },
-      {
-        path: 'Task',
-        loadChildren: () =>
-          import('./views/buttons/buttons.module').then((m) => m.ButtonsModule)
-      },
+      // {
+      //   path: 'Task',
+      //   loadChildren: () =>
+      //     import('./views/buttons/buttons.module').then((m) => m.ButtonsModule)
+      // },
       {
         path: 'User',
         loadChildren: () =>
@@ -78,20 +78,21 @@ const routes: Routes = [
       },
     ]
   },
-  {
-    path: '404',
-    component: Page404Component,
-    data: {
-      title: 'Page 404'
-    }
-  },
-  {
-    path: '500',
-    component: Page500Component,
-    data: {
-      title: 'Page 500'
-    }
-  },
+
+  // {
+  //   path: '404',
+  //   component: Page404Component,
+  //   data: {
+  //     title: 'Page 404'
+  //   }
+  // },
+  // {
+  //   path: '500',
+  //   component: Page500Component,
+  //   data: {
+  //     title: 'Page 500'
+  //   }
+  // },
   {
     path: 'login',
     component: LoginComponent,
@@ -99,14 +100,21 @@ const routes: Routes = [
       title: 'Login Page'
     }
   },
-  {
-    path: 'register',
-    component: RegisterComponent,
+  // {
+  //   path: 'register',
+  //   component: RegisterComponent,
+  //   data: {
+  //     title: 'Register Page'
+  //   }
+  // },
+
+  {path: '**',
+   //redirectTo: 'login',
+   component: Page404Component,
     data: {
-      title: 'Register Page'
+      title: 'Page 404'
     }
-  },
-  {path: '**', redirectTo: 'dashboard'}
+  }
 ];
 
 @NgModule({

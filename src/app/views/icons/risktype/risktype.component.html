@@ -32,10 +32,13 @@
       <td style="text-align: center;">
         <!-- <a [routerLink]='["./View",post.id]' style="margin-right: 3px;" name="" id="" class="btn btn-success" href="#" role="button">
           <svg cIcon class="" name="cilInfo"></svg></a> -->
-        <a [routerLink]='["./Edit",post.id]' style="margin-right: 3px;" name="" id="" class="btn btn-info" href="#" role="button">
-          <svg cIcon class="" name="cilPen"></svg></a>
-        <button name="" (click)="destroy(post.id)" id="" class="btn btn-danger" href="#" role="button">
-          <svg cIcon class="" name="cilTrash"></svg>
+        <a [routerLink]='["./Edit",post.id]' style="margin-right: 3px;" name="" id="" class="btn " href="#" role="button">
+          <!-- <svg cIcon class="" name="cilPen"></svg> -->
+          Edit
+        </a>
+        <button name="" (click)="destroy(post.id)" id="" class="btn " href="#" role="button">
+          <!-- <svg cIcon class="" name="cilTrash"></svg> -->
+          Delete
         </button>
     </td>
 

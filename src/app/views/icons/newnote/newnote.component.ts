@@ -52,7 +52,7 @@ export class NewnoteComponentr {
     });
   }
   ngOnInit(): void {
-    this._EventService.getAllEvents().subscribe((res) => {
+    this._EventService.getAllEvent(this.newid).subscribe((res) => {
       for (let index = 0; index < res.data.length; index++) {
         this.Events3.push({id:res.data[index].id,name:res.data[index].risk_code}) ;
       }

@@ -28,6 +28,13 @@ export class EventService {
     AddEvent(data:any):Observable<any> {
       return this._HttpClient.post(this.baseURL + `AddEvent`,data);
     }
+
+    editEventres(data:any):Observable<any> {
+      return this._HttpClient.post(this.baseURL + `EditEventres`,data);
+    }
+    AddEventres(data:any):Observable<any> {
+      return this._HttpClient.post(this.baseURL + `AddEventres`,data);
+    }
     deleteEvent(data:any):Observable<any> {
       return this._HttpClient.post(this.baseURL + `deleteEvent`,data);
     }

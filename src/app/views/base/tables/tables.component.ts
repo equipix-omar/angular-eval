@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ProjectService } from 'src/app/Services/project.service';
+import { SectorService } from 'src/app/Services/sector.service';
 import { StatusService } from 'src/app/Services/status.service';
 import { Helper } from 'src/app/helper';
 
@@ -16,76 +17,87 @@ export class TablesComponent {
   helper: any = Helper;
   item: any = {};
   Allstatus:any;
-
+  Allsector:any;
   remember_token:any;
-
+  formattedDate: any;
+  da:any ="(Eastern European Standard Time)"
   id:any;
   data:any[] = [];
+  d1:any;
+  d2:any;
+  d3:any;
+  d4:any;
   constructor(
     private http:HttpClient , private router:Router , private ProjectServise:ProjectService, private Active:ActivatedRoute
-    ,    private toastr: ToastrService,private _StatusService: StatusService
-
+    ,private toastr: ToastrService,private _StatusService: StatusService,private sec:SectorService
    ) {
     this.remember_token = localStorage.getItem('TOKEN');
-    this.id= Active.snapshot.paramMap.get("id")
+    this.id= Active.snapshot.paramMap.get("id");
   }
-
-  ngOnInit(): void {
-    this.ProjectServise.getOneProject(this.id).subscribe((res:any) => {
-      this.data.push(res.data)
-    })
-    this.getstatus();
+  formatDate(date: any) {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return `${year}/${month.toString().padStart(2, '0')}/${day.toString().padStart(2, '0')}`;
   }
-  getstatus(){
+      ngOnInit(): void {
+       this.ProjectServise.getOneProject(this.id).subscribe((res:any) => {
+       this.data.push(res.data)
+       this.d1 = this.data[0].deadline;
+       this.d2 = this.data[0].project_created;
+       this.d3 = this.data[0].date_finished;
+       this.d4 = this.data[0].start_date;
+       })
+       this.getstatus();
+       this.getsector();
+      }
+      getstatus(){
     this._StatusService.getAllStatus().subscribe((res:any) =>
     {
      this.Allstatus = res.data
     })
-    }
-
-      AddNote = new FormGroup({
-        name: new FormControl("", Validators.required),
-        status_id: new FormControl("", Validators.required),
-        description: new FormControl("", Validators.required),
-        start_date: new FormControl("", Validators.required),
-        deadline: new FormControl("", Validators.required),
-        project_created: new FormControl("", Validators.required),
-        date_finished: new FormControl("", Validators.required),
-        progress_from_tasks: new FormControl("", Validators.required),
-        project_cost: new FormControl("", Validators.required),
-        project_rate_per_hour: new FormControl("", Validators.required),
-        estimated_hours: new FormControl("", Validators.required),
-        active: new FormControl("", Validators.required),
-        progress: new FormControl("", Validators.required),
-      });
-      editNote()
-      {
-        let data={
-          name:this.AddNote.value.name,
-          description:this.AddNote.value.description,
-          status_id:this.AddNote.value.status_id,
-          deadline:this.AddNote.value.deadline,
-          start_date:this.AddNote.value.start_date,
-          project_created:this.AddNote.value.project_created,
-          date_finished:this.AddNote.value.date_finished,
-          progress_from_tasks:this.AddNote.value.progress_from_tasks,
-          project_cost:this.AddNote.value.project_cost,
-          project_rate_per_hour:this.AddNote.value.project_rate_per_hour,
-          estimated_hours:this.AddNote.value.estimated_hours,
-          active:this.AddNote.value.active,
-          progress:this.AddNote.value.progress,
-          remember_token:this.remember_token,
-
-        }
-        this.ProjectServise.editProject(this.id,data).subscribe((res)=>
-          {
-            if (res.message == " Project Updated Successfully") {
-              this.toastr.success("Project Updated Successfully.")
-              this.router.navigate(['/Project'])
-            }
-          }
-    )
       }
-
+      getsector(){
+      this.sec.Allsector().subscribe((res:any) =>
+      {
+       this.Allsector = res.data
+      })
+      }
+        save()
+        {
+          if (this.data[0].deadline != this.d1) {
+           this.data[0].deadline = this.formatDate(this.data[0].deadline);
+          }
+          else{
+            this.data[0].deadline = this.data[0].deadline ;
+          }
+          if (this.data[0].project_created != this.d2) {
+            this.data[0].project_created = this.formatDate(this.data[0].project_created);
+           }
+           else
+           {
+            this.data[0].project_created = this.data[0].project_created;
+           }
+          if (this.data[0].date_finished != this.d3) {
+            this.data[0].date_finished = this.formatDate(this.data[0].date_finished);
+           }
+           else{
+            this.data[0].date_finished = this.data[0].date_finished;
+           }
+          if (this.data[0].start_date != this.d4) {
+            this.data[0].start_date = this.formatDate(this.data[0].start_date);
+           }
+           else{
+            this.data[0].start_date = this.data[0].start_date;
+           }
+          this.data[0].remember_token = this.remember_token;
+          this.ProjectServise.editProject(this.id,this.data[0]).subscribe((res)=>
+            {
+              if (res.message == " Project Updated Successfully") {
+                this.toastr.success("Project Updated Successfully.")
+                this.router.navigate(['/Project'])
+              }
+            })
+        }
 }
 

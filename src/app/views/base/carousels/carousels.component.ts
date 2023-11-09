@@ -11,14 +11,13 @@ import SwiperCore from 'swiper';
 import { Virtual } from 'swiper';
 import { AuthService } from 'src/app/Services/auth.service';
 import { ManagementService } from 'src/app/Services/management.service';
-
+import { DatePipe } from '@angular/common';
 SwiperCore.use([Virtual]);
 @Component({
   selector: 'app-carousels',
   templateUrl: './carousels.component.html',
   styleUrls: ['./carousels.component.scss'],
   encapsulation: ViewEncapsulation.None,
-
 })
 export class CarouselsComponent {
   helper: any = Helper;
@@ -47,6 +46,7 @@ export class CarouselsComponent {
   start_date:any;
   deadline:any;
   project_created:any;
+  formattedDate: any;
   date_finished:any;
   progress:any;
   progress_from_tasks:any;
@@ -63,15 +63,25 @@ export class CarouselsComponent {
   public searchElementRef!: ElementRef;
   @ViewChild('swiper', { static: false }) swiper: any;
   constructor(
-    private http:HttpClient , private router:Router , private ProjectServise:ProjectService
-    ,   private toastr: ToastrService , private _StatusService: StatusService,
+    private http:HttpClient , private router:Router , private ProjectServise:ProjectService,
+    private toastr: ToastrService , private _StatusService: StatusService,
     private permissionsService: NgxPermissionsService,private _sector: SectorService,
     private ngZone: NgZone,private auth:AuthService,private mng:ManagementService,
     private _AuthService:AuthService
-
     )
     {
       this.remember_token = localStorage.getItem('TOKEN');
+      this.project_created =    this.project_created = new Date();
+      this.formattedDate = this.formatDate(this.project_created);
+      // this.formattedDate = this.formatDate(this.deadline);
+      // console.log(this.formattedDate);
+
+    }
+    formatDate(date: Date): string {
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+      return `${year}/${month.toString().padStart(2, '0')}/${day.toString().padStart(2, '0')}`;
     }
        FormData()
        {
@@ -99,23 +109,27 @@ export class CarouselsComponent {
       this.sw =false;
       setTimeout(() => {
         this.sw2 =true;
-      }, 500);
+      }, 100);
         if(this.item.deadline)
         {
-        this.item.deadline        = JSON.stringify(this.item.deadline).split('T').splice(0, 1).join('').replace('"', '');
+        //  this.item.deadline        = JSON.stringify(this.item.deadline).split('T').splice(0, 1).join('').replace('"', '');
+        //  console.log(this.item.deadline);
+         this.item.deadline = this.formatDate(this.item.deadline);
         }
         if(this.item.start_date)
         {
-        this.item.start_date      = JSON.stringify(this.item.start_date).split('T').splice(0, 1).join('').replace('"', '');
+         this.item.start_date  = this.formatDate(this.item.start_date);
         }
         if(this.item.project_created)
         {
-        this.item.project_created = JSON.stringify(this.item.project_created).split('T').splice(0, 1).join('').replace('"', '');
+        this.item.project_created = this.formatDate(this.item.project_created);
         }
-        if(this.item.date_finished)
-        {
-        this.item.date_finished   = JSON.stringify(this.item.date_finished).split('T').splice(0, 1).join('').replace('"', '');
-        }
+        // if(this.item.date_finished)
+        // {
+        //  this.item.date_finished = this.formatDate( new Date());
+        // }
+        this.item.date_finished = this.formatDate( new Date());
+
         this.item.remember_token  = this.remember_token;
         this.ProjectServise.addNewProject(Helper.toFormData(this.item)).subscribe((res)=>
           {
@@ -124,7 +138,6 @@ export class CarouselsComponent {
               // this.toastr.success("Project Created Successfully.")
               this.p_id = res.data.id;
               console.log(this.p_id);
-
             }
             else{
               this.toastr.error("Please Enter All Feild.")
@@ -137,9 +150,8 @@ export class CarouselsComponent {
           this.sw =true;
           setTimeout(() => {
             this.sw2 =false;
-          }, 500);
+          }, 100);
           //this.sw =true;
-
       }
       submit(): void{
         this.item2.project_id  = this.p_id;

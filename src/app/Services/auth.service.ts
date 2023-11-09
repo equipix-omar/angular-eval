@@ -50,11 +50,10 @@ export class AuthService {
   editUser(id:any,data:any):Observable<any> {
     return this._HttpClient.post(this.baseURL + `EditUser/${id}`+"?remember_token=" +this.token,data);
   }
-  EditProfile(data:any):Observable<any> {
+  EditProfile(data:any,Id:any):Observable<any> {
     const formData = new FormData();
     formData.append("image", data, data.name);
-
-    return this._HttpClient.post(this.baseURL + `EditProfile/${this.id}`+"?remember_token=" +this.token,formData);
+    return this._HttpClient.post(this.baseURL + `EditProfile/${Id}`+"?remember_token=" +this.token,formData);
   }
   deleteUser(id:any,data:any):Observable<any> {
     return this._HttpClient.post(this.baseURL + `DeleteUser/${id}`,data);

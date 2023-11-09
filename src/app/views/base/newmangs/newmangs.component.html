@@ -2,7 +2,11 @@
 <div  routerLinkActive="active" style="height: 80px; background-color: white; color: #007bff;border: 0.0001px solid rgb(240, 234, 234); padding: 10px; display: flex;align-items: center; justify-content: center; ">
       <a style="border-radius: 5px; " cDropdownItem routerLinkActive="active" [routerLink]="['../../Risk',this.id]">
         <svg cIcon class="me-2" name="cilNotes"></svg>
-        {{ "Risk" | translate }}
+        {{ "Risk Residual" | translate }}
+      </a>
+      <a style="border-radius: 5px; " cDropdownItem routerLinkActive="active" [routerLink]="['../../Risk/Inhirited',this.id]">
+        <svg cIcon class="me-2" name="cilNotes"></svg>
+        {{ "Risk Inhirited" | translate }}
       </a>
       <a style="border-radius: 5px; " cDropdownItem routerLinkActive="active" [routerLink]="['../../Risk/Rcm',this.id]">
         <svg cIcon class="me-2" name="cilNotes"></svg>

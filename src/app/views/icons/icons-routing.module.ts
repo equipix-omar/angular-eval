@@ -28,6 +28,7 @@ import { RatesComponent } from './rates/rates.component';
 import { CrmComponent } from './crm/crm.component';
 import { NewcrmComponent } from './newcrm/newcrm.component';
 import { NewnoteComponentr } from './newnote/newnote.component';
+import { authGuard } from 'src/app/auth.guard';
 
 const routes: Routes = [
   {
@@ -66,53 +67,77 @@ const routes: Routes = [
       {
         path: 'RiskType',
         component: RisktypeComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'RiskType/New',
-        component: NewrisktypeComponent
+        component: NewrisktypeComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'RiskType/Edit/:id',
-        component: EditrisktypeComponent
+        component: EditrisktypeComponent,
+        canActivate:[authGuard,],
+
       },
 
       {
         path: 'Impact',
         component: ImpactComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'Impact/New',
-        component: NewImpactComponent
+        component: NewImpactComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'Impact/Edit/:id',
-        component: EditImpactComponent
+        component: EditImpactComponent,
+        canActivate:[authGuard,],
+
       },
 
       {
         path: 'occurrence',
         component: OccurrenceComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'occurrence/New',
-        component: NewoccurrenceComponent
+        component: NewoccurrenceComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'occurrence/Edit/:id',
-        component: EditoccurrenceComponent
+        component: EditoccurrenceComponent,
+        canActivate:[authGuard,],
+
       },
 
       {
         path: 'Inherent',
         component: InherentComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'Inherent/New',
-        component: NewInherentComponent
+        component: NewInherentComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'Inherent/Edit/:id',
-        component: EditInherentComponent
+        component: EditInherentComponent,
+        canActivate:[authGuard,],
+
       },
 
 
@@ -121,40 +146,58 @@ const routes: Routes = [
       {
         path: 'ResidualImpact',
         component: ResidualImpactComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'ResidualImpact/New',
-        component: NewResidualImpactComponent
+        component: NewResidualImpactComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'ResidualImpact/Edit/:id',
-        component: EditResidualImpactComponent
+        component: EditResidualImpactComponent,
+        canActivate:[authGuard,],
+
       },
 
       {
         path: 'Residualoccurrence',
         component: ResidualoccurrenceComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'Residualoccurrence/New',
-        component: NewResidualoccurrenceComponent
+        component: NewResidualoccurrenceComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'Residualoccurrence/Edit/:id',
-        component: EditResidualoccurrenceComponent
+        component: EditResidualoccurrenceComponent,
+        canActivate:[authGuard,],
+
       },
 
       {
         path: 'ResidualInherent',
         component: ResidualInherentComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'ResidualInherent/New',
-        component: NewResidualInherentComponent
+        component: NewResidualInherentComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'ResidualInherent/Edit/:id',
-        component: EditResidualInherentComponent
+        component: EditResidualInherentComponent,
+        canActivate:[authGuard,],
+
       },
     ]
   }

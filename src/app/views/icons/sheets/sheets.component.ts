@@ -141,8 +141,8 @@ export class SheetsComponent {
         }
       }
     }
-    this._EventService.editEvent(this.Events).subscribe((res) => {
-    });
+    // this._EventService.editEvent(this.Events).subscribe((res) => {
+    // });
   }
   updateRiskImpact2(id:any,ids:any) {
     for (let index = 0; index < this.Events.length; index++) {
@@ -165,8 +165,8 @@ export class SheetsComponent {
         }
       }
     }
-    this._EventService.editEvent(this.Events).subscribe((res) => {
-    });
+    // this._EventService.editEvent(this.Events).subscribe((res) => {
+    // });
   }
 
   updateRiskImpactnew(id:any,ids:any) {
@@ -190,8 +190,8 @@ export class SheetsComponent {
         }
       }
     }
-    this._EventService.editEvent(this.Events2).subscribe((res) => {
-    });
+    // this._EventService.editEvent(this.Events2).subscribe((res) => {
+    // });
   }
   updateRiskImpact2new(id:any,ids:any) {
     for (let index = 0; index < this.Events2.length; index++) {
@@ -214,8 +214,8 @@ export class SheetsComponent {
         }
       }
     }
-    this._EventService.editEvent(this.Events2).subscribe((res) => {
-    });
+    // this._EventService.editEvent(this.Events2).subscribe((res) => {
+    // });
   }
   add2() {
     let item = {"id":this.Events2.length +1};

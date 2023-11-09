@@ -27,15 +27,12 @@ export class DefaultLayoutComponent {
   roles:any;
   pers:any[]=[];
   constructor(private translate: TranslateService,private permisionService: PermissionService ,private _Router:Router) {
-
   }
-
   useLanguage(language: string): void {
     this.translate.use(language);
   }
     navItems: INavData[] = [
     {
-      //name: this.translate.instant('General.HCPAINTERNAL'),
       name:'HCPA INTERNAL',
       url: '/dashboard',
     },
@@ -77,7 +74,6 @@ export class DefaultLayoutComponent {
 
   ];
   ngOnInit(): void {
-
     this.item.role = localStorage.getItem('RoleName');
     this.permisionService.getpermision( Helper.toFormData(this.item)).subscribe(res=>{
       this.roles = res.data[0].permissions

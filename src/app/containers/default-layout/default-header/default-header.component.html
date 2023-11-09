@@ -107,7 +107,7 @@
         <a routerLink="./Project" cDropdownItem>
           <svg cIcon class="me-2" name="cilTask"></svg>
           Projects
-          <c-badge class="ms-2 float-end" color="danger">
+          <c-badge class=" float-end" color="danger">
             {{this.count}}
           </c-badge>
         </a>
@@ -130,7 +130,7 @@
           <svg cIcon class="me-2" name="cilUser"></svg>
           Profile
           <c-badge class="ms-2 float-end" color="warning">
-            {{this.data.id}}
+            {{this.data?.id}}
           </c-badge>
         </a>
       </li>

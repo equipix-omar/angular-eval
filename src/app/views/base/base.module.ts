@@ -78,6 +78,8 @@ import { Newdiscuc2Component } from './newdiscuc2/newdiscuc2.component';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { ManagementComponent } from './management/management.component';
 import { NewmangsComponent } from './newmangs/newmangs.component';
+import { InhiritedComponent } from './inhirited/inhirited.component';
+import { NewinhiritedComponent } from './newinhirited/newinhirited.component';
 
 @NgModule({
   imports: [
@@ -159,7 +161,9 @@ import { NewmangsComponent } from './newmangs/newmangs.component';
     NewdiscucComponent,
     Newdiscuc2Component,
     ManagementComponent,
-    NewmangsComponent
+    NewmangsComponent,
+    InhiritedComponent,
+    NewinhiritedComponent
   ],
 })
 export class BaseModule {}

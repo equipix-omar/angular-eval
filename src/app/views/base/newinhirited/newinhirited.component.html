@@ -1,0 +1,52 @@
+<div>
+  <h1 class="text-primary text-center">Read excel & show in table</h1>
+  <div class="row">
+    <div class="col-lg-6">
+      <input type="file" class="form-control w-100"  (change)="readExcelFile($event)" >
+    </div>
+     <div class="col-lg-6" >
+      <button class="btn " style="margin-left: 5px;" (click)="addex()">Save All</button>
+      <a href="assets/excel/inhirited.xlsx" target="_blank" style="text-decoration: none;" download>Excel Example
+        <svg cIcon class="me-2" name="cilCloudDownload"></svg>
+      </a>
+
+    </div>
+  </div><br>
+  <table class="table" dir="ltr">
+      <thead>
+          <tr>
+            <th style="text-align: center;">Index</th>
+            <th style="text-align: center;">procedure</th>
+            <th style="text-align: center;">description</th>
+            <th style="text-align: center;">code</th>
+            <th style="text-align: center;">causes</th>
+            <th style="text-align: center;">effect</th>
+            <th style="text-align: center;">risk rates</th>
+            <th style="text-align: center;">likelihood</th>
+            <th style="text-align: center;">impact</th>
+            <th style="text-align: center;">inherent</th>
+            <th style="text-align: center;">risk type</th>
+
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let u of users">
+              <td>{{u.id}}</td>
+              <td>{{u.procedure}}</td>
+              <td>{{u.risk_description}}</td>
+              <td>{{u.risk_code}}</td>
+              <td>{{u.risk_causes}}</td>
+              <td>{{u.risk_effect}}</td>
+              <td>{{u.risk_rate}}</td>
+              <td>{{u.risk_occurrence }}</td>
+              <td>{{u.risk_impact }}</td>
+              <td>{{u.inherent_risk_assessment }}</td>
+              <td>{{u.risk_type }}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+<td>
+
+
+

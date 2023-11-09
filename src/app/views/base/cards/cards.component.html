@@ -7,12 +7,13 @@
 </head>
 <body>
   <div variant="pills" style="padding-bottom: 8px;" >
-    <button cButton style=" margin-right: 2%;background-color: #1e293b;">
+    <button cButton style=" margin-right: 2%;background-color: #1e293b;" [disabled]="!pers.includes('add project')" >
         <a routerLink="./NewProject" cDropdownItem>
           <svg cIcon class="me-2" name="cilPlus"></svg>
           {{"Project.New Project" | translate }}
         </a>
     </button>
+    <!-- add project -->
   </div>
   <table  datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-striped" >
     <thead style="background-color: #1e293b; color: #f0e9e9;">
@@ -35,17 +36,17 @@
             <td>{{item.name}}</td>
             <td>{{item.description}}</td>
             <td>{{item.status.name}}</td>
-            <td>{{item.start_date}}</td>
-            <td>{{item.deadline}}</td>
-            <td>{{item.project_created}}</td>
+            <td>{{item.start_date | date:'yyyy-MM-dd'}}</td>
+            <td>{{item.deadline | date:'yyyy-MM-dd'}}</td>
+            <td>{{item.project_created | date:'yyyy-MM-dd'}}</td>
             <td style="text-align: center;">
-              <a [routerLink]='["./View",item.id]' style="margin-right: 3px;" name="" id="" class="btn " role="button">
+              <button [routerLink]='["./View",item.id]' style="margin-right: 3px;" name="" id="" class="btn " role="button" [disabled]="!pers.includes('view project')">
                 <!-- <svg cIcon class="" name="cilInfo"></svg> -->View
-              </a>
-              <a [routerLink]='["./EditProject",item.id]' style="margin-right: 3px;" name="" id="" class="btn " role="button">
+              </button>
+              <button [routerLink]='["./EditProject",item.id]' style="margin-right: 3px;" name="" id="" class="btn " role="button" [disabled]="!pers.includes('edit project')">
                 <!-- <svg cIcon class="" name="cilPen"></svg> -->Edit
-              </a>
-              <button name="" id="" class="btn " (click)="destroy(item.id)" role="button">
+              </button>
+              <button name="" id="" class="btn " (click)="destroy(item.id)" role="button" [disabled]="!pers.includes('delete project')">
                 <!-- <svg cIcon class="" name="cilTrash"></svg> -->Delete
               </button>
           </td>

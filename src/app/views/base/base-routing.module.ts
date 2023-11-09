@@ -37,6 +37,8 @@ import { NotesComponentr } from '../icons/notes/notes.component';
 import { NewnoteComponentr } from '../icons/newnote/newnote.component';
 import { ManagementComponent } from './management/management.component';
 import { NewmangsComponent } from './newmangs/newmangs.component';
+import { InhiritedComponent } from './inhirited/inhirited.component';
+import { NewinhiritedComponent } from './newinhirited/newinhirited.component';
 
 
 const routes: Routes = [
@@ -46,37 +48,67 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        component: CardsComponent
+        component: CardsComponent,
+        canActivate:[authGuard,],
+      //   data:{
+      //     expectedRoles:['view project']
+      // },
       },
       {
         path: 'Risk/:id',
         pathMatch: 'full',
-        component: SheetsComponent
+        component: SheetsComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'Risk/:id/rate',
         pathMatch: 'full',
         component: RatesComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'Risk/Note/:id',
         pathMatch: 'full',
         component: CrmComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'Risk/Note/:id/New',
         pathMatch: 'full',
         component: NewcrmComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'Risk/Rcm/:id',
         pathMatch: 'full',
         component: NotesComponentr,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'Risk/Rcm/:id/New',
         pathMatch: 'full',
         component: NewnoteComponentr,
+        canActivate:[authGuard,],
+
+      },
+      {
+        path: 'Risk/Inhirited/:id',
+        pathMatch: 'full',
+        component: InhiritedComponent,
+        canActivate:[authGuard,],
+
+      },
+      {
+        path: 'Risk/Inhirited/:id/New',
+        pathMatch: 'full',
+        component: NewinhiritedComponent,
+        canActivate:[authGuard,],
+
       },
       {
         path: 'NewProject',
