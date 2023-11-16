@@ -45,12 +45,14 @@ export class AccordionsComponent {
  this.item.remember_token   = this.remember_token;
  this.item.user_id          = this.user_id;
  this.item.project_id       = this.project_id;
- console.log(this.item);
+ //console.log(this.item);
 
  this._FileService.addNewFile(Helper.toFormData(this.item)).subscribe((res)=>
       {
         if (res.message == "THIS File Added Successfully") {
           this.toastr.success("THIS File Added Successfully.")
+          this.router.navigate(["Project/View/" + this.project_id + "/file",this.project_id]);
+
           setTimeout(() =>
           {
           location.reload();

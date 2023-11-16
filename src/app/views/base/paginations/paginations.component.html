@@ -11,16 +11,16 @@
   </c-nav-item>
 </c-nav>
 <br>
-<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" dir="ltr" class="table table-bordered table-striped" id="">
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" [dir]="lang" class="table table-bordered table-striped" id="">
   <thead style="background-color: #1e293b; color: #f0e9e9;">
       <tr>
           <th>#</th>
-          <th>{{"Project.project" | translate }}</th>
-          <th>{{"Project.description" | translate }}</th>
-          <th>{{"Project.user" | translate }}</th>
-          <th>{{"Project.file" | translate }}</th>
-          <th>{{"Project.dateadded" | translate }}</th>
-          <th>{{"Project.file name" | translate }}</th>
+          <th>{{"project name" | translate }}</th>
+          <th>{{"description" | translate }}</th>
+          <th>{{"user" | translate }}</th>
+          <th>{{"file" | translate }}</th>
+          <th>{{"date" | translate }}</th>
+          <th>{{"file name" | translate }}</th>
       </tr>
   </thead>
   <tbody >

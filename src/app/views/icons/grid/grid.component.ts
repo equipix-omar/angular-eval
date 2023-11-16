@@ -178,7 +178,7 @@ export class GridComponent implements OnInit {
             const sheetname= workbook.SheetNames[0];
             const sheet1 = workbook.Sheets[sheetname]
             this.users=xls.utils.sheet_to_json(sheet1,{raw:true});
-            console.log(this.users)
+           // console.log(this.users)
     }
   }
   add()

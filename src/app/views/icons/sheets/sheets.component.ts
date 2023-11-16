@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { EventService } from 'src/app/Services/event.service';
 import * as xls from 'xlsx'
 @Component({
@@ -13,7 +14,6 @@ export class SheetsComponent {
   Events: any = [];
   Event: any[] = [];
   Events2: any[] = [];
-
   users:any
   id:                             any;
   procedure:                      any;
@@ -22,33 +22,39 @@ export class SheetsComponent {
   risk_causes:                    any;
   risk_effect:                    any;
   residual_risk_current_controls: any;
-
   risk_occurrence:                any;
   risk_impact:                    any;
   risk_type:                      any;
   inherent_risk_assessment:       any;
   risk_rate:                      any;
-
   residual_risk_occurrence:       any;
   residual_risk_impact:           any;
   residual_risk_assessment:       any;
   residual_risk_rate:             any;
-
-  occurrence:       any;
-  Impact:           any;
-  Inherent_risks:   any;
-  risk_types:       any;
-  ResInherent_risks:any;
-  Resoccurrence:    any;
-  ResImpact:        any;
+  occurrence:                     any;
+  Impact:                         any;
+  Inherent_risks:                 any;
+  risk_types:                     any;
+  ResInherent_risks:              any;
+  Resoccurrence:                  any;
+  ResImpact:                      any;
+  lang:any
   newid:any;
-
-  constructor(public _EventService: EventService,private _router:Router , private Active:ActivatedRoute) {
-    this.newid = Active.snapshot.paramMap.get("id")
+  constructor(public _EventService: EventService,private _router:Router , private Active:ActivatedRoute, private toastr: ToastrService) {
+    this.newid = Active.snapshot.paramMap.get("id");
+    this.lang = localStorage.getItem("currentLang");
+    if (this.lang == "ar") {
+      this.lang = "rtl"
+    }
+    else{
+      this.lang = "ltr"
+    }
   }
   editall(post:any)
   {
     this._EventService.editEvent(this.Events).subscribe((res) => {
+      this.toastr.success("New Risk Updated Successfully.")
+      window.location.reload();
     });
   }
   deleteall(post:any)
@@ -105,7 +111,7 @@ export class SheetsComponent {
             const sheetname= workbook.SheetNames[0];
             const sheet1 = workbook.Sheets[sheetname]
             this.users=xls.utils.sheet_to_json(sheet1,{raw:true});
-            console.log(this.users)
+           // console.log(this.users)
     }
   }
   add()
@@ -119,7 +125,6 @@ export class SheetsComponent {
       location.reload();
       }, 1000);    });
   }
-
   updateRiskImpact(id:any,ids:any) {
     for (let index = 0; index < this.Events.length; index++) {
       if (this.Events[index].id == id) {
@@ -168,7 +173,6 @@ export class SheetsComponent {
     // this._EventService.editEvent(this.Events).subscribe((res) => {
     // });
   }
-
   updateRiskImpactnew(id:any,ids:any) {
     for (let index = 0; index < this.Events2.length; index++) {
       if (this.Events2[index].id == id) {
@@ -229,11 +233,29 @@ export class SheetsComponent {
   {
     for (let index = 0; index < this.Events2.length; index++) {
       this.Events2[index].audited_management_id = this.newid;
+      if (
+        !this.Events2[index].procedure || !this.Events2[index].risk_code || !this.Events2[index].risk_description|| !this.Events2[index].risk_causes||
+        !this.Events2[index].risk_effect || !this.Events2[index].residual_risk_current_controls || !this.Events2[index].risk_occurrence|| !this.Events2[index].risk_impact ||
+        !this.Events2[index].risk_type || !this.Events2[index].inherent_risk_assessment || !this.Events2[index].residual_risk_occurrence|| !this.Events2[index].residual_risk_impact||
+        !this.Events2[index].residual_risk_assessment || !this.Events2[index].residual_risk_rate || !this.Events2[index].risk_rate
+
+        ) {
+        this.toastr.error("Enter All Field.")
+      }
+      else{
+        this._EventService.AddEvent(this.Events2).subscribe((res) => {
+          if (res.message =="New event Created Successfully") {
+           this.toastr.success("New Risk Created Successfully.")
+           window.location.reload();
+          }
+          else{
+           this.toastr.error("Enter All Field.")
+          }
+         });
+      }
+
     }
-    this._EventService.AddEvent(this.Events2).subscribe((res) => {
-     // this._router.navigate(["Project/Risk",this.newid]);
-     window.location.reload();
-    });
+
   }
  }
 

@@ -17,11 +17,18 @@ export class PermissionComponent {
   remember_token:any;
   dtOptions: any = {};
   dtTrigger:Subject<any>=new Subject<any>();
-
+lang:any
   constructor(
      private _PermissionService: PermissionService, private toastr: ToastrService,)
       {
        this.remember_token = localStorage.getItem('TOKEN');
+       this.lang = localStorage.getItem("currentLang");
+       if (this.lang == "ar") {
+         this.lang = "rtl"
+       }
+       else{
+         this.lang = "ltr"
+       }
       }
    getstatus(){
     this._PermissionService.getAllpermision().subscribe((res:any) =>

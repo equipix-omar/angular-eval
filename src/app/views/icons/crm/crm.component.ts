@@ -1,6 +1,7 @@
 import { EventService } from './../../../Services/event.service';
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { ToastrService } from 'ngx-toastr';
 import * as xls from 'xlsx'
 @Component({
   selector: 'app-crm',
@@ -38,22 +39,37 @@ export class CrmComponent {
   ResImpact:        any;
   newid:any;
   Events3: any[] = [];
-
-  constructor(public _EventService: EventService, private Active:ActivatedRoute,private _Router:Router)
+  lang:any
+  constructor(public _EventService: EventService, private Active:ActivatedRoute,private _Router:Router, private toastr: ToastrService)
   {
     this.newid = Active.snapshot.paramMap.get("id")
+    this.lang = localStorage.getItem("currentLang");
+    if (this.lang == "ar") {
+      this.lang = "rtl"
+    }
+    else{
+      this.lang = "ltr"
+    }
+  }
+  formatDate(date: Date): string {
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    return `${year}/${month.toString().padStart(2, '0')}/${day.toString().padStart(2, '0')}`;
   }
   editall(post:any)
   {
      for (let index = 0; index < this.Events.length; index++) {
-    this.Events[index].implantation_date = JSON.stringify(this.Events[index].implantation_date).split('T').splice(0, 1).join('').replace('"', '');
-     }
+      this.Events[index].implantation_date = JSON.stringify(this.Events[index].implantation_date).split('T').splice(0, 1).join('').replace('"', '');
+      let currentDate = new Date(this.Events[index].implantation_date);
+      currentDate.setDate(currentDate.getDate() + 1);
+      let formattedDate = currentDate.toISOString().split('T')[0];
+      this.Events[index].implantation_date = formattedDate
+      }
      this._EventService.editNote2(this.Events).subscribe((res) => {
+      this.toastr.success("New Risk Note Successfully.")
+      window.location.reload();
       });
-      setTimeout(() =>
-      {
-      location.reload();
-      }, 500);
   }
   deleteall(post:any)
   {
@@ -76,6 +92,8 @@ export class CrmComponent {
   ngOnInit() {
     this._EventService.getAllNote2(this.newid).subscribe((res) => {
       this.Events = res.data;
+      for (let index = 0; index < this.Events.length; index++) {
+      }
     });
     this._EventService.getAllEvent(this.newid).subscribe((res) => {
       for (let index = 0; index < res.data.length; index++) {
@@ -93,14 +111,32 @@ export class CrmComponent {
   }
   save(post:any)
   {
-
     for (let index = 0; index < this.Events3.length; index++) {
       this.Events3[index].audited_management_id = this.newid;
-      this.Events3[index].implantation_date = JSON.stringify(this.Events3[index].implantation_date).split('T').splice(0, 1).join('').replace('"', '');
+      if (this.Events3[index].implantation_date) {
+        //this.Events3[index].implantation_date = JSON.stringify(this.Events3[index].implantation_date).split('T').splice(0, 1).join('').replace('"', '');
+        this.Events3[index].implantation_date = this.formatDate(this.Events3[index].implantation_date);
+      }
+      if (
+        !this.Events3[index].observation || !this.Events3[index].detaild_observation || !this.Events3[index].root_cause|| !this.Events3[index].recommendation||
+        !this.Events3[index].management_response || !this.Events3[index].executive_responsibility || !this.Events3[index].Requirements_status|| !this.Events3[index].rate ||
+        !this.Events3[index].risk || !this.Events3[index].implantation_date
+
+        ) {
+        this.toastr.error("Enter All Field.")
+      }
+      else{
+        this._EventService.AddNote2(this.Events3).subscribe((res) => {
+          if (res.message =="New event Created Successfully") {
+            this.toastr.success("New Risk Created Successfully.")
+            window.location.reload();
+           }
+           else{
+            this.toastr.error("Enter All Field.")
+           }
+        });
+      }
     }
-    this._EventService.AddNote2(this.Events3).subscribe((res) => {
-      //this._Router.navigate(["Project/Risk/Note",this.newid]);
-      window.location.reload();
-    });
+
   }
 }

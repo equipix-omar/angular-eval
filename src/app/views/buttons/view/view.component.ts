@@ -34,8 +34,8 @@ export class ViewComponent {
 
     this._TaskService.getAllTask().subscribe((res:any) => {
       this.data = res.data
-      console.log(this.data);
-      console.log(this.localData);
+      //console.log(this.data);
+      //console.log(this.localData);
 
       for (let i = 0; i < res.data.length; i++) {
         this.Status.push(this.data[i].status['name'])

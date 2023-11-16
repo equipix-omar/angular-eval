@@ -17,10 +17,19 @@ export class ResidualInherentComponent {
   item: any = {};
   Allstatus:any;
   remember_token:any;
+  lang:any
   dtOptions: any = {};
   dtTrigger:Subject<any>=new Subject<any>();
   constructor(private _EventService:EventService,private _StatusService: StatusService,private toastr: ToastrService,)
-    { this.remember_token = localStorage.getItem('TOKEN'); }
+    { this.remember_token = localStorage.getItem('TOKEN');
+    this.lang = localStorage.getItem("currentLang");
+    if (this.lang == "ar") {
+      this.lang = "rtl"
+    }
+    else{
+      this.lang = "ltr"
+    }
+   }
    getstatus(){
     this._EventService.AllResInherent().subscribe((res:any) =>
     {

@@ -19,10 +19,19 @@ export class ToastersComponent {
   Allstatus:any;
   remember_token:any;
   dtOptions: any = {};
+  lang:any
   dtTrigger:Subject<any>=new Subject<any>();
   constructor(
     private _SectorService:ManagementService,private _StatusService: StatusService,private toastr: ToastrService,)
-    { this.remember_token = localStorage.getItem('TOKEN'); }
+    { this.remember_token = localStorage.getItem('TOKEN');
+    this.lang = localStorage.getItem("currentLang");
+    if (this.lang == "ar") {
+      this.lang = "rtl"
+    }
+    else{
+      this.lang = "ltr"
+    }
+   }
    getstatus(){
     this._SectorService.Allmanagement().subscribe((res:any) =>
     {

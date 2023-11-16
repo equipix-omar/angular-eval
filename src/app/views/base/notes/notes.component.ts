@@ -17,12 +17,20 @@ export class NotesComponent {
   dtOptions: any  = {};
   user_id:any;
   id:any;
+  lang:any
 dtTrigger:Subject<any>=new Subject<any>();
   constructor(private _NoteService:NoteService , private _Router:Router
     ,private toastr: ToastrService, private Active:ActivatedRoute
     )
    {
     this.id= Active.snapshot.paramMap.get("id")
+    this.lang = localStorage.getItem("currentLang");
+    if (this.lang == "ar") {
+      this.lang = "rtl"
+    }
+    else{
+      this.lang = "ltr"
+    }
    }
    ngOnInit(): void
    {

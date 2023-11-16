@@ -46,6 +46,8 @@ export class Newdiscuc2Component {
       {
         if (res.message == "THIS discussion Added Successfully") {
           this.toastr.success("THIS discussion Added Successfully.")
+          this.router.navigate(["Project/View/" + this.project_id + "/discuss",this.project_id]);
+
           setTimeout(() =>
           {
           location.reload();

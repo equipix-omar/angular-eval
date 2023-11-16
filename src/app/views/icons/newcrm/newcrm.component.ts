@@ -29,10 +29,17 @@ export class NewcrmComponent {
   Resoccurrence:    any;
   ResImpact:        any;
   newid:any;
-
+lang:any
   constructor(public _EventService: EventService, private _Router:Router, private Active:ActivatedRoute)
   {
     this.newid = Active.snapshot.paramMap.get("id")
+    this.lang = localStorage.getItem("currentLang");
+    if (this.lang == "ar") {
+      this.lang = "rtl"
+    }
+    else{
+      this.lang = "ltr"
+    }
   }
   add2() {
     let item = {"id":this.Events2.length +1};
@@ -70,7 +77,7 @@ export class NewcrmComponent {
             const sheetname= workbook.SheetNames[0];
             const sheet1 = workbook.Sheets[sheetname]
             this.users=xls.utils.sheet_to_json(sheet1,{raw:true});
-            console.log(this.users)
+            //console.log(this.users)
     }
   }
   addex()

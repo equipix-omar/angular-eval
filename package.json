@@ -64,7 +64,9 @@
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5",
     "swiper": "^8.4.5",
-    "zone.js": "~0.13.1"
+    "zone.js": "~0.13.1",
+    "moment": "^2.29.0"
+
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.1.0",

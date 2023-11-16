@@ -34,36 +34,6 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      // {
-      //   path: '',
-      //   pathMatch: 'full',
-      //   component: SheetsComponent,
-      // },
-      // {
-      //   path: 'rate',
-      //   pathMatch: 'full',
-      //   component: RatesComponent,
-      // },
-      // {
-      //   path: 'Note',
-      //   pathMatch: 'full',
-      //   component: NotesComponentr,
-      // },
-      // {
-      //   path: 'Note/New',
-      //   pathMatch: 'full',
-      //   component: NewnoteComponentr,
-      // },
-      // {
-      //   path: 'Rcm',
-      //   pathMatch: 'full',
-      //   component: CrmComponent,
-      // },
-      // {
-      //   path: 'Rcm/New',
-      //   pathMatch: 'full',
-      //   component: NewcrmComponent,
-      // },
       {
         path: 'RiskType',
         component: RisktypeComponent,
@@ -139,9 +109,6 @@ const routes: Routes = [
         canActivate:[authGuard,],
 
       },
-
-
-
 
       {
         path: 'ResidualImpact',

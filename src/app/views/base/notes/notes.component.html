@@ -10,14 +10,14 @@
   </c-nav-item>
 </c-nav>
 <br>
-<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" dir="ltr" class="table table-bordered table-striped" id="">
+<table  [dir]="lang" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"  class="table table-bordered table-striped" id="">
   <thead style="background-color: #1e293b; color: #f0e9e9;">
       <tr>
 
           <th>#</th>
-          <th>{{"Project.project" | translate }}</th>
-          <th>{{"Project.content" | translate }}</th>
-          <th>{{"Project.user" | translate }}</th>
+          <th>{{"project name" | translate }}</th>
+          <th>{{"content" | translate }}</th>
+          <th>{{"user" | translate }}</th>
           <!-- <th style="text-align: center;">{{"Project.Action" | translate }}</th> -->
       </tr>
   </thead>

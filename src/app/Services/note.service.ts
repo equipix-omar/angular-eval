@@ -22,6 +22,6 @@ export class NoteService {
     return this._HttpClient.get(this.baseURL + `GetNote/${id}`+"?remember_token=" +this.token);
   }
   addNewNote(formData:any):Observable<any> {
-    return this._HttpClient.post(this.baseURL + 'AddNote'+"?remember_token=" +this.token,formData);
+    return this._HttpClient.post(this.baseURL + 'AddpNote'+"?remember_token=" +this.token,formData);
   }
 }

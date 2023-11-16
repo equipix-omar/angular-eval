@@ -35,7 +35,7 @@ onChange(event: any) {
 FormData()
 {
 
-  console.log(this.signUp.value);
+ // console.log(this.signUp.value);
   this._AuthService.EditProfile(this.file,this.id).subscribe(response=>{
     if(response.status == 200)
     {

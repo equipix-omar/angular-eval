@@ -20,11 +20,18 @@ export class ChecksRadiosComponent {
   dtOptions: any = {};
   dtTrigger:Subject<any>=new Subject<any>();
   Imageurl :any = AppComponent.ImageURL
-
+lang:any
   constructor(
    private authsevise:AuthService, private toastr: ToastrService
   ) {
     this.remember_token = localStorage.getItem('TOKEN');
+     this.lang = localStorage.getItem("currentLang");
+    if (this.lang == "ar") {
+      this.lang = "rtl"
+    }
+    else{
+      this.lang = "ltr"
+    }
 // console.log(this.remember_token);
 // window.location.reload();
 

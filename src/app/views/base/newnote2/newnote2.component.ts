@@ -45,6 +45,8 @@ export class Newnote2Component {
       {
         if (res.message == "THIS Note Added Successfully") {
           this.toastr.success("THIS Note Added Successfully.")
+          this.router.navigate(["Project/View/" + this.project_id + "/note",this.project_id]);
+
           setTimeout(() =>
           {
           location.reload();

@@ -11,12 +11,11 @@
   </c-nav-item>
 </c-nav>
 <div class="message" *ngFor="let item of Projects">
-  <img src="assets/img/avatars/9.jpg" alt="Avatar" class="avatar">
+  <img src="{{Imageurl}}{{item.user['image']}}" alt="Avatar" class="avatar">
   <div class="message-content">
     <br>
     <span class="username">{{item.user['name']}}</span>
-    <div style="width: 200px !important; display: inline;" class="date">{{item.datecreated}}</div>
-    <!-- <br> -->
+    <div style="width: 200px !important; " >{{item.datecreated}}</div>
     <p class="message-text">{{item.description}}</p>
   </div>
 </div>

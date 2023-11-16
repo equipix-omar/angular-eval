@@ -137,7 +137,7 @@ export class CarouselsComponent {
               // this.router.navigate(['/Project']);
               // this.toastr.success("Project Created Successfully.")
               this.p_id = res.data.id;
-              console.log(this.p_id);
+              //console.log(this.p_id);
             }
             else{
               this.toastr.error("Please Enter All Feild.")

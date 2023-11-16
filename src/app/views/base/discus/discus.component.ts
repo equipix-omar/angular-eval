@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
+import { AppComponent } from 'src/app/app.component';
 import { Helper } from 'src/app/helper';
 
 @Component({
@@ -17,6 +18,8 @@ export class DiscusComponent {
   dtOptions: any  = {};
   user_id:any;
   id:any;
+  Imageurl :any = AppComponent.ImageURL
+
 dtTrigger:Subject<any>=new Subject<any>();
   constructor(private _DiscussService:DiscussService , private _Router:Router
     ,private toastr: ToastrService, private Active:ActivatedRoute
@@ -60,26 +63,11 @@ dtTrigger:Subject<any>=new Subject<any>();
       }
       else
       {
-        localStorage.clear();
         this._Router.navigate(["/Project"]);
       }
 
     })
     }
-    destroy(id:any)
-    {
-      // this.item.remember_token  = this.remember_token;
-      // this.gatProjectService.deleteProject(id,Helper.toFormData(this.item)).subscribe((res:any) => {
 
-      //   if (res.message == "Project Deleted Successfully") {
-      //   }
-      //   setTimeout(() =>
-      //       {
-      //       location.reload();
-      //       }, 1000);
-      //       this.toastr.error("Project Deleted Successfully.")
-
-      // })
-    }
 
 }

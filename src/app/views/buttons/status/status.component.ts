@@ -16,12 +16,19 @@ export class StatusComponent {
   remember_token:any;
   dtOptions: any = {};
   dtTrigger:Subject<any>=new Subject<any>();
-
+lang:any
   constructor(
    private _StatusService:StatusService, private toastr: ToastrService
 
   ) {
     this.remember_token = localStorage.getItem('TOKEN');
+    this.lang = localStorage.getItem("currentLang");
+    if (this.lang == "ar") {
+      this.lang = "rtl"
+    }
+    else{
+      this.lang = "ltr"
+    }
    }
    dstroy(id:any)
    {

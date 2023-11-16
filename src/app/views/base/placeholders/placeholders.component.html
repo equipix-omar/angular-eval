@@ -1,29 +1,72 @@
 
 <h1 style="text-align:center">View Project {{data?.id}} Details</h1><br>
+
 <div class="project-details">
-  <div class="project-info">
-    <br><br>
-    <div class="progress progress-bar-striped" >
-      <div class="progress-bar"  style="width: {{data?.progress}}%" >{{data?.progress}}% Complete (success)</div>
+  <div class="container " >
+    <div class="row">
+      <div class="col-lg-6 p-2">
+        Name:
+      </div>
+      <div class="row col-lg-4 p-2">
+        <div> {{data?.name}} </div>
+      </div>
+   </div>
+   <div class="row">
+    <div class="col-lg-6 p-2">
+      Description:
     </div>
-    <br><br>
-    <p><strong>Finished:</strong>    <span style="margin-left: 45px;">{{data?.name}}</span></p><br>
-    <p><strong>Description:</strong> <span style="margin-left: 30px;">{{data?.description}}</span></p><br>
-    <p><strong>Start Date:</strong>  <span style="margin-left: 38px;">{{data?.start_date}}</span></p><br>
-    <p><strong>Deadline:</strong>    <span style="margin-left: 45px;">{{data?.deadline}}</span></p><br>
-    <p><strong>Created:</strong>     <span style="margin-left: 47px;">{{data?.project_created}}</span></p><br>
-  </div>
-  <div class="project-stats">
-
-    <div class="stats-info">
-      <br><br>
-      <br><br><br>
-      <p><strong>Progress:</strong>              <span style="margin-left: 150px;">{{data?.progress}}%</span></p><br>
-      <p><strong>Progress from Tasks:</strong>   <span style="margin-left: 80px;">{{data?.progress_from_tasks}}%</span></p><br>
-      <p><strong>Project Cost:</strong>          <span style="margin-left: 130px;">{{data?.project_cost}}$</span></p><br>
-      <p><strong>Project Rate per Hour:</strong> <span style="margin-left: 70px;">{{data?.project_rate_per_hour}}</span></p><br>
-      <p><strong>Estimated Hours:</strong>       <span style="margin-left: 100px;">{{data?.estimated_hours}}</span></p><br>
+    <div class="row col-lg-4 p-2">
+      <div> {{data?.description}} </div>
     </div>
+ </div>
+ <div class="row">
+  <div class="col-lg-6 p-2">
+    cost:
   </div>
+  <div class="row col-lg-4 p-2">
+    <div> {{data?.project_cost}}$ </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-6 p-2">
+    project rate:
+  </div>
+  <div class="row col-lg-4 p-2">
+    <div> {{data?.project_rate_per_hour}} </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-6 p-2">
+    start date:
+  </div>
+  <div class="row col-lg-4 p-2">
+    <div> {{data?.start_date}} </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-6 p-2">
+    deadline:
+  </div>
+  <div class="row col-lg-4 p-2">
+    <div> {{data?.deadline}} </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-6 p-2">
+    project created:
+  </div>
+  <div class="row col-lg-4 p-2">
+    <div> {{data?.project_created}} </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-6 p-2">
+    date finished :
+  </div>
+  <div class="row col-lg-4 p-2">
+    <div> {{data?.date_finished}} </div>
+  </div>
+</div>
 
+  </div>
 </div>

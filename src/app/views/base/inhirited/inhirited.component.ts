@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { EventService } from 'src/app/Services/event.service';
 import * as xls from 'xlsx'
 @Component({
@@ -38,12 +39,22 @@ export class InhiritedComponent {
   Resoccurrence:    any;
   ResImpact:        any;
   newid:any;
-  constructor(public _EventService: EventService,private _router:Router , private Active:ActivatedRoute) {
+  lang:any
+  constructor(public _EventService: EventService,private _router:Router , private Active:ActivatedRoute, private toastr: ToastrService) {
     this.newid = Active.snapshot.paramMap.get("id")
+    this.lang = localStorage.getItem("currentLang");
+    if (this.lang == "ar") {
+      this.lang = "rtl"
+    }
+    else{
+      this.lang = "ltr"
+    }
   }
   editall(post:any)
   {
     this._EventService.editEventres(this.Events).subscribe((res) => {
+      this.toastr.success("New Risk Updated Successfully.")
+      window.location.reload();
     });
   }
   deleteall(post:any)
@@ -100,7 +111,6 @@ export class InhiritedComponent {
             const sheetname= workbook.SheetNames[0];
             const sheet1 = workbook.Sheets[sheetname]
             this.users=xls.utils.sheet_to_json(sheet1,{raw:true});
-            console.log(this.users)
     }
   }
   add()
@@ -135,8 +145,6 @@ export class InhiritedComponent {
         }
       }
     }
-    this._EventService.editEventres(this.Events).subscribe((res) => {
-    });
   }
   updateRiskImpact2(id:any,ids:any) {
     for (let index = 0; index < this.Events.length; index++) {
@@ -159,8 +167,6 @@ export class InhiritedComponent {
         }
       }
     }
-    this._EventService.editEventres(this.Events).subscribe((res) => {
-    });
   }
   updateRiskImpactnew(id:any,ids:any) {
     for (let index = 0; index < this.Events2.length; index++) {
@@ -183,8 +189,6 @@ export class InhiritedComponent {
         }
       }
     }
-    this._EventService.editEventres(this.Events2).subscribe((res) => {
-    });
   }
   updateRiskImpact2new(id:any,ids:any) {
     for (let index = 0; index < this.Events2.length; index++) {
@@ -207,8 +211,6 @@ export class InhiritedComponent {
         }
       }
     }
-    this._EventService.editEventres(this.Events2).subscribe((res) => {
-    });
   }
   add2() {
     let item = {"id":this.Events2.length +1};
@@ -222,10 +224,27 @@ export class InhiritedComponent {
   {
     for (let index = 0; index < this.Events2.length; index++) {
       this.Events2[index].audited_management_id = this.newid;
+      if (
+        !this.Events2[index].procedure   || !this.Events2[index].risk_code                || !this.Events2[index].risk_description|| !this.Events2[index].risk_causes||
+        !this.Events2[index].risk_effect || !this.Events2[index].risk_occurrence          || !this.Events2[index].risk_impact     ||
+        !this.Events2[index].risk_type   || !this.Events2[index].inherent_risk_assessment || !this.Events2[index].risk_rate
+
+        ) {
+        this.toastr.error("Enter All Field.")
+      }
+      else{
+        this._EventService.AddEventres(this.Events2).subscribe((res) => {
+          if (res.message =="New event Created Successfully") {
+            this.toastr.success("New Risk Created Successfully.")
+            window.location.reload();
+           }
+           else{
+            this.toastr.error("Enter All Field.")
+           }
+        });
+      }
     }
-    this._EventService.AddEventres(this.Events2).subscribe((res) => {
-     window.location.reload();
-    });
+
   }
  }
 

@@ -54,7 +54,7 @@ export class ManagementComponent {
       getid(id:any)
       {
         this.newid = id;
-        console.log(this.newid);
+        //console.log(this.newid);
 
       }
 }

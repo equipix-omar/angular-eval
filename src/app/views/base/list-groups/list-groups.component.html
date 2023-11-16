@@ -1,45 +1,47 @@
-<div class="row">
-  <div class="col-lg-3">
-    <button cButton style="background-color: #1e293b;" >
-      <a routerLink="./NewStatus" cDropdownItem>
-        <svg cIcon class="me-2" name="cilPlus"></svg>
 
-        {{"New Project status" | translate }}
-      </a>
-    </button>
-  </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  </div>
-  <table  datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" dir="ltr" class="table table-bordered table-striped" id="">
-  <thead style="background-color: #1e293b; color: #f0e9e9; text-align: center !important">
-    <tr style="text-align: center !important">
-      <th style="text-align: center;">ID</th>
-      <th style="text-align: center;">Name</th>
-      <th style="text-align: center;">Action</th>
+  <div class="row">
+    <div class="col-lg-3">
+      <button cButton style="background-color: #1e293b;" >
+        <a routerLink="./NewStatus" cDropdownItem>
+          <svg cIcon class="me-2" name="cilPlus"></svg>
 
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr style="text-align: center;" *ngFor="let post of Allstatus">
-      <td>{{ post.id }}</td>
-      <td>{{ post.name }}</td>
-      <td style="text-align: center;">
-        <!-- <a [routerLink]='["./View",post.id]' style="margin-right: 3px;" name="" id="" class="btn btn-success" href="#" role="button">
-          <svg cIcon class="" name="cilInfo"></svg></a> -->
-        <a [routerLink]='["./Edit",post.id]' style="margin-right: 3px;" name="" id="" class="btn" href="#" role="button">
-          <!-- <svg cIcon class="" name="cilPen"></svg> -->
-          Edit
+          {{"New Project status" | translate }}
         </a>
-        <button name="" (click)="destroy(post.id)" id="" class="btn " href="#" role="button">
-          <!-- <svg cIcon class="" name="cilTrash"></svg> -->
-          Delete
-        </button>
-    </td>
+      </button>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    </div>
+    <table  [dir]="lang" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" dir="ltr" class="table table-bordered table-striped" id="">
+    <thead style="background-color: #1e293b; color: #f0e9e9; text-align: center !important">
+      <tr style="text-align: center !important">
+        <th style="text-align: center;">ID</th>
+        <th style="text-align: center;">Name</th>
+        <th style="text-align: center;">Action</th>
 
-    </tr>
-  </tbody>
-</table>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="text-align: center;" *ngFor="let post of Allstatus">
+        <td>{{ post.id }}</td>
+        <td>{{ post.name }}</td>
+        <td style="text-align: center;">
+          <!-- <a [routerLink]='["./View",post.id]' style="margin-right: 3px;" name="" id="" class="btn btn-success" href="#" role="button">
+            <svg cIcon class="" name="cilInfo"></svg></a> -->
+          <a [routerLink]='["./Edit",post.id]' style="margin-right: 3px;" name="" id="" class="btn" href="#" role="button">
+            <!-- <svg cIcon class="" name="cilPen"></svg> -->
+            Edit
+          </a>
+          <button name="" (click)="destroy(post.id)" id="" class="btn " href="#" role="button">
+            <!-- <svg cIcon class="" name="cilTrash"></svg> -->
+            Delete
+          </button>
+      </td>
+
+      </tr>
+    </tbody>
+  </table>
+

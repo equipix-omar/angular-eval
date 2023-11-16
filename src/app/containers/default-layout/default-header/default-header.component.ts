@@ -19,7 +19,6 @@ data:any;
 count:any;
 lan:any
 Imageurl :any = AppComponent.ImageURL
-
   @Input() sidebarId: string = "sidebar";
   public newMessages = new Array(4)
   public newTasks = new Array(5)
@@ -32,7 +31,6 @@ Imageurl :any = AppComponent.ImageURL
   useLanguage(language: string): void {
     this.translate.use(language);
   }
-
   changeCurrentLang(lang: string) {
     const html   = document.getElementsByTagName('html');
     const body   = document.getElementsByTagName('body');
@@ -62,29 +60,21 @@ Imageurl :any = AppComponent.ImageURL
     this.lan = localStorage.getItem('currentLang');
     const html   = document.getElementsByTagName('html');
     const body   = document.getElementsByTagName('body');
-    const table  = document.getElementsByTagName('table');
     if (this.lan == "ar") {
       this.translate.use(this.lan)
       localStorage.setItem('currentLang', 'ar')
       html[0].setAttribute('dir', 'rtl');
       body[0].setAttribute('dir', 'rtl');
-      //table[0].setAttribute('dir', 'rtl');
     } else if (this.lan == "en") {
       this.translate.use(this.lan)
       localStorage.setItem('currentLang', 'en')
       html[0].setAttribute('dir', 'ltr');
       body[0].setAttribute('dir', 'ltr');
-      //table[0].setAttribute('dir', 'ltr');
   }
 }
   logout()
   {
    localStorage.clear()
-   setTimeout(() =>
-   {
-   location.reload();
-   }, 1000);
    this._Router.navigate(['/login'])
   }
-
 }

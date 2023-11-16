@@ -191,16 +191,9 @@ const routes: Routes = [
                 component: NewnoteComponent
                 ,canActivate:[authGuard]
               },
-              // {
-              //   path: 'managements/:id',
-              //   component: NewmangsComponent
-              //   ,canActivate:[authGuard]
-              // },
             ]
           },
-
       ]
-
       },
       {
         path: 'managements/:id',

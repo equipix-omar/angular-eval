@@ -19,12 +19,14 @@ export class CardsComponent {
   role:any;
   roles:any;
   pers:any[]=[];
+  lang:any;
   remember_token:any;
 Projects:any[]=[];
 token:any;
 dtOptions: any  = {};
 dtTrigger:Subject<any>=new Subject<any>();
   ngOnInit(): void {
+
     this.item.role = localStorage.getItem('RoleName');
     this.permisionService.getpermision( Helper.toFormData(this.item)).subscribe(res=>{
       this.roles = res.data[0].permissions
@@ -57,6 +59,13 @@ dtTrigger:Subject<any>=new Subject<any>();
     , private toastr: ToastrService,private _AuthService:AuthService,private permisionService: PermissionService)
    {
     this.remember_token = localStorage.getItem('TOKEN');
+    this.lang = localStorage.getItem("currentLang");
+    if (this.lang == "ar") {
+      this.lang = "rtl"
+    }
+    else{
+      this.lang = "ltr"
+    }
    }
   getProjects(){
     this.gatProjectService.getAllProject().subscribe((res:any) =>
@@ -72,7 +81,6 @@ dtTrigger:Subject<any>=new Subject<any>();
       }
     })
     }
-
     destroy(id:any)
     {
       this.item.remember_token  = this.remember_token;
@@ -88,7 +96,4 @@ dtTrigger:Subject<any>=new Subject<any>();
 
       })
     }
-
-
-
 }

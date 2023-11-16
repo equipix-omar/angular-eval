@@ -24,10 +24,18 @@ export class EditcontrolsComponent {
   remember_token:any;
   permision_id :any;
   role_id:any;
+  lang:any
   constructor(private _PermissionService: PermissionService,private toastr: ToastrService, private router:Router
     , private Active:ActivatedRoute) {
     this.id= Active.snapshot.paramMap.get("id")
     this.remember_token = localStorage.getItem('TOKEN');
+    this.lang = localStorage.getItem("currentLang");
+    if (this.lang == "ar") {
+      this.lang = "rtl"
+    }
+    else{
+      this.lang = "ltr"
+    }
    }
    save(r_id:any)
    {

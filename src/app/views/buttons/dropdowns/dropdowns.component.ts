@@ -55,7 +55,7 @@ export class DropdownsComponent {
       }
 
 
- console.log(this.item);
+ //.log(this.item);
  this.item.remember_token   = this.remember_token;
  this.item.addedfrom   = this.addedfrom;
  this.item.dateadded   = this.dateadded;
